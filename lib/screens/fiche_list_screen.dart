@@ -16,6 +16,7 @@ class FicheListScreen extends StatefulWidget {
 class _FicheListScreenState extends State<FicheListScreen> {
   List<Fiche> fiches = [];
   List<Fiche> filteredFiches = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -29,6 +30,7 @@ class _FicheListScreenState extends State<FicheListScreen> {
     setState(() {
       fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
       filteredFiches = fiches;
+      isLoading = false;
     });
   }
 
@@ -51,27 +53,35 @@ class _FicheListScreenState extends State<FicheListScreen> {
       ),
       body: Column(
         children: [
-          SearchBar(
+          CustomSearchBar(
             hintText: 'Rechercher une fiche…',
             onChanged: onSearch,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: filteredFiches.length,
-              itemBuilder: (context, index) {
-                final fiche = filteredFiches[index];
-                return FicheCard(
-                  fiche: fiche,
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => AnimatedFicheDetailScreen(fiche: fiche),
-                      ),
-                    );
-                  },
-                );
-              },
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      key: const ValueKey('list'),
+                      itemCount: filteredFiches.length,
+                      itemBuilder: (context, index) {
+                        final fiche = filteredFiches[index];
+                        return FicheCard(
+                          fiche: fiche,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder: (_, animation, __) => FadeTransition(
+                                  opacity: animation,
+                                  child: AnimatedFicheDetailScreen(fiche: fiche),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
             ),
           ),
         ],
