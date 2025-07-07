@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'fiche_list_screen.dart';
+import 'favorites_screen.dart';
+import 'cadre_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,23 +22,69 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: ElevatedButton.icon(
-            icon: const Icon(Icons.book),
-            label: const Text('Accéder aux fiches de droit pénal spécial'),
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-              textStyle: const TextStyle(fontSize: 18),
-            ),
-            onPressed: () {
-              Navigator.of(context).push(
-                PageRouteBuilder(
-                  pageBuilder: (_, animation, __) => FadeTransition(
-                    opacity: animation,
-                    child: const FicheListScreen(),
-                  ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton.icon(
+                icon: const Icon(Icons.book),
+                label: const Text('Liste des infractions'),
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  textStyle: const TextStyle(fontSize: 18),
                 ),
-              );
-            },
+                onPressed: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (_, animation, __) => FadeTransition(
+                        opacity: animation,
+                        child: const FicheListScreen(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.star),
+                label: const Text('Favoris'),
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (_, animation, __) => FadeTransition(
+                        opacity: animation,
+                        child: const FavoritesScreen(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.gavel),
+                label: const Text("Cadres d'enquête"),
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (_, animation, __) => FadeTransition(
+                        opacity: animation,
+                        child: const CadreListScreen(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

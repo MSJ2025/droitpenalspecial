@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/fiche.dart';
+import '../utils/favorites_manager.dart';
 
 class AnimatedFicheDetailScreen extends StatefulWidget {
   final Fiche fiche;
@@ -14,12 +15,20 @@ class AnimatedFicheDetailScreen extends StatefulWidget {
 
 class _AnimatedFicheDetailScreenState extends State<AnimatedFicheDetailScreen> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  bool _isFavorite = false;
 
   @override
   void initState() {
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 700)
     )..forward();
+    FavoritesManager.isFavorite(widget.fiche.id).then((value) {
+      if (mounted) {
+        setState(() {
+          _isFavorite = value;
+        });
+      }
+    });
     super.initState();
   }
 
@@ -107,10 +116,18 @@ class _AnimatedFicheDetailScreenState extends State<AnimatedFicheDetailScreen> w
                               ),
                               const Spacer(),
                               IconButton(
-                                icon: const Icon(Icons.star_border, color: Colors.amber),
-                                onPressed: () {
-                                  // Favori à implémenter
-                                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Fonction favori à venir !')));
+                                icon: Icon(
+                                  _isFavorite ? Icons.star : Icons.star_border,
+                                  color: Colors.amber,
+                                ),
+                                onPressed: () async {
+                                  await FavoritesManager.toggleFavorite(fiche.id);
+                                  final newStatus = await FavoritesManager.isFavorite(fiche.id);
+                                  if (mounted) {
+                                    setState(() {
+                                      _isFavorite = newStatus;
+                                    });
+                                  }
                                 },
                               ),
                             ],
