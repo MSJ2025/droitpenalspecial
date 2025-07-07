@@ -150,7 +150,7 @@ class _AnimatedFicheDetailScreenState extends State<AnimatedFicheDetailScreen> w
                                 // Articles cliquables avec animation d’apparition
                                 _buildArticleSection(context, "Article", fiche.article),
                                 _buildArticleSection(context, "Prévu par", fiche.prevuPar),
-                                _buildArticleSection(context, "Réprimé par", fiche.repimePar),
+                                _buildArticleSection(context, "Réprimé par", fiche.reprimePar),
                                 const SizedBox(height: 10),
                                 _animatedSection("Qualification légale", fiche.qualificationLegale),
                                 _animatedSection("Éléments constitutifs", ""),

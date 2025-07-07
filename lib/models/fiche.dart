@@ -7,7 +7,7 @@ class Fiche {
   final String nature;
   final ArticleRef article;
   final ArticleRef prevuPar;
-  final ArticleRef repimePar;
+  final ArticleRef reprimePar;
   final String definition;
   final String qualificationLegale;
   final ElementsConstitutifs elementsConstitutifs;
@@ -34,7 +34,7 @@ class Fiche {
     required this.nature,
     required this.article,
     required this.prevuPar,
-    required this.repimePar,
+    required this.reprimePar,
     required this.definition,
     required this.qualificationLegale,
     required this.elementsConstitutifs,
@@ -62,7 +62,7 @@ class Fiche {
     nature: json['nature'],
     article: ArticleRef.fromJson(json['article']),
     prevuPar: ArticleRef.fromJson(json['prevu_par']),
-    repimePar: ArticleRef.fromJson(json['reprime_par']),
+    reprimePar: ArticleRef.fromJson(json['reprime_par']),
     definition: json['definition'],
     qualificationLegale: json['qualification_legale'],
     elementsConstitutifs: ElementsConstitutifs.fromJson(json['elements_constitutifs']),
