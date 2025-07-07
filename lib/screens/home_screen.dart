@@ -11,14 +11,33 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Fiches OPJ'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Accéder aux fiches de droit pénal spécial'),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const FicheListScreen()),
-            );
-          },
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF122046), Color(0xFF3558A2)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Center(
+          child: ElevatedButton.icon(
+            icon: const Icon(Icons.book),
+            label: const Text('Accéder aux fiches de droit pénal spécial'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+              textStyle: const TextStyle(fontSize: 18),
+            ),
+            onPressed: () {
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (_, animation, __) => FadeTransition(
+                    opacity: animation,
+                    child: const FicheListScreen(),
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
