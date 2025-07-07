@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'fiche_list_screen.dart';
+import 'category_screen.dart';
 import 'favorites_screen.dart';
 import 'cadre_list_screen.dart';
 
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                     PageRouteBuilder(
                       pageBuilder: (_, animation, __) => FadeTransition(
                         opacity: animation,
-                        child: const FicheListScreen(),
+                        child: const CategoryScreen(),
                       ),
                     ),
                   );
