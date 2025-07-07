@@ -7,7 +7,9 @@ import 'fiche_detail_screen.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class FicheListScreen extends StatefulWidget {
-  const FicheListScreen({Key? key}) : super(key: key);
+  final List<String>? filterThemes;
+
+  const FicheListScreen({Key? key, this.filterThemes}) : super(key: key);
 
   @override
   State<FicheListScreen> createState() => _FicheListScreenState();
@@ -15,6 +17,7 @@ class FicheListScreen extends StatefulWidget {
 
 class _FicheListScreenState extends State<FicheListScreen> {
   List<Fiche> fiches = [];
+  List<Fiche> categoryFiches = [];
   List<Fiche> filteredFiches = [];
   bool isLoading = true;
 
@@ -27,16 +30,21 @@ class _FicheListScreenState extends State<FicheListScreen> {
   Future<void> loadFiches() async {
     final String data = await rootBundle.loadString('assets/data/fiches.json');
     final List<dynamic> ficheList = json.decode(data);
+    fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
+    categoryFiches = widget.filterThemes == null || widget.filterThemes!.isEmpty
+        ? fiches
+        : fiches
+            .where((f) => widget.filterThemes!.contains(f.theme))
+            .toList();
     setState(() {
-      fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
-      filteredFiches = fiches;
+      filteredFiches = categoryFiches;
       isLoading = false;
     });
   }
 
   void onSearch(String query) {
     setState(() {
-      filteredFiches = fiches
+      filteredFiches = categoryFiches
           .where((fiche) =>
       fiche.titre.toLowerCase().contains(query.toLowerCase()) ||
           fiche.theme.toLowerCase().contains(query.toLowerCase()) ||
