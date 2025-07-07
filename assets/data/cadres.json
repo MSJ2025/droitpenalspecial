@@ -16,5 +16,18 @@
     "titre": "Découverte de cadavre",
     "references": ["Article 74 du Code de procédure pénale"],
     "description": "Cadre juridique lors de la découverte d'un cadavre."
+  },
+  {
+    "id": "gav",
+    "titre": "Garde à vue",
+    "references": ["Articles 62-2 à 65 du Code de procédure pénale"],
+    "description": "Mesure de privation de liberté décidée par un officier de police judiciaire."
+  },
+  {
+    "id": "instruction",
+    "titre": "Information judiciaire",
+    "references": ["Articles 79 à 230 du Code de procédure pénale"],
+    "description": "Phase d'instruction conduite par le juge d'instruction."
   }
 ]
+
