@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import '../utils/json_loader.dart';
 import '../models/fiche.dart';
 import '../widgets/fiche_card.dart';
 import '../utils/favorites_manager.dart';
@@ -25,7 +25,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
   Future<void> loadFavorites() async {
     final ids = await FavoritesManager.getFavorites();
-    final data = await rootBundle.loadString('assets/data/fiches.json');
+    final data = await loadJsonWithComments('assets/data/fiches.json');
     final List<dynamic> ficheList = json.decode(data);
     final allFiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
     setState(() {

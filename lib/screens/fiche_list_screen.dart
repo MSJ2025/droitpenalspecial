@@ -4,7 +4,7 @@ import '../models/fiche.dart';
 import '../widgets/fiche_card.dart';
 import '../widgets/search_bar.dart';
 import 'fiche_detail_screen.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import '../utils/json_loader.dart';
 
 class FicheListScreen extends StatefulWidget {
   final List<String>? filterThemes;
@@ -28,7 +28,8 @@ class _FicheListScreenState extends State<FicheListScreen> {
   }
 
   Future<void> loadFiches() async {
-    final String data = await rootBundle.loadString('assets/data/fiches.json');
+    final String data =
+        await loadJsonWithComments('assets/data/fiches.json');
     final List<dynamic> ficheList = json.decode(data);
     fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
     categoryFiches = widget.filterThemes == null || widget.filterThemes!.isEmpty
