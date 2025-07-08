@@ -1,0 +1,33 @@
+[
+  {
+    "id": "preliminaire",
+    "titre": "Enquête préliminaire",
+    "references": ["Articles 75 à 78 du Code de procédure pénale"],
+    "description": "Cadre juridique des enquêtes préliminaires."
+  },
+  {
+    "id": "flagrance",
+    "titre": "Enquête de flagrance",
+    "references": ["Articles 53 à 74-2 du Code de procédure pénale"],
+    "description": "Cadre juridique des enquêtes de flagrance."
+  },
+  {
+    "id": "cadavre",
+    "titre": "Découverte de cadavre",
+    "references": ["Article 74 du Code de procédure pénale"],
+    "description": "Cadre juridique lors de la découverte d'un cadavre."
+  },
+  {
+    "id": "gav",
+    "titre": "Garde à vue",
+    "references": ["Articles 62-2 à 65 du Code de procédure pénale"],
+    "description": "Mesure de privation de liberté décidée par un officier de police judiciaire."
+  },
+  {
+    "id": "instruction",
+    "titre": "Information judiciaire",
+    "references": ["Articles 79 à 230 du Code de procédure pénale"],
+    "description": "Phase d'instruction conduite par le juge d'instruction."
+  }
+]
+
