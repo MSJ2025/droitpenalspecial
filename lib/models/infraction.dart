@@ -82,6 +82,9 @@ class Infraction {
   final List<CirconstanceAggravanteInfraction>? circonstancesAggravantes;
   final List<JurisprudenceRef>? jurisprudence;
   final dynamic particularites;
+  final String? responsabilitePersonnesMorales;
+  final String? territorialite;
+  final String? causesExemptionDiminutionPeine;
 
   Infraction({
     required this.id,
@@ -95,6 +98,9 @@ class Infraction {
     this.circonstancesAggravantes,
     this.jurisprudence,
     this.particularites,
+    this.responsabilitePersonnesMorales,
+    this.territorialite,
+    this.causesExemptionDiminutionPeine,
   });
 
   factory Infraction.fromJson(Map<String, dynamic> json, {required String id}) => Infraction(
@@ -113,6 +119,9 @@ class Infraction {
             .toList(),
         jurisprudence: (json['jurisprudence'] as List?)?.map((e) => JurisprudenceRef.fromJson(e)).toList(),
         particularites: json['particularites'],
+        responsabilitePersonnesMorales: json['responsabilite_personnes_morales'],
+        territorialite: json['territorialite'],
+        causesExemptionDiminutionPeine: json['causes_exemption_diminution_peine'],
       );
 }
 
