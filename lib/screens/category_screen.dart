@@ -33,6 +33,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
       body: FutureBuilder<List<FamilleInfractions>>(
         future: _families,
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Erreur lors du chargement des catégories'),
+            );
+          }
+
           final families = snapshot.data ?? <FamilleInfractions>[];
           return ListView.builder(
             itemCount: families.length,
