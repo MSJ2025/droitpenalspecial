@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import '../utils/json_loader.dart';
 import '../models/fiche.dart';
 import 'fiche_list_screen.dart';
 
@@ -46,7 +46,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 
   Future<Set<String>> _loadThemes() async {
-    final data = await rootBundle.loadString('assets/data/fiches.json');
+    final data = await loadJsonWithComments('assets/data/fiches.json');
     final List<dynamic> ficheList = json.decode(data);
     final fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
     return fiches.map((f) => f.theme).toSet();
