@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/fiche.dart';
+import '../models/infraction.dart';
 
 class FicheCard extends StatelessWidget {
-  final Fiche fiche;
+  final Infraction fiche;
   final VoidCallback onTap;
 
   const FicheCard({super.key, required this.fiche, required this.onTap});
@@ -25,16 +25,16 @@ class FicheCard extends StatelessWidget {
               leading: CircleAvatar(
                 backgroundColor: Colors.blue.shade100,
                 child: Text(
-                  fiche.titre.characters.first,
+                  fiche.type.characters.first,
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
                 ),
               ),
               title: Text(
-                fiche.titre,
+                fiche.type,
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               subtitle: Text(
-                fiche.theme,
+                fiche.famille,
                 style: const TextStyle(color: Colors.blueGrey),
               ),
               trailing: const Icon(Icons.chevron_right_rounded, color: Colors.blueAccent),

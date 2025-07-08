@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../models/fiche.dart';
+import '../models/infraction.dart';
 import '../widgets/fiche_card.dart';
 import '../widgets/search_bar.dart';
-import 'fiche_detail_screen.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class FicheListScreen extends StatefulWidget {
@@ -16,9 +15,9 @@ class FicheListScreen extends StatefulWidget {
 }
 
 class _FicheListScreenState extends State<FicheListScreen> {
-  List<Fiche> fiches = [];
-  List<Fiche> categoryFiches = [];
-  List<Fiche> filteredFiches = [];
+  List<Infraction> fiches = [];
+  List<Infraction> categoryFiches = [];
+  List<Infraction> filteredFiches = [];
   bool isLoading = true;
 
   @override
@@ -29,12 +28,20 @@ class _FicheListScreenState extends State<FicheListScreen> {
 
   Future<void> loadFiches() async {
     final String data = await rootBundle.loadString('assets/data/fiches.json');
-    final List<dynamic> ficheList = json.decode(data);
-    fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
+    final cleaned = data.replaceAll(RegExp(r'(?<!:)//.*', multiLine: true), '');
+    final List<dynamic> families = json.decode(cleaned);
+    fiches = [];
+    for (final fam in families) {
+      final String famille = fam['famille'];
+      final List<dynamic> infs = fam['infractions'];
+      for (var i = 0; i < infs.length; i++) {
+        fiches.add(Infraction.fromJson(famille, infs[i], i));
+      }
+    }
     categoryFiches = widget.filterThemes == null || widget.filterThemes!.isEmpty
         ? fiches
         : fiches
-            .where((f) => widget.filterThemes!.contains(f.theme))
+            .where((f) => widget.filterThemes!.contains(f.famille))
             .toList();
     setState(() {
       filteredFiches = categoryFiches;
@@ -46,9 +53,8 @@ class _FicheListScreenState extends State<FicheListScreen> {
     setState(() {
       filteredFiches = categoryFiches
           .where((fiche) =>
-      fiche.titre.toLowerCase().contains(query.toLowerCase()) ||
-          fiche.theme.toLowerCase().contains(query.toLowerCase()) ||
-          fiche.tags.any((tag) => tag.toLowerCase().contains(query.toLowerCase())))
+              fiche.type.toLowerCase().contains(query.toLowerCase()) ||
+              fiche.famille.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -78,12 +84,11 @@ class _FicheListScreenState extends State<FicheListScreen> {
                         return FicheCard(
                           fiche: fiche,
                           onTap: () {
-                            Navigator.of(context).push(
-                              PageRouteBuilder(
-                                pageBuilder: (_, animation, __) => FadeTransition(
-                                  opacity: animation,
-                                  child: AnimatedFicheDetailScreen(fiche: fiche),
-                                ),
+                            showDialog(
+                              context: context,
+                              builder: (_) => AlertDialog(
+                                title: Text(fiche.type),
+                                content: Text(fiche.definition),
                               ),
                             );
                           },

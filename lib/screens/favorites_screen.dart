@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import '../models/fiche.dart';
+import '../models/infraction.dart';
 import '../widgets/fiche_card.dart';
 import '../utils/favorites_manager.dart';
-import 'fiche_detail_screen.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -14,7 +13,7 @@ class FavoritesScreen extends StatefulWidget {
 }
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
-  List<Fiche> favorites = [];
+  List<Infraction> favorites = [];
   bool isLoading = true;
 
   @override
@@ -26,10 +25,18 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Future<void> loadFavorites() async {
     final ids = await FavoritesManager.getFavorites();
     final data = await rootBundle.loadString('assets/data/fiches.json');
-    final List<dynamic> ficheList = json.decode(data);
-    final allFiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
+    final cleaned = data.replaceAll(RegExp(r'(?<!:)//.*', multiLine: true), '');
+    final List<dynamic> families = json.decode(cleaned);
+    final List<Infraction> all = [];
+    for (final fam in families) {
+      final String famille = fam['famille'];
+      final List<dynamic> infs = fam['infractions'];
+      for (var i = 0; i < infs.length; i++) {
+        all.add(Infraction.fromJson(famille, infs[i], i));
+      }
+    }
     setState(() {
-      favorites = allFiches.where((f) => ids.contains(f.id)).toList();
+      favorites = all.where((f) => ids.contains(f.id)).toList();
       isLoading = false;
     });
   }
@@ -51,13 +58,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                       return FicheCard(
                         fiche: fiche,
                         onTap: () {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              pageBuilder: (_, animation, __) => FadeTransition(
-                                opacity: animation,
-                                child:
-                                    AnimatedFicheDetailScreen(fiche: fiche),
-                              ),
+                          showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                              title: Text(fiche.type),
+                              content: Text(fiche.definition),
                             ),
                           ).then((_) => loadFavorites());
                         },
