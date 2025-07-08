@@ -1,0 +1,8 @@
+[
+  // Première infraction avec toutes les clés
+  { "type": "Vol", "definition": "Prendre la chose d'autrui" },
+  // Absence de clé definition
+  { "type": "Escroquerie" },
+  // definition explicite à null
+  { "type": "Harcèlement", "definition": null }
+]
