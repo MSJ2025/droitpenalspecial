@@ -21,9 +21,44 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 
   Future<List<FamilleInfractions>> _loadFamilies() async {
-    final data = await loadJsonWithComments('assets/data/fiches.json');
-    final List<dynamic> list = json.decode(data);
-    return list.map((e) => FamilleInfractions.fromJson(e)).toList();
+    debugPrint(
+        'Chargement des familles à partir de assets/data/fiches.json');
+    try {
+      final data = await loadJsonWithComments('assets/data/fiches.json');
+      debugPrint('Données chargées: '
+          '${data.length > 100 ? data.substring(0, 100) + '...' : data}');
+      final List<dynamic> list = json.decode(data);
+
+      // Collecte et affichage de toutes les clés présentes dans le JSON
+      final Set<String> keys = <String>{};
+      void extractKeys(dynamic item) {
+        if (item is Map) {
+          item.forEach((k, v) {
+            keys.add(k.toString());
+            extractKeys(v);
+          });
+        } else if (item is List) {
+          for (final v in item) {
+            extractKeys(v);
+          }
+        }
+      }
+
+      extractKeys(list);
+      final sortedKeys = keys.toList()..sort();
+      debugPrint('Clés détectées (${sortedKeys.length}): $sortedKeys');
+
+      return list.map((e) {
+        if (e is Map && e.containsKey('famille')) {
+          debugPrint('Famille trouvée: ${e['famille']}');
+        }
+        return FamilleInfractions.fromJson(e);
+      }).toList();
+    } catch (e, stack) {
+      debugPrint('Erreur lors du chargement des familles: $e');
+      debugPrint(stack.toString());
+      rethrow;
+    }
   }
 
   @override
