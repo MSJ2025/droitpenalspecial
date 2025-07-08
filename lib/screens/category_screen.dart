@@ -21,9 +21,24 @@ class _CategoryScreenState extends State<CategoryScreen> {
   }
 
   Future<List<FamilleInfractions>> _loadFamilies() async {
-    final data = await loadJsonWithComments('assets/data/fiches.json');
-    final List<dynamic> list = json.decode(data);
-    return list.map((e) => FamilleInfractions.fromJson(e)).toList();
+    debugPrint(
+        'Chargement des familles à partir de assets/data/fiches.json');
+    try {
+      final data = await loadJsonWithComments('assets/data/fiches.json');
+      debugPrint('Données chargées: '
+          '${data.length > 100 ? data.substring(0, 100) + '...' : data}');
+      final List<dynamic> list = json.decode(data);
+      return list.map((e) {
+        if (e is Map && e.containsKey('famille')) {
+          debugPrint('Famille trouvée: ${e['famille']}');
+        }
+        return FamilleInfractions.fromJson(e);
+      }).toList();
+    } catch (e, stack) {
+      debugPrint('Erreur lors du chargement des familles: $e');
+      debugPrint(stack.toString());
+      rethrow;
+    }
   }
 
   @override
