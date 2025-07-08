@@ -1,14 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../utils/json_loader.dart';
-import '../models/fiche.dart';
+import '../models/infraction.dart';
 import 'fiche_list_screen.dart';
-
-class Category {
-  final String title;
-  final List<String> themes;
-  const Category(this.title, this.themes);
-}
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -18,76 +12,47 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  final List<Category> categories = const [
-    Category('Infractions contre les personnes', [
-      'Atteintes volontaires à la vie',
-      'Atteintes involontaires à la vie',
-      'Violences',
-      'Infractions sexuelles',
-    ]),
-    Category('Infractions contre les biens', [
-      'Vol',
-      'Extorsion',
-      'Escroquerie',
-      'Recel',
-    ]),
-    Category('Infractions contre la Nation', [
-      'Terrorisme',
-      'Trahison',
-    ]),
-  ];
-
-  late Future<Set<String>> _availableThemes;
+  late Future<List<FamilleInfractions>> _families;
 
   @override
   void initState() {
     super.initState();
-    _availableThemes = _loadThemes();
+    _families = _loadFamilies();
   }
 
-  Future<Set<String>> _loadThemes() async {
+  Future<List<FamilleInfractions>> _loadFamilies() async {
     final data = await loadJsonWithComments('assets/data/fiches.json');
-    final List<dynamic> ficheList = json.decode(data);
-    final fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
-    return fiches.map((f) => f.theme).toSet();
+    final List<dynamic> list = json.decode(data);
+    return list.map((e) => FamilleInfractions.fromJson(e)).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Catégories')),
-      body: FutureBuilder<Set<String>>(
-        future: _availableThemes,
+      body: FutureBuilder<List<FamilleInfractions>>(
+        future: _families,
         builder: (context, snapshot) {
-          final availableThemes = snapshot.data ?? <String>{};
+          final families = snapshot.data ?? <FamilleInfractions>[];
           return ListView.builder(
-            itemCount: categories.length,
+            itemCount: families.length,
             itemBuilder: (context, index) {
-              final category = categories[index];
-              final filteredThemes =
-                  category.themes.where((t) => availableThemes.contains(t)).toList();
-              if (filteredThemes.isEmpty) return const SizedBox();
+              final famille = families[index];
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: ExpansionTile(
-                  title: Text(category.title),
-                  children: [
-                    for (final theme in filteredThemes)
-                      ListTile(
-                        title: Text(theme),
-                        trailing: const Icon(Icons.chevron_right_rounded),
-                        onTap: () {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              pageBuilder: (_, animation, __) => FadeTransition(
-                                opacity: animation,
-                                child: FicheListScreen(filterThemes: [theme]),
-                              ),
-                            ),
-                          );
-                        },
+                child: ListTile(
+                  title: Text(famille.famille ?? 'Sans famille'),
+                  trailing: const Icon(Icons.chevron_right_rounded),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (_, animation, __) => FadeTransition(
+                          opacity: animation,
+                          child: FicheListScreen(famille: famille),
+                        ),
                       ),
-                  ],
+                    );
+                  },
                 ),
               );
             },
