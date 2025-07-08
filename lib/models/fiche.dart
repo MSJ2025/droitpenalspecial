@@ -56,36 +56,57 @@ class Fiche {
   });
 
   factory Fiche.fromJson(Map<String, dynamic> json) => Fiche(
-    id: json['id'],
-    theme: json['theme'],
-    titre: json['titre'],
-    nature: json['nature'],
-    article: ArticleRef.fromJson(json['article']),
-    prevuPar: ArticleRef.fromJson(json['prevu_par']),
-    reprimePar: ArticleRef.fromJson(json['reprime_par']),
-    definition: json['definition'],
-    qualificationLegale: json['qualification_legale'],
-    elementsConstitutifs: ElementsConstitutifs.fromJson(json['elements_constitutifs']),
-    victime: json['victime'],
-    auteursEtComplices: json['auteurs_et_complices'],
-    modeDePoursuite: json['mode_de_poursuite'],
-    regimeProcedure: json['regime_procedure'],
-    peinePrincipale: json['peine_principale'],
-    peinesComplementaires: List<String>.from(json['peines_complementaires']),
-    circonstancesAggravantes: (json['circonstances_aggravantes'] as List)
-        .map((x) => CirconstanceAggravante.fromJson(x))
-        .toList(),
-    tentative: Tentative.fromJson(json['tentative']),
-    prescription: Prescription.fromJson(json['prescription']),
-    jurisprudence: (json['jurisprudence'] as List)
-        .map((x) => JurisprudenceRef.fromJson(x))
-        .toList(),
-    pointsDeVigilance: List<String>.from(json['points_de_vigilance']),
-    exemplesCasPratiques: List<String>.from(json['exemples_cas_pratiques']),
-    notes: json['notes'],
-    tags: List<String>.from(json['tags']),
-    derniereMaj: json['derniere_maj'],
-  );
+        id: json['id'] ?? '',
+        theme: json['theme'] ?? '',
+        titre: json['titre'] ?? '',
+        nature: json['nature'] ?? '',
+        article: json['article'] != null
+            ? ArticleRef.fromJson(json['article'])
+            : ArticleRef(texte: '', lien: ''),
+        prevuPar: json['prevu_par'] != null
+            ? ArticleRef.fromJson(json['prevu_par'])
+            : ArticleRef(texte: '', lien: ''),
+        reprimePar: json['reprime_par'] != null
+            ? ArticleRef.fromJson(json['reprime_par'])
+            : ArticleRef(texte: '', lien: ''),
+        definition: json['definition'] ?? '',
+        qualificationLegale: json['qualification_legale'] ?? '',
+        elementsConstitutifs: json['elements_constitutifs'] != null
+            ? ElementsConstitutifs.fromJson(json['elements_constitutifs'])
+            : ElementsConstitutifs(
+                elementLegal: ArticleRef(texte: '', lien: ''),
+                elementMateriel: ElementDetail(texte: ''),
+                elementMoral: ElementDetail(texte: ''),
+              ),
+        victime: json['victime'] ?? '',
+        auteursEtComplices: json['auteurs_et_complices'] ?? '',
+        modeDePoursuite: json['mode_de_poursuite'] ?? '',
+        regimeProcedure: json['regime_procedure'] ?? '',
+        peinePrincipale: json['peine_principale'] ?? '',
+        peinesComplementaires:
+            List<String>.from(json['peines_complementaires'] ?? []),
+        circonstancesAggravantes: (json['circonstances_aggravantes'] as List?)
+                ?.map((x) => CirconstanceAggravante.fromJson(x))
+                .toList() ??
+            [],
+        tentative: json['tentative'] != null
+            ? Tentative.fromJson(json['tentative'])
+            : Tentative(regime: '', peine: ''),
+        prescription: json['prescription'] != null
+            ? Prescription.fromJson(json['prescription'])
+            : Prescription(actionPublique: '', peine: ''),
+        jurisprudence: (json['jurisprudence'] as List?)
+                ?.map((x) => JurisprudenceRef.fromJson(x))
+                .toList() ??
+            [],
+        pointsDeVigilance:
+            List<String>.from(json['points_de_vigilance'] ?? []),
+        exemplesCasPratiques:
+            List<String>.from(json['exemples_cas_pratiques'] ?? []),
+        notes: json['notes'] ?? '',
+        tags: List<String>.from(json['tags'] ?? []),
+        derniereMaj: json['derniere_maj'] ?? '',
+      );
 }
 
 class ArticleRef {
