@@ -41,14 +41,15 @@ class Penalites {
 }
 
 class TentativeInfraction {
-  final bool? punissable;
+  /// Peut être `true`, `false` ou une chaîne descriptive (ex: "Non applicable")
+  final String? punissable;
   final String? precision;
   final InfractionArticle? article;
 
   TentativeInfraction({this.punissable, this.precision, this.article});
 
   factory TentativeInfraction.fromJson(Map<String, dynamic> json) => TentativeInfraction(
-        punissable: json['punissable'],
+        punissable: json['punissable']?.toString(),
         precision: json['precision'],
         article: json['article'] != null ? InfractionArticle.fromJson(json['article']) : null,
       );
