@@ -70,6 +70,23 @@ class CirconstanceAggravanteInfraction {
       );
 }
 
+class InfractionsParticulieres {
+  final String? intitule;
+  final List<InfractionArticle>? articles;
+  final String? description;
+
+  InfractionsParticulieres({this.intitule, this.articles, this.description});
+
+  factory InfractionsParticulieres.fromJson(Map<String, dynamic> json) =>
+      InfractionsParticulieres(
+        intitule: json['intitule'],
+        articles: (json['articles'] as List?)
+            ?.map((e) => InfractionArticle.fromJson(e))
+            .toList(),
+        description: json['description'],
+      );
+}
+
 class Infraction {
   final String id;
   final String? type;
@@ -85,6 +102,7 @@ class Infraction {
   final String? responsabilitePersonnesMorales;
   final String? territorialite;
   final String? causesExemptionDiminutionPeine;
+  final List<InfractionsParticulieres>? infractionsParticulieres;
 
   Infraction({
     required this.id,
@@ -101,6 +119,7 @@ class Infraction {
     this.responsabilitePersonnesMorales,
     this.territorialite,
     this.causesExemptionDiminutionPeine,
+    this.infractionsParticulieres,
   });
 
   factory Infraction.fromJson(Map<String, dynamic> json, {required String id}) => Infraction(
@@ -122,6 +141,9 @@ class Infraction {
         responsabilitePersonnesMorales: json['responsabilite_personnes_morales'],
         territorialite: json['territorialite'],
         causesExemptionDiminutionPeine: json['causes_exemption_diminution_peine'],
+        infractionsParticulieres: (json['infractions_particulieres'] as List?)
+            ?.map((e) => InfractionsParticulieres.fromJson(e))
+            .toList(),
       );
 }
 

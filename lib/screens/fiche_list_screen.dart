@@ -1,55 +1,37 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../models/fiche.dart';
-import '../widgets/fiche_card.dart';
+import '../models/infraction.dart';
+import '../widgets/infraction_card.dart';
 import '../widgets/search_bar.dart';
-import 'fiche_detail_screen.dart';
-import '../utils/json_loader.dart';
+import 'infraction_detail_screen.dart';
 
 class FicheListScreen extends StatefulWidget {
-  final List<String>? filterThemes;
+  final FamilleInfractions famille;
 
-  const FicheListScreen({Key? key, this.filterThemes}) : super(key: key);
+  const FicheListScreen({Key? key, required this.famille}) : super(key: key);
 
   @override
   State<FicheListScreen> createState() => _FicheListScreenState();
 }
 
 class _FicheListScreenState extends State<FicheListScreen> {
-  List<Fiche> fiches = [];
-  List<Fiche> categoryFiches = [];
-  List<Fiche> filteredFiches = [];
+  late List<Infraction> infractions;
+  late List<Infraction> filteredInfractions;
   bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    loadFiches();
-  }
-
-  Future<void> loadFiches() async {
-    final String data =
-        await loadJsonWithComments('assets/data/fiches.json');
-    final List<dynamic> ficheList = json.decode(data);
-    fiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
-    categoryFiches = widget.filterThemes == null || widget.filterThemes!.isEmpty
-        ? fiches
-        : fiches
-            .where((f) => widget.filterThemes!.contains(f.theme))
-            .toList();
-    setState(() {
-      filteredFiches = categoryFiches;
-      isLoading = false;
-    });
+    infractions = widget.famille.infractions;
+    filteredInfractions = infractions;
+    isLoading = false;
   }
 
   void onSearch(String query) {
     setState(() {
-      filteredFiches = categoryFiches
-          .where((fiche) =>
-      fiche.titre.toLowerCase().contains(query.toLowerCase()) ||
-          fiche.theme.toLowerCase().contains(query.toLowerCase()) ||
-          fiche.tags.any((tag) => tag.toLowerCase().contains(query.toLowerCase())))
+      filteredInfractions = infractions
+          .where((inf) =>
+              (inf.type ?? '').toLowerCase().contains(query.toLowerCase()) ||
+              (inf.definition ?? '').toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -58,7 +40,7 @@ class _FicheListScreenState extends State<FicheListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Liste des fiches'),
+        title: Text(widget.famille.famille ?? 'Infractions'),
       ),
       body: Column(
         children: [
@@ -73,17 +55,17 @@ class _FicheListScreenState extends State<FicheListScreen> {
                   ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
                       key: const ValueKey('list'),
-                      itemCount: filteredFiches.length,
+                      itemCount: filteredInfractions.length,
                       itemBuilder: (context, index) {
-                        final fiche = filteredFiches[index];
-                        return FicheCard(
-                          fiche: fiche,
+                        final infraction = filteredInfractions[index];
+                        return InfractionCard(
+                          infraction: infraction,
                           onTap: () {
                             Navigator.of(context).push(
                               PageRouteBuilder(
                                 pageBuilder: (_, animation, __) => FadeTransition(
                                   opacity: animation,
-                                  child: AnimatedFicheDetailScreen(fiche: fiche),
+                                  child: InfractionDetailScreen(infraction: infraction),
                                 ),
                               ),
                             );
