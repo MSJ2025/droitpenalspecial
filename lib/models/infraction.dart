@@ -135,7 +135,9 @@ class Infraction {
         tentative: json['tentative'] != null ? TentativeInfraction.fromJson(json['tentative']) : null,
         peinesComplementaires: (json['peines_complementaires'] as List?)?.map((e) => e as String).toList(),
         circonstancesAggravantes: (json['circonstances_aggravantes'] as List?)
-            ?.map((e) => CirconstanceAggravanteInfraction.fromJson(e))
+            ?.where((e) => e is Map)
+            .map((e) => CirconstanceAggravanteInfraction.fromJson(
+                e as Map<String, dynamic>))
             .toList(),
         jurisprudence: (json['jurisprudence'] as List?)?.map((e) => JurisprudenceRef.fromJson(e)).toList(),
         particularites: json['particularites'],
