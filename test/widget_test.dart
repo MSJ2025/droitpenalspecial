@@ -11,20 +11,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:poljud/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets("Affichage du titre de l'application", (WidgetTester tester) async {
+    // Construction de l'application et déclenchement d'une frame.
+    await tester.pumpWidget(const OPJFichesApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Vérifie que le titre de l'écran d'accueil est présent.
+    expect(find.text('Fiches OPJ'), findsOneWidget);
   });
 }
