@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../utils/json_loader.dart';
-import '../models/fiche.dart';
-import '../widgets/fiche_card.dart';
+import '../models/infraction.dart';
+import '../widgets/infraction_card.dart';
 import '../utils/favorites_manager.dart';
-import 'fiche_detail_screen.dart';
+import 'infraction_detail_screen.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -14,7 +14,7 @@ class FavoritesScreen extends StatefulWidget {
 }
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
-  List<Fiche> favorites = [];
+  List<Infraction> favorites = [];
   bool isLoading = true;
 
   @override
@@ -26,10 +26,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Future<void> loadFavorites() async {
     final ids = await FavoritesManager.getFavorites();
     final data = await loadJsonWithComments('assets/data/fiches.json');
-    final List<dynamic> ficheList = json.decode(data);
-    final allFiches = ficheList.map((e) => Fiche.fromJson(e)).toList();
+    final List<dynamic> rawFamilies = json.decode(data);
+    final families = rawFamilies
+        .map((e) => FamilleInfractions.fromJson(e as Map<String, dynamic>))
+        .toList();
+    final allInfractions = families.expand((f) => f.infractions).toList();
     setState(() {
-      favorites = allFiches.where((f) => ids.contains(f.id)).toList();
+      favorites = allInfractions.where((inf) => ids.contains(inf.id)).toList();
       isLoading = false;
     });
   }
@@ -47,19 +50,22 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 : ListView.builder(
                     itemCount: favorites.length,
                     itemBuilder: (context, index) {
-                      final fiche = favorites[index];
-                      return FicheCard(
-                        fiche: fiche,
+                      final infraction = favorites[index];
+                      return InfractionCard(
+                        infraction: infraction,
                         onTap: () {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              pageBuilder: (_, animation, __) => FadeTransition(
-                                opacity: animation,
-                                child:
-                                    AnimatedFicheDetailScreen(fiche: fiche),
-                              ),
-                            ),
-                          ).then((_) => loadFavorites());
+                          Navigator.of(context)
+                              .push(
+                                PageRouteBuilder(
+                                  pageBuilder: (_, animation, __) =>
+                                      FadeTransition(
+                                    opacity: animation,
+                                    child: InfractionDetailScreen(
+                                        infraction: infraction),
+                                  ),
+                                ),
+                              )
+                              .then((_) => loadFavorites());
                         },
                       );
                     },
