@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoritesManager {
-  static const String _key = 'favorite_fiches';
+  static const String _key = 'favorite_infractions';
 
   static Future<Set<String>> getFavorites() async {
     final prefs = await SharedPreferences.getInstance();
