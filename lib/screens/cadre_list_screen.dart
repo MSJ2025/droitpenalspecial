@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import '../models/cadre.dart';
+import '../widgets/search_bar.dart';
+import 'cadre_detail_screen.dart';
 
 class CadreListScreen extends StatefulWidget {
   const CadreListScreen({super.key});
@@ -12,6 +14,7 @@ class CadreListScreen extends StatefulWidget {
 
 class _CadreListScreenState extends State<CadreListScreen> {
   List<Cadre> cadres = [];
+  List<Cadre> filteredCadres = [];
   bool isLoading = true;
 
   @override
@@ -23,9 +26,18 @@ class _CadreListScreenState extends State<CadreListScreen> {
   Future<void> loadCadres() async {
     final data = await rootBundle.loadString('assets/data/cadres.json');
     final List<dynamic> list = json.decode(data);
+    cadres = list.map((e) => Cadre.fromJson(e as Map<String, dynamic>)).toList();
+    filteredCadres = cadres;
     setState(() {
-      cadres = list.map((e) => Cadre.fromJson(e)).toList();
       isLoading = false;
+    });
+  }
+
+  void onSearch(String query) {
+    setState(() {
+      filteredCadres = cadres
+          .where((c) => c.cadre.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     });
   }
 
@@ -33,45 +45,47 @@ class _CadreListScreenState extends State<CadreListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Cadres d'enquête")),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: cadres.length,
-                itemBuilder: (context, index) {
-                  final cadre = cadres[index];
-                  return Card(
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    child: ExpansionTile(
-                      title: Text(cadre.titre),
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(cadre.description),
-                              const SizedBox(height: 8),
-                              const Text('Références :',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              ...cadre.references
-                                  .map((r) => Padding(
-                                        padding:
-                                            const EdgeInsets.symmetric(vertical: 2),
-                                        child: Text('• $r'),
-                                      ))
-                                  .toList(),
-                            ],
+      body: Column(
+        children: [
+          CustomSearchBar(
+            hintText: 'Rechercher un cadre…',
+            onChanged: onSearch,
+          ),
+          Expanded(
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      key: const ValueKey('list'),
+                      itemCount: filteredCadres.length,
+                      itemBuilder: (context, index) {
+                        final cadre = filteredCadres[index];
+                        return Card(
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 8, horizontal: 16),
+                          child: ListTile(
+                            title: Text(cadre.cadre),
+                            trailing:
+                                const Icon(Icons.chevron_right_rounded),
+                            onTap: () {
+                              Navigator.of(context).push(
+                                PageRouteBuilder(
+                                  pageBuilder: (_, animation, __) =>
+                                      FadeTransition(
+                                    opacity: animation,
+                                    child: CadreDetailScreen(cadre: cadre),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        )
-                      ],
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
+            ),
+          ),
+        ],
       ),
     );
   }
