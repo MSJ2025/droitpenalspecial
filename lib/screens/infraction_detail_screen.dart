@@ -23,13 +23,12 @@ class InfractionDetailScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Articles', style: TextStyle(fontWeight: FontWeight.bold)),
-                  ...infraction.articles!.map((a) => InkWell(
-                        onTap: () => _openUrl(a.lien),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
-                          child: Text(a.numero ?? '', style: const TextStyle(color: Colors.blue)),
-                        ),
-                      )),
+                  ...infraction.articles!.map(
+                    (a) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Text(_formatArticle(a)),
+                    ),
+                  ),
                 ],
               ),
             if (infraction.elementsConstitutifs != null)
@@ -97,15 +96,12 @@ class InfractionDetailScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: ca.articles!
-                                  .map((a) => InkWell(
-                                        onTap: () => _openUrl(a.lien),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 2),
-                                          child: Text(a.numero ?? '',
-                                              style:
-                                                  const TextStyle(color: Colors.blue)),
-                                        ),
-                                      ))
+                                  .map(
+                                    (a) => Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 2),
+                                      child: Text(_formatArticle(a)),
+                                    ),
+                                  )
                                   .toList(),
                             ),
                         ],
@@ -126,15 +122,9 @@ class InfractionDetailScreen extends StatelessWidget {
                   if (infraction.tentative!.precision != null)
                     Text(infraction.tentative!.precision!),
                   if (infraction.tentative!.article != null)
-                    InkWell(
-                      onTap: () => _openUrl(infraction.tentative!.article!.lien),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        child: Text(
-                          infraction.tentative!.article!.numero ?? '',
-                          style: const TextStyle(color: Colors.blue),
-                        ),
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Text(_formatArticle(infraction.tentative!.article!)),
                     ),
                 ],
               ),
@@ -226,15 +216,12 @@ class InfractionDetailScreen extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: ip.articles!
-                                  .map((a) => InkWell(
-                                        onTap: () => _openUrl(a.lien),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 2),
-                                          child: Text(a.numero ?? '',
-                                              style:
-                                                  const TextStyle(color: Colors.blue)),
-                                        ),
-                                      ))
+                                  .map(
+                                    (a) => Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 2),
+                                      child: Text(_formatArticle(a)),
+                                    ),
+                                  )
                                   .toList(),
                             ),
                         ],
@@ -255,5 +242,22 @@ class InfractionDetailScreen extends StatelessWidget {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
+  }
+
+  String _formatArticle(InfractionArticle article) {
+    final num = article.numero?.trim() ?? '';
+    if (num.isEmpty) return '';
+    final lower = num.toLowerCase();
+    if (lower.contains('code')) {
+      return lower.startsWith('article') ? num : 'Article $num';
+    }
+    if (lower.contains('cp')) {
+      var base = num.replaceAll(RegExp(r'cp', caseSensitive: false), '').trim();
+      if (base.toLowerCase().startsWith('article')) {
+        base = base.substring('article'.length).trim();
+      }
+      return 'Article $base du Code pénal';
+    }
+    return 'Article $num du Code pénal';
   }
 }
