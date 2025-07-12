@@ -1,33 +1,681 @@
 [
   {
-    "id": "preliminaire",
-    "titre": "Enquête préliminaire",
-    "references": ["Articles 75 à 78 du Code de procédure pénale"],
-    "description": "Cadre juridique des enquêtes préliminaires."
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "cadre legal":
+      {
+        "titre": "Cadre légal",
+        "articles": "75 à 78 CPP",
+        "commentaire1": "",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+    "actes": [
+
+      {
+        "acte": "Transport, Constatations et Mesures Prises",
+        "articles": "14, 75 CPP",
+        "commentaire1": "55 CPP (crime)",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Audition de témoin",
+        "articles": "78 CPP",
+        "commentaire1": "706-57 CPP (changement domiciliation)",
+        "commentaire2": "706-58 CPP (anonymat)",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Audition de victime",
+        "articles": "78 CPP",
+        "commentaire1": "10-2 à 10-6 et 15-3 CPP (uniquement pour majeur)",
+        "commentaire2": "706-52, 706-53 CPP (mineur victime infraction prévue par l’art. 706-47 CPP),",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Audition libre de mis en cause",
+        "articles": "77 CPP",
+        "commentaire1": "L412-1 et L412-2 du CJPM (mineur)",
+        "commentaire2": "",
+        "commentaire3":""
+      },
+      {
+        "acte": "Garde à vue, Retenue judiciaire",
+        "articles": "77 DU CPP",
+        "commentaire1": "L413-6 à L413-11 du CJPM (mineur),",
+        "commentaire2": "L413-1 à L413-5 du CJPM (retenue),",
+        "commentaire3": "78 CPP (contrainte force publique - PR)"
+      },
+      {
+        "acte": "Réquisition personne qualifiée",
+        "articles": "77-1 CPP",
+        "commentaire1": "",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Réquisition aux fins de remise d'informations",
+        "articles": "77-1-1, 77-1-2 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition d’interception (com. electroniques)",
+        "articles": "706-95  CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Perquisition",
+        "articles": "76 CPP",
+        "commentaire1": "76-3 CPP (données informatique)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "perquisition en dehors des heures légales",
+        "articles": "706-90  CPP (criminalité et délinquance organisées) ",
+        "commentaire1": "706-28 CPP (Trafic de produits stupéfiants, participation à une association de malfaiteurs)",
+        "commentaire2": "706-35 CPP (Traite des êtres humains, Proxénétisme ou recours à la prostitution des mineurs, participation à une association de malfaiteurs)"
+      },
+      {
+        "acte": "Saisie",
+        "articles": "76, CPP",
+        "commentaire1": "76-3 CPP (accès à des données dans un système\ninformatique)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Bris de scellé ",
+        "articles": "41-4 CPP (restitution),",
+        "commentaire1": "41-5 CPP (destruction)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Assistance autopsie ",
+        "articles": "230-28 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Investigation",
+        "articles": "17 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Transcription d’une interception com.",
+        "articles": "100 à 100-8 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Procès-verbal d’interpellation ",
+        "articles": "73 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+
+
+
+      }
+    ]
+      },
+  {
+    "cadre": "ENQUÊTE DE FLAGRANCE",
+    "cadre legal":
+    {
+      "titre": "Cadre légal",
+      "articles": "53 à 67  CPP",
+      "commentaire1": "",
+      "commentaire2": "",
+      "commentaire3":""
+
+    },
+    "actes": [
+
+      {
+        "acte": "Transport, Constatations et Mesures Prises",
+        "articles": "14, 54, CPP",
+        "commentaire1": "55 CPP (crime)",
+        "commentaire2": "67 (délit)",
+        "commentaire3":"61, al. 1 (défendre de s'éloigner)"
+
+      },
+      {
+        "acte": "Audition de témoin",
+        "articles": "61, 62 CPP",
+        "commentaire1": "706-57 CPP (changement domiciliation),",
+        "commentaire2": "706-58 CPP (anonymat)",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "audition de témoin\nd’un représentant légal d’un mineur auteur",
+        "articles": "L412-1 et L412-2 CPP (libre),",
+        "commentaire1": "L413-3, L413-5 CPP (retenue),",
+        "commentaire2": "L413-7, L413-8, L413-9 CJPM (GAV mineur)",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Audition victime (ou représentant légal mineur",
+        "articles": "61, 62 CPP",
+        "commentaire1": "10-2 à 10-6 et 15-3 CPP (majeur)",
+        "commentaire2": "706-52, 706-53 CPP (mineur victime infraction prévue par l’art. 706-47 CPP),",
+        "commentaire3":""
+      },
+      {
+        "acte": "Audition libre de mis en cause",
+        "articles": "61-1 CPP",
+        "commentaire1": "L412-1 et L412-2 CJPM (mineur GAV)",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Garde à vue, Retenue judiciaire",
+        "articles": "62-2 à 64 CPP",
+        "commentaire1": "L413-6 à L413-11 CJPM (mineur GAV)",
+        "commentaire2": "L413-1 à L413-5 CJPM (retenue)",
+        "commentaire3":"prolongation (infraction prévue art.706-73) : 706-88 CPP ",
+        "commentaire4":"prolongation (infraction terrorisme : 706-88-1 CPP "
+
+
+      },
+      {
+        "acte": "Réquisition à prestataire de service",
+        "articles": "R. 642-1 du CP",
+        "commentaire1": "57, al. 2 du CPP (réquisition témoins perquisition)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition personne qualifiée",
+        "articles": "60 CPP",
+        "commentaire1": "60-3 CPP (ouverture de scellé d'un objet qui est le support de données informatiques)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition aux fins de remise d'informations + gel données",
+        "articles": "60-1 / 60-2 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+        "articles": "230-32 à 230-44 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition autorité militaire ",
+        "articles": "698-3 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition d’interception (correspondances émises par la voie des communications électroniques)",
+        "articles": "706-95 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Perquisition ",
+        "articles": "56, 57, 58 CPP",
+        "commentaire1": "59 CPP (domicile)",
+        "commentaire2": "57-1 CPP (accès à des données dans un système\ninformatique)"
+      },
+      {
+        "acte": "Perquisition hros heure légale",
+        "articles": "59-1  CPP",
+        "commentaire1": "706-89 CPP (criminalité et délinquance organisées) ",
+        "commentaire2": "706-28 (Trafic de produits stupéfiants, participation à une association de malfaiteurs)",
+        "commentaire3": "706-35 (Traite des êtres humains, Proxénétisme ou recours à la prostitution des mineurs, participation à une association de malfaiteurs)"
+      },
+      {
+        "acte": "Saisie,",
+        "articles": "76 CPP",
+        "commentaire1": "76-3 CPP (accès à des données dans un système\ninformatique)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Bris de scellé ,",
+        "articles": "41-4 CPP (restitution),",
+        "commentaire1": "41-5 CPP (destruction)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Assistance autopsie ",
+        "articles": "230-28 CPP",
+        "commentaire1": "41-5 CPP (destruction)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Investigation ",
+        "articles": "17 CPP",
+        "commentaire1": "41-5 CPP (destruction)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Transcription d’une interception (correspondances émises par la voie des communications électroniques) ",
+        "articles": "100 à 100-8 CPP",
+        "commentaire1": "41-5 CPP (destruction)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Procès-verbal d’interpellation",
+        "articles": "73 CPP",
+        "commentaire1": "41-5 CPP (destruction)",
+        "commentaire2": ""
+      }
+
+
+    ]
   },
   {
-    "id": "flagrance",
-    "titre": "Enquête de flagrance",
-    "references": ["Articles 53 à 74-2 du Code de procédure pénale"],
-    "description": "Cadre juridique des enquêtes de flagrance."
+    "cadre": "COMMISSION ROGATOIRE",
+    "cadre legal":
+    {
+      "titre": "Cadre légal",
+      "articles": "151 à 154-2 CPP",
+      "commentaire1": "",
+      "commentaire2": "",
+      "commentaire3":""
+
+    },
+    "actes": [
+
+      {
+        "acte": "Transport, Constatations et Mesures Prises",
+        "articles": "14, 152  CPP",
+        "commentaire1": "",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Audition de témoin",
+        "articles": "103, 153 CPP",
+        "commentaire1": "706-57 CPP (changement domiciliation),",
+        "commentaire2": "706-58 CPP (anonymat)",
+        "commentaire3": "108 (mineur de 16 ans)",
+        "commentaire4":"113-7 (témoin assisté),"
+
+      },
+      {
+        "acte": "audition de témoin\nd’un représentant légal d’un mineur auteur",
+        "articles": "L412-1 et L412-2 CPP (libre),",
+        "commentaire1": "L413-3, L413-5 CPP (retenue),",
+        "commentaire2": "L413-7, L413-8, L413-9 CJPM (GAV mineur)",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Audition victime ",
+        "articles": "103, 153 CPP",
+        "commentaire1": "10-2 à 10-6 CPP (majeur)",
+        "commentaire2": "152, al. 2 (partie civile)",
+        "commentaire3":"108 (mineur de 16 ans)",
+        "commentaire4":"706-52, 706-53 (mineur) dans le cadre de l'art. 706-47 CPP ",
+        "commentaire5":"706-47-2 (mineur / majeur) dans le cadre de l'art. 706-47 CPP "
+      },
+      {
+        "acte": "Audition libre de mis en cause",
+        "articles": "154 CPP",
+        "commentaire1": "L412-1 et L412-2 du CJPM (mineur)",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Garde à vue, Retenue judiciaire",
+        "articles": "153, al.3, 154 CPP",
+        "commentaire1": "105 CPP (indices graves et concordants)",
+        "commentaire2": "L413-1 à L413-5 CJPM (retenue)",
+        "commentaire3":"L413-6 à L413-11 du CJPM (GAV mineur)",
+        "commentaire4":"L413-1 à L413-5 du CJPM (retenue judiciaire)",
+        "commentaire5":"706-88 CPP (prolongation)",
+        "commentaire6":"706-88-1 CPP (prolongation cas terrorisme)"
+      },
+      {
+        "acte": "Réquisition à prestataire de service",
+        "articles": "R. 642-1 du CP",
+        "commentaire1": "57, al. 2 du CPP (réquisition témoins perquisition)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition personne qualifiée",
+        "articles": "81 CPP",
+        "commentaire1": "99-5 CP (ouverture de scellé d'un objet qui est le\nsupport\nde données informatiques)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition aux fins de remise d'informations + gel données",
+        "articles": "99-3 / 99-4 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+        "articles": "230-32 à 230-44 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition autorité militaire ",
+        "articles": "698-3 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition d’interception (correspondances émises par la voie des communications électroniques)",
+        "articles": "100 CPP",
+        "commentaire1": "80-4 CPP (pour recherche des causes de la mort\nou des causes d’une disparition)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Perquisition ",
+        "articles": "94, 97, 98 CPP",
+        "commentaire1": "95 CPP (domicile MEE),",
+        "commentaire2": "96 CPP (hors domicile MEE)"
+      },
+      {
+        "acte": "Perquisition hors heure légale",
+        "articles": "97-2 CPP ",
+        "commentaire1": "706-91 CPP (criminalité et délinquance organisées) ",
+        "commentaire2": "706-28 (Trafic de produits stupéfiants, participation à une association de malfaiteurs)",
+        "commentaire3": "706-35 (Traite des êtres humains, Proxénétisme ou recours à la prostitution des mineurs, participation à une association de malfaiteurs)"
+      },
+      {
+        "acte": "Saisie,",
+        "articles": "94, 97, 98 CPP",
+        "commentaire1": "95 CPP (domicile MEE), 96 (hors domicile MEE)",
+        "commentaire2": "97-1 CPP (accès à des données dans un système\ninformatique)"
+      },
+      {
+        "acte": "Bris de scellé ,",
+        "articles": "99 CPP (restitution),",
+        "commentaire1": "99-2 CPP (destruction)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Assistance autopsie ",
+        "articles": "230-28 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Investigation ",
+        "articles": "17 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Transcription d’une interception (correspondances émises par la voie des communications électroniques) ",
+        "articles": "100 à 100-8 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Procès-verbal d’interpellation",
+        "articles": "73 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      }
+
+
+    ]
   },
   {
-    "id": "cadavre",
-    "titre": "Découverte de cadavre",
-    "references": ["Article 74 du Code de procédure pénale"],
-    "description": "Cadre juridique lors de la découverte d'un cadavre."
+    "cadre": "DÉCOUVERTE DE CADAVRE\nOU DE PERSONNE GRIÈVEMENT\nBLESSÉE",
+    "cadre legal":
+    {
+      "titre": "Cadre légal",
+      "articles": "74 CPP",
+      "commentaire1": "",
+      "commentaire2": "",
+      "commentaire3":""
+
+    },
+    "actes": [
+
+      {
+        "acte": "Transport, Constatations et Mesures Prises",
+        "articles": "14 CPP",
+        "commentaire1": "74, al. 1 (DC)",
+        "commentaire2": "74, al. 6 (DPGB)",
+        "commentaire3":"706-57 CPP (changement domiciliation)"
+
+      },
+      {
+        "acte": "Audition de témoin",
+        "articles": "103, 153 CPP",
+        "commentaire1": "706-57 CPP (changement domiciliation),",
+        "commentaire2": "706-58 CPP (anonymat)",
+        "commentaire3": "108 (mineur de 16 ans)",
+        "commentaire4":"113-7 (témoin assisté),"
+
+      },
+      {
+        "acte": "Audition victime ",
+        "articles": "74, al. 6 CPP (Uniquement DPGB),",
+        "commentaire1": "10-2 à 10-6 et 15-3 CPP (uniquement pour\nmajeur, DPGB)",
+        "commentaire2": "",
+        "commentaire3":"",
+        "commentaire4":"",
+        "commentaire5":""
+      },
+      {
+        "acte": "Réquisition à prestataire de service",
+        "articles": "R. 642-1 du CP",
+        "commentaire1": "57, al. 2 du CPP (réquisition témoins perquisition)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition personne qualifiée",
+        "articles": "74, al. 4 CPP (DC),",
+        "commentaire1": "74, al. 6 CPP (DPGB)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition aux fins de remise d'informations + gel données",
+        "articles": "74, al. 4 CPP (DC),",
+        "commentaire1": "74, al. 6 CPP (DPGB)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+        "articles": "230-32 à 230-44 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition autorité militaire ",
+        "articles": "698-3 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Perquisition ",
+        "articles": "74, al. 4 CPP (DC),",
+        "commentaire1": "74, al. 6 CPP (DPGB)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Saisie,",
+        "articles": "74, al. 4 CPP (DC),",
+        "commentaire1": "74, al. 6 CPP (DPGB)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Bris de scellé ,",
+        "articles": "74, al. 4 CPP (DC),",
+        "commentaire1": "74, al. 6 CPP (DPGB)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Assistance autopsie ",
+        "articles": "230-28 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Investigation ",
+        "articles": "17 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      }
+
+    ]
   },
   {
-    "id": "gav",
-    "titre": "Garde à vue",
-    "references": ["Articles 62-2 à 65 du Code de procédure pénale"],
-    "description": "Mesure de privation de liberté décidée par un officier de police judiciaire."
+    "cadre": "DISPARITION INQUIÉTANTE",
+    "cadre legal":
+    {
+      "titre": "Cadre légal",
+      "articles": "74-1 CPP",
+      "commentaire1": "",
+      "commentaire2": "",
+      "commentaire3":""
+
+    },
+    "actes": [
+
+      {
+        "acte": "Transport, Constatations et Mesures Prises",
+        "articles": "14, 74-1  CPP",
+        "commentaire1": "706-57 CPP (changement domiciliation)",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Réquisition à prestataire de service",
+        "articles": "R. 642-1 du CP",
+        "commentaire1": "57, al. 2 du CPP (réquisition témoins perquisition)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition personne qualifiée",
+        "articles": "74-1 CPP (DC),",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition aux fins de remise d'informations + gel données",
+        "articles": "74-1 ",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+        "articles": "230-32 à 230-44 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition autorité militaire ",
+        "articles": "698-3 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Perquisition ",
+        "articles": "74-1 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Saisie et bris de scellé,",
+        "articles": "74-1 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Investigation ",
+        "articles": "17 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      }
+
+    ]
   },
   {
-    "id": "instruction",
-    "titre": "Information judiciaire",
-    "references": ["Articles 79 à 230 du Code de procédure pénale"],
-    "description": "Phase d'instruction conduite par le juge d'instruction."
+    "cadre": "RECHERCHEDE PERSONNE EN FUITE",
+    "cadre legal":
+    {
+      "titre": "Cadre légal",
+      "articles": "74-2 CPP",
+      "commentaire1": "",
+      "commentaire2": "",
+      "commentaire3":""
+
+    },
+    "actes": [
+
+      {
+        "acte": "Transport, Constatations et Mesures Prises",
+        "articles": "14, 74-2  CPP",
+        "commentaire1": "706-57 CPP (changement domiciliation)",
+        "commentaire2": "",
+        "commentaire3":""
+
+      },
+      {
+        "acte": "Réquisition à prestataire de service",
+        "articles": "R. 642-1 du CP",
+        "commentaire1": "57, al. 2 du CPP (réquisition témoins perquisition)",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition personne qualifiée",
+        "articles": "74-1 CPP (DC),",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition aux fins de remise d'informations + gel données",
+        "articles": "74-1 ",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+        "articles": "230-32 à 230-44 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Réquisition autorité militaire ",
+        "articles": "698-3 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Perquisition ",
+        "articles": "74-1 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Saisie et bris de scellé,",
+        "articles": "74-1 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      },
+      {
+        "acte": "Investigation ",
+        "articles": "17 CPP",
+        "commentaire1": "",
+        "commentaire2": ""
+      }
+
+    ]
   }
-]
+
+    ]
+
+
 
