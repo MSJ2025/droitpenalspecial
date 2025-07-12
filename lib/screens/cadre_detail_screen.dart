@@ -8,47 +8,70 @@ class CadreDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(cadre.cadre)),
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        title: Hero(
+          tag: 'cadreTitle-${cadre.cadre}',
+          child: Material(
+            color: Colors.transparent,
+            child: Text(cadre.cadre),
+          ),
+        ),
+      ),
+      body: ListView(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(cadre.cadreLegal.titre,
-                style: const TextStyle(fontWeight: FontWeight.bold)),
-            if (cadre.cadreLegal.articles.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(cadre.cadreLegal.articles),
+        children: [
+          Card(
+            margin: const EdgeInsets.only(bottom: 12),
+            child: ExpansionTile(
+              initiallyExpanded: true,
+              title: Text(
+                cadre.cadreLegal.titre,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-            ...cadre.cadreLegal.commentaires
-                .map((c) => Padding(
-                      padding: const EdgeInsets.only(top: 2),
-                      child: Text(c),
-                    ))
-                .toList(),
-            const SizedBox(height: 12),
-            if (cadre.actes.isNotEmpty)
-              const Text('Actes',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-            ...cadre.actes.map(
-              (a) => Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(a.acte,
-                        style: const TextStyle(fontWeight: FontWeight.w600)),
-                    if (a.articles.isNotEmpty) Text(a.articles),
-                    ...a.commentaires
-                        .map((c) => Text('• $c'))
-                        .toList(),
-                  ],
+              children: [
+                if (cadre.cadreLegal.articles.isNotEmpty)
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    child: Text(cadre.cadreLegal.articles),
+                  ),
+                ...cadre.cadreLegal.commentaires.map(
+                  (c) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 2),
+                    child: Text(c),
+                  ),
                 ),
+              ],
+            ),
+          ),
+          ...cadre.actes.map(
+            (a) => Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: ExpansionTile(
+                title: Text(
+                  a.acte,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                children: [
+                  if (a.articles.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 4),
+                      child: Text(a.articles),
+                    ),
+                  ...a.commentaires.map(
+                    (c) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 2),
+                      child: Text('• $c'),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

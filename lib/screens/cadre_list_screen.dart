@@ -65,7 +65,13 @@ class _CadreListScreenState extends State<CadreListScreen> {
                           margin: const EdgeInsets.symmetric(
                               vertical: 8, horizontal: 16),
                           child: ListTile(
-                            title: Text(cadre.cadre),
+                            title: Hero(
+                              tag: 'cadreTitle-${cadre.cadre}',
+                              child: Material(
+                                color: Colors.transparent,
+                                child: Text(cadre.cadre),
+                              ),
+                            ),
                             trailing:
                                 const Icon(Icons.chevron_right_rounded),
                             onTap: () {
