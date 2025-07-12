@@ -23,3 +23,8 @@ samples, guidance on mobile development, and a full API reference.
 3. **Families filtered by that theme** – view the families associated with the
    selected theme.
 4. **Infractions** – drill down into the infractions for the chosen family.
+
+## Licence
+
+Ce projet est distribué sous licence MIT. Voir [LICENSE](LICENSE) pour plus d'informations.
+
