@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'theme_screen.dart';
 import 'favorites_screen.dart';
 import 'cadre_list_screen.dart';
+import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,6 +40,26 @@ class HomeScreen extends StatelessWidget {
                       pageBuilder: (_, animation, __) => FadeTransition(
                         opacity: animation,
                         child: const ThemeScreen(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.search),
+                label: const Text('Recherche'),
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (_, animation, __) => FadeTransition(
+                        opacity: animation,
+                        child: const SearchScreen(),
                       ),
                     ),
                   );
