@@ -82,7 +82,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
-                  title: Text(famille.famille ?? 'Sans famille'),
+                  title: Text(
+                    famille.famille ?? 'Sans famille',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   trailing: const Icon(Icons.chevron_right_rounded),
                   onTap: () {
                     Navigator.of(context).push(

@@ -22,7 +22,7 @@ class InfractionCard extends StatelessWidget {
         ),
         title: Text(
           infraction.type ?? '',
-          style: const TextStyle(fontWeight: FontWeight.w600),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         trailing: const Icon(Icons.chevron_right_rounded, color: Colors.blueAccent),
       ),

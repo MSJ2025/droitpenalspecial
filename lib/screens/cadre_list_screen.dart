@@ -55,7 +55,10 @@ class _CadreListScreenState extends State<CadreListScreen> {
                               tag: 'cadreTitle-${cadre.cadre}',
                               child: Material(
                                 color: Colors.transparent,
-                                child: Text(cadre.cadre),
+                                child: Text(
+                                  cadre.cadre,
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                             trailing:
