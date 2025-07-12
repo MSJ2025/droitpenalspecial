@@ -30,7 +30,12 @@ class _SearchScreenState extends State<SearchScreen> {
     final families = rawFamilies
         .map((e) => FamilleInfractions.fromJson(e as Map<String, dynamic>))
         .toList();
-    _allInfractions = families.expand((f) => f.infractions).toList();
+    _allInfractions = families.expand((f) => f.infractions).toList()
+      ..sort(
+        (a, b) => (a.type ?? '').toLowerCase().compareTo(
+              (b.type ?? '').toLowerCase(),
+            ),
+      );
     setState(() {
       _filteredInfractions = _allInfractions;
       _isLoading = false;
