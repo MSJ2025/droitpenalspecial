@@ -2,10 +2,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../utils/json_loader.dart';
 import '../models/infraction.dart';
+import '../models/theme_category.dart';
 import 'fiche_list_screen.dart';
 
 class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({super.key});
+  final ThemeCategory? category;
+
+  const CategoryScreen({super.key, this.category});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
@@ -28,12 +31,24 @@ class _CategoryScreenState extends State<CategoryScreen> {
       debugPrint('Données chargées: '
           '${data.length > 100 ? data.substring(0, 100) + '...' : data}');
       final List<dynamic> list = json.decode(data);
-      return list.map((e) {
+      var families = list.map((e) {
         if (e is Map && e.containsKey('famille')) {
           debugPrint('Famille trouvée: ${e['famille']}');
         }
         return FamilleInfractions.fromJson(e);
       }).toList();
+      if (widget.category != null) {
+        final keywords = widget.category!.keywords
+            .map((k) => k.toLowerCase())
+            .toList();
+        families = families
+            .where((f) {
+              final name = (f.famille ?? '').toLowerCase();
+              return keywords.any((k) => name.contains(k));
+            })
+            .toList();
+      }
+      return families;
     } catch (e, stack) {
       debugPrint('Erreur lors du chargement des familles: $e');
       debugPrint(stack.toString());
@@ -44,7 +59,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Catégories')),
+      appBar: AppBar(
+        title: Text(widget.category?.title ?? 'Catégories'),
+      ),
       body: FutureBuilder<List<FamilleInfractions>>(
         future: _families,
         builder: (context, snapshot) {
@@ -53,7 +70,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           }
           if (snapshot.hasError) {
             return const Center(
-              child: Text('Erreur lors du chargement des catégories'),
+              child: Text('Erreur lors du chargement des familles'),
             );
           }
 
