@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/cadre.dart';
+import '../widgets/gradient_expansion_tile.dart';
 
 class CadreDetailScreen extends StatelessWidget {
   final Cadre cadre;
@@ -22,12 +23,9 @@ class CadreDetailScreen extends StatelessWidget {
         children: [
           Card(
             margin: const EdgeInsets.only(bottom: 12),
-            child: ExpansionTile(
+            child: GradientExpansionTile(
               initiallyExpanded: true,
-              title: Text(
-                cadre.cadreLegal.titre,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
+              title: Text(cadre.cadreLegal.titre),
               children: [
                 if (cadre.cadreLegal.articles.isNotEmpty)
                   Padding(
@@ -48,11 +46,8 @@ class CadreDetailScreen extends StatelessWidget {
           ...cadre.actes.map(
             (a) => Card(
               margin: const EdgeInsets.only(bottom: 12),
-              child: ExpansionTile(
-                title: Text(
-                  a.acte,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
+              child: GradientExpansionTile(
+                title: Text(a.acte),
                 children: [
                   if (a.articles.isNotEmpty)
                     Padding(

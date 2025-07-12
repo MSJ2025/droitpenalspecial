@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/infraction.dart';
+import '../widgets/gradient_expansion_tile.dart';
 
 class InfractionDetailScreen extends StatelessWidget {
   final Infraction infraction;
@@ -10,19 +11,24 @@ class InfractionDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(infraction.type ?? 'Infraction')),
-      body: SingleChildScrollView(
+      body: ListView(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (infraction.definition != null)
-              Text(infraction.definition!, style: const TextStyle(fontSize: 16)),
-            const SizedBox(height: 12),
-            if (infraction.articles != null && infraction.articles!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (infraction.definition != null)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                initiallyExpanded: true,
+                title: const Text('Définition'),
+                children: [Text(infraction.definition!)],
+              ),
+            ),
+          if (infraction.articles != null && infraction.articles!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Articles'),
                 children: [
-                  const Text('Articles', style: TextStyle(fontWeight: FontWeight.bold)),
                   ...infraction.articles!.map(
                     (a) => Padding(
                       padding: const EdgeInsets.symmetric(vertical: 2),
@@ -31,13 +37,13 @@ class InfractionDetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            if (infraction.elementsConstitutifs != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.elementsConstitutifs != null)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Éléments constitutifs'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Éléments constitutifs',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   if (infraction.elementsConstitutifs!.elementLegal != null)
                     Text('Élément légal : '
                         '${infraction.elementsConstitutifs!.elementLegal!}'),
@@ -49,37 +55,37 @@ class InfractionDetailScreen extends StatelessWidget {
                         '${infraction.elementsConstitutifs!.elementMoral!}'),
                 ],
               ),
-            if (infraction.penalites?.peines != null && infraction.penalites!.peines!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.penalites?.peines != null &&
+              infraction.penalites!.peines!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Peines'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Peines', style: TextStyle(fontWeight: FontWeight.bold)),
                   if (infraction.penalites!.qualification != null)
                     Text(infraction.penalites!.qualification!),
                   ...infraction.penalites!.peines!.map((p) => Text('• $p')),
                 ],
               ),
-            if (infraction.peinesComplementaires != null &&
-                infraction.peinesComplementaires!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 12),
-                  const Text('Peines complémentaires',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  ...infraction.peinesComplementaires!
-                      .map((p) => Text('• $p')),
-                ],
+            ),
+          if (infraction.peinesComplementaires != null &&
+              infraction.peinesComplementaires!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Peines complémentaires'),
+                children:
+                    infraction.peinesComplementaires!.map((p) => Text('• $p')).toList(),
               ),
-            if (infraction.circonstancesAggravantes != null &&
-                infraction.circonstancesAggravantes!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.circonstancesAggravantes != null &&
+              infraction.circonstancesAggravantes!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Circonstances aggravantes'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Circonstances aggravantes',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   ...infraction.circonstancesAggravantes!.map(
                     (ca) => Padding(
                       padding: const EdgeInsets.only(top: 4, bottom: 4),
@@ -88,10 +94,10 @@ class InfractionDetailScreen extends StatelessWidget {
                         children: [
                           if (ca.intitule != null)
                             Text(ca.intitule!,
-                                style: const TextStyle(fontWeight: FontWeight.w600)),
+                                style:
+                                    const TextStyle(fontWeight: FontWeight.w600)),
                           if (ca.description != null) Text(ca.description!),
-                          if (ca.peine != null)
-                            Text('Peine : ${ca.peine!}'),
+                          if (ca.peine != null) Text('Peine : ${ca.peine!}'),
                           if (ca.articles != null && ca.articles!.isNotEmpty)
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,13 +116,13 @@ class InfractionDetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            if (infraction.tentative != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.tentative != null)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Tentative'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Tentative',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   if (infraction.tentative!.punissable != null)
                     Text('Punissable : ${infraction.tentative!.punissable}'),
                   if (infraction.tentative!.precision != null)
@@ -124,17 +130,19 @@ class InfractionDetailScreen extends StatelessWidget {
                   if (infraction.tentative!.article != null)
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 2),
-                      child: Text(_formatArticle(infraction.tentative!.article!)),
+                      child:
+                          Text(_formatArticle(infraction.tentative!.article!)),
                     ),
                 ],
               ),
-            if (infraction.jurisprudence != null && infraction.jurisprudence!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.jurisprudence != null &&
+              infraction.jurisprudence!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Jurisprudence'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Jurisprudence',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   ...infraction.jurisprudence!.map(
                     (jp) => ListTile(
                       contentPadding: EdgeInsets.zero,
@@ -148,13 +156,13 @@ class InfractionDetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            if (infraction.particularites != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.particularites != null)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Particularités'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Particularités',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   if (infraction.particularites is String)
                     Text(infraction.particularites as String)
                   else if (infraction.particularites is List)
@@ -162,46 +170,43 @@ class InfractionDetailScreen extends StatelessWidget {
                         .map((p) => Text('• $p')),
                 ],
               ),
-            if (infraction.responsabilitePersonnesMorales != null &&
-                infraction.responsabilitePersonnesMorales!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.responsabilitePersonnesMorales != null &&
+              infraction.responsabilitePersonnesMorales!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Responsabilité des personnes morales'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Responsabilité des personnes morales',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Text(infraction.responsabilitePersonnesMorales!),
                 ],
               ),
-            if (infraction.territorialite != null && infraction.territorialite!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 12),
-                  const Text('Territorialité',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(infraction.territorialite!),
-                ],
+            ),
+          if (infraction.territorialite != null &&
+              infraction.territorialite!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Territorialité'),
+                children: [Text(infraction.territorialite!)],
               ),
-            if (infraction.causesExemptionDiminutionPeine != null &&
-                infraction.causesExemptionDiminutionPeine!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 12),
-                  const Text('Causes d\'exemption ou de diminution de peine',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(infraction.causesExemptionDiminutionPeine!),
-                ],
+            ),
+          if (infraction.causesExemptionDiminutionPeine != null &&
+              infraction.causesExemptionDiminutionPeine!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text("Causes d'exemption ou de diminution de peine"),
+                children: [Text(infraction.causesExemptionDiminutionPeine!)],
               ),
-            if (infraction.infractionsParticulieres != null &&
-                infraction.infractionsParticulieres!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          if (infraction.infractionsParticulieres != null &&
+              infraction.infractionsParticulieres!.isNotEmpty)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: GradientExpansionTile(
+                title: const Text('Infractions particulières'),
                 children: [
-                  const SizedBox(height: 12),
-                  const Text('Infractions particulières',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
                   ...infraction.infractionsParticulieres!.map(
                     (ip) => Padding(
                       padding: const EdgeInsets.only(top: 4, bottom: 4),
@@ -210,7 +215,8 @@ class InfractionDetailScreen extends StatelessWidget {
                         children: [
                           if (ip.intitule != null)
                             Text(ip.intitule!,
-                                style: const TextStyle(fontWeight: FontWeight.w600)),
+                                style:
+                                    const TextStyle(fontWeight: FontWeight.w600)),
                           if (ip.description != null) Text(ip.description!),
                           if (ip.articles != null && ip.articles!.isNotEmpty)
                             Column(
@@ -230,8 +236,8 @@ class InfractionDetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
-          ],
-        ),
+            ),
+        ],
       ),
     );
   }
