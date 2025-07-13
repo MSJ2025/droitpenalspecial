@@ -19,15 +19,26 @@ class HomeScreen extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
         ),
-        child: Center(
+        child: SafeArea(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
-              FractionallySizedBox(
-                widthFactor: 0.85,
-                child: _ModernGradientButton(
-                  icon: Icons.book,
-                  label: 'Infractions par thèmes',
+              Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 32),
+                child: Image.asset(
+                  'assets/images/logocreme.png',
+                  width: 160,
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FractionallySizedBox(
+                        widthFactor: 0.85,
+                        child: _ModernGradientButton(
+                          icon: Icons.book,
+                          label: 'Infractions par thèmes',
                   onPressed: () {
                     Navigator.of(context).push(
                       PageRouteBuilder(
