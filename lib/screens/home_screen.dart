@@ -55,6 +55,24 @@ class HomeScreen extends StatelessWidget {
               FractionallySizedBox(
                 widthFactor: 0.85,
                 child: _ModernGradientButton(
+                  icon: Icons.gavel,
+                  label: "Cadres d'enquête",
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (_, animation, __) => FadeTransition(
+                          opacity: animation,
+                          child: const CadreListScreen(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              FractionallySizedBox(
+                widthFactor: 0.85,
+                child: _ModernGradientButton(
                   icon: Icons.search,
                   label: "Rechercher une infraction",
                   onPressed: () {
@@ -81,24 +99,6 @@ class HomeScreen extends StatelessWidget {
                         pageBuilder: (_, animation, __) => FadeTransition(
                           opacity: animation,
                           child: const FavoritesScreen(),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 16),
-              FractionallySizedBox(
-                widthFactor: 0.85,
-                child: _ModernGradientButton(
-                  icon: Icons.gavel,
-                  label: "Cadres d'enquête",
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      PageRouteBuilder(
-                        pageBuilder: (_, animation, __) => FadeTransition(
-                          opacity: animation,
-                          child: const CadreListScreen(),
                         ),
                       ),
                     );
