@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import '../models/cadre.dart';
 import 'cadre_detail_screen.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class CadreListScreen extends StatefulWidget {
   const CadreListScreen({super.key});
@@ -34,7 +35,9 @@ class _CadreListScreenState extends State<CadreListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Cadres d'enquête")),
+      appBar: AppBar(
+        title: const AdaptiveAppBarTitle("Cadres d'enquête"),
+      ),
       body: Column(
         children: [
           Expanded(

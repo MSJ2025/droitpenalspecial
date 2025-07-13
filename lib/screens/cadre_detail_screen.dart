@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/cadre.dart';
 import '../widgets/gradient_expansion_tile.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class CadreDetailScreen extends StatelessWidget {
   final Cadre cadre;
@@ -14,10 +15,7 @@ class CadreDetailScreen extends StatelessWidget {
           tag: 'cadreTitle-${cadre.cadre}',
           child: Material(
             color: Colors.transparent,
-            child: Text(
-              cadre.cadre,
-              style: TextStyle(color: Colors.white),
-            ),
+            child: AdaptiveAppBarTitle(cadre.cadre),
           ),
         ),
       ),

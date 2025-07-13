@@ -4,6 +4,7 @@ import '../utils/json_loader.dart';
 import '../models/infraction.dart';
 import '../models/theme_category.dart';
 import 'fiche_list_screen.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class CategoryScreen extends StatefulWidget {
   final ThemeCategory? category;
@@ -65,7 +66,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.category?.title ?? 'Catégories'),
+        title: AdaptiveAppBarTitle(widget.category?.title ?? 'Catégories'),
       ),
       body: FutureBuilder<List<FamilleInfractions>>(
         future: _families,

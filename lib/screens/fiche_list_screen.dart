@@ -3,6 +3,7 @@ import '../models/infraction.dart';
 import '../widgets/infraction_card.dart';
 import '../widgets/search_bar.dart';
 import 'infraction_detail_screen.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class FicheListScreen extends StatefulWidget {
   final FamilleInfractions famille;
@@ -47,7 +48,7 @@ class _FicheListScreenState extends State<FicheListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.famille.famille ?? 'Infractions'),
+        title: AdaptiveAppBarTitle(widget.famille.famille ?? 'Infractions'),
       ),
       body: Column(
         children: [

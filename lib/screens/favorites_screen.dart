@@ -5,6 +5,7 @@ import '../models/infraction.dart';
 import '../widgets/infraction_card.dart';
 import '../utils/favorites_manager.dart';
 import 'infraction_detail_screen.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -40,7 +41,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Favoris')),
+      appBar: AppBar(
+        title: const AdaptiveAppBarTitle('Favoris'),
+      ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         child: isLoading
