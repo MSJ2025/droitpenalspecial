@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import '../models/infraction.dart';
+import '../models/cadre.dart';
 import '../utils/anomaly_reporter.dart';
 
 class ReportDialog extends StatefulWidget {
   final String ficheId;
-  const ReportDialog({super.key, required this.ficheId});
+  final dynamic fiche;
+  const ReportDialog({super.key, required this.ficheId, required this.fiche});
 
   @override
   State<ReportDialog> createState() => _ReportDialogState();
@@ -12,6 +15,23 @@ class ReportDialog extends StatefulWidget {
 class _ReportDialogState extends State<ReportDialog> {
   final TextEditingController _controller = TextEditingController();
   bool _sending = false;
+
+  Map<String, dynamic> _buildSummary() {
+    final fiche = widget.fiche;
+    if (fiche is Infraction) {
+      return {
+        'id': fiche.id,
+        'type': fiche.type,
+        'definition': fiche.definition,
+      }..removeWhere((key, value) => value == null);
+    } else if (fiche is Cadre) {
+      return {
+        'cadre': fiche.cadre,
+        'actesCount': fiche.actes.length,
+      };
+    }
+    return {};
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +63,14 @@ class _ReportDialogState extends State<ReportDialog> {
                   final message = _controller.text.trim();
                   if (message.isEmpty) return;
                   setState(() => _sending = true);
-                  await AnomalyReporter.sendReport(widget.ficheId, message);
-                  if (mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Merci pour votre retour.'),
-                      ),
-                    );
-                    Navigator.of(context).pop();
-                  }
+
+                  await AnomalyReporter.sendReport(
+                    widget.ficheId,
+                    message,
+                    ficheSummary: _buildSummary(),
+                  );
+                  if (mounted) Navigator.of(context).pop();
+
                 },
           child: const Text('Envoyer'),
         ),

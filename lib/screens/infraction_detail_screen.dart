@@ -23,7 +23,8 @@ class InfractionDetailScreen extends StatelessWidget {
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (context) => ReportDialog(ficheId: infraction.id),
+                builder: (context) =>
+                    ReportDialog(ficheId: infraction.id, fiche: infraction),
               );
             },
           ),
