@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:upgrader/upgrader.dart';
 import 'screens/home_screen.dart';
 import 'utils/theme.dart';
 
@@ -20,7 +21,9 @@ class OPJFichesApp extends StatelessWidget {
       title: 'Fiches OPJ',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: const HomeScreen(),
+      home: UpgradeAlert(
+        child: const HomeScreen(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
