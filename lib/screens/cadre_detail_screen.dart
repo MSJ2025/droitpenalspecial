@@ -28,7 +28,8 @@ class CadreDetailScreen extends StatelessWidget {
             onPressed: () {
               showDialog(
                 context: context,
-                builder: (context) => ReportDialog(ficheId: cadre.cadre),
+                builder: (context) =>
+                    ReportDialog(ficheId: cadre.cadre, fiche: cadre),
               );
             },
           ),
