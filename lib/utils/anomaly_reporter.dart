@@ -49,6 +49,7 @@ class AnomalyReporter {
       'appVersion': '${packageInfo.version}+${packageInfo.buildNumber}',
       'device': deviceData,
       'fiche': ficheSummary,
+      'status': 'pending',
     });
   }
 }
