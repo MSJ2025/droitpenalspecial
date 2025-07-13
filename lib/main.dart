@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'screens/home_screen.dart';
 import 'utils/theme.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseAnalytics.instance.logAppOpen();
   runApp(const OPJFichesApp());
 }
 
