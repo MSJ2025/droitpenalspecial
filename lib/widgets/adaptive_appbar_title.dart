@@ -7,9 +7,11 @@ class AdaptiveAppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: Text(text, maxLines: maxLines, textAlign: TextAlign.center),
+    return Text(
+      text,
+      maxLines: maxLines,
+      textAlign: TextAlign.center,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
