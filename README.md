@@ -24,6 +24,10 @@ samples, guidance on mobile development, and a full API reference.
    selected theme.
 4. **Infractions** – drill down into the infractions for the chosen family.
 
+## Mise à jour de l'application
+
+L'application vérifie désormais automatiquement si une nouvelle version est disponible sur l'App Store ou sur Google Play grâce au plugin **upgrader**. Lorsque c'est le cas, une fenêtre s'affiche pour proposer à l'utilisateur de mettre à jour ou de continuer.
+
 ## Licence
 
 Ce projet est distribué sous licence MIT. Voir [LICENSE](LICENSE) pour plus d'informations.
