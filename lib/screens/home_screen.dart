@@ -23,10 +23,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 16, bottom: 32),
+                padding: const EdgeInsets.only(top: 36, bottom: 0),
                 child: Image.asset(
                   'assets/images/logocreme.png',
-                  width: 160,
+                  width: 260,
                 ),
               ),
               Expanded(
@@ -109,7 +109,11 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ],
+    ),
+    ),
+      )
+      );
   }
 }
 
