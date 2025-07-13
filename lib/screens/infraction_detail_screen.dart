@@ -44,15 +44,51 @@ class InfractionDetailScreen extends StatelessWidget {
               child: GradientExpansionTile(
                 title: const Text('Éléments constitutifs'),
                 children: [
-                  if (infraction.elementsConstitutifs!.elementLegal != null)
-                    Text('Élément légal : '
-                        '${infraction.elementsConstitutifs!.elementLegal!}'),
-                  if (infraction.elementsConstitutifs!.elementMateriel != null)
-                    Text('Élément matériel : '
-                        '${infraction.elementsConstitutifs!.elementMateriel!}'),
-                  if (infraction.elementsConstitutifs!.elementMoral != null)
-                    Text('Élément moral : '
-                        '${infraction.elementsConstitutifs!.elementMoral!}'),
+                  Table(
+                    columnWidths: const {0: IntrinsicColumnWidth()},
+                    defaultVerticalAlignment: TableCellVerticalAlignment.top,
+                    children: [
+                      if (infraction.elementsConstitutifs!.elementLegal != null)
+                        TableRow(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 8, bottom: 4),
+                              child: Text('Élément légal'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 4),
+                              child: Text(infraction.elementsConstitutifs!.elementLegal!),
+                            ),
+                          ],
+                        ),
+                      if (infraction.elementsConstitutifs!.elementMateriel != null)
+                        TableRow(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 8, bottom: 4),
+                              child: Text('Élément matériel'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 4),
+                              child: Text(infraction.elementsConstitutifs!.elementMateriel!),
+                            ),
+                          ],
+                        ),
+                      if (infraction.elementsConstitutifs!.elementMoral != null)
+                        TableRow(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(right: 8, bottom: 4),
+                              child: Text('Élément moral'),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 4),
+                              child: Text(infraction.elementsConstitutifs!.elementMoral!),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -65,7 +101,7 @@ class InfractionDetailScreen extends StatelessWidget {
                 children: [
                   if (infraction.penalites!.qualification != null)
                     Text(infraction.penalites!.qualification!),
-                  ...infraction.penalites!.peines!.map((p) => Text('• $p')),
+                  ...infraction.penalites!.peines!.map((p) => Text(p)),
                 ],
               ),
             ),
@@ -76,7 +112,7 @@ class InfractionDetailScreen extends StatelessWidget {
               child: GradientExpansionTile(
                 title: const Text('Peines complémentaires'),
                 children:
-                    infraction.peinesComplementaires!.map((p) => Text('• $p')).toList(),
+                    infraction.peinesComplementaires!.map((p) => Text(p)).toList(),
               ),
             ),
           if (infraction.circonstancesAggravantes != null &&
@@ -167,7 +203,7 @@ class InfractionDetailScreen extends StatelessWidget {
                     Text(infraction.particularites as String)
                   else if (infraction.particularites is List)
                     ...List<String>.from(infraction.particularites as List)
-                        .map((p) => Text('• $p')),
+                        .map((p) => Text(p)),
                 ],
               ),
             ),

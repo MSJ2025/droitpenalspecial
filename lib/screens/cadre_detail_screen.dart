@@ -59,7 +59,7 @@ class CadreDetailScreen extends StatelessWidget {
                     (c) => Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 2),
-                      child: Text('• $c'),
+                      child: Text(c),
                     ),
                   ),
                 ],
