@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/theme_category.dart';
 import 'category_screen.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 const _categoryImages = {
   'personnes': 'assets/images/infractions_personnes.png',
@@ -15,7 +16,9 @@ class ThemeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Th\u00e8mes')),
+      appBar: AppBar(
+        title: const AdaptiveAppBarTitle('Th\u00e8mes'),
+      ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
         itemCount: kThemeCategories.length,

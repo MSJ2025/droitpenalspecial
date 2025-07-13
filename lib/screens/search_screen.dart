@@ -5,6 +5,7 @@ import '../utils/json_loader.dart';
 import '../widgets/infraction_card.dart';
 import '../widgets/search_bar.dart';
 import 'infraction_detail_screen.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -55,7 +56,9 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Recherche')),
+      appBar: AppBar(
+        title: const AdaptiveAppBarTitle('Recherche'),
+      ),
       body: Column(
         children: [
           CustomSearchBar(

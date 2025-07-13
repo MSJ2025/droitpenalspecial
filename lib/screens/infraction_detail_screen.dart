@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/infraction.dart';
 import '../widgets/gradient_expansion_tile.dart';
+import '../widgets/adaptive_appbar_title.dart';
 
 class InfractionDetailScreen extends StatelessWidget {
   final Infraction infraction;
@@ -10,7 +11,9 @@ class InfractionDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(infraction.type ?? 'Infraction')),
+      appBar: AppBar(
+        title: AdaptiveAppBarTitle(infraction.type ?? 'Infraction'),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
