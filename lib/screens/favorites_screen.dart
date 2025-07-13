@@ -42,7 +42,10 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AdaptiveAppBarTitle('Favoris'),
+        title: const AdaptiveAppBarTitle(
+          'Favoris',
+          maxLines: 1,
+        ),
       ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),

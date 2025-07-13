@@ -66,7 +66,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AdaptiveAppBarTitle(widget.category?.title ?? 'Catégories'),
+        title: AdaptiveAppBarTitle(
+          widget.category?.title ?? 'Catégories',
+          maxLines: 1,
+        ),
       ),
       body: FutureBuilder<List<FamilleInfractions>>(
         future: _families,
