@@ -4,10 +4,13 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:upgrader/upgrader.dart';
 import 'screens/home_screen.dart';
 import 'utils/theme.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await FirebaseAnalytics.instance.logAppOpen();
   runApp(const OPJFichesApp());
 }
