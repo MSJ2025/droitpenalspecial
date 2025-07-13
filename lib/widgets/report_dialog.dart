@@ -3,7 +3,8 @@ import '../utils/anomaly_reporter.dart';
 
 class ReportDialog extends StatefulWidget {
   final String ficheId;
-  const ReportDialog({super.key, required this.ficheId});
+  final Future<void> Function(Map<String, dynamic> data)? add;
+  const ReportDialog({super.key, required this.ficheId, this.add});
 
   @override
   State<ReportDialog> createState() => _ReportDialogState();
@@ -32,8 +33,23 @@ class _ReportDialogState extends State<ReportDialog> {
                   final message = _controller.text.trim();
                   if (message.isEmpty) return;
                   setState(() => _sending = true);
-                  await AnomalyReporter.sendReport(widget.ficheId, message);
-                  if (mounted) Navigator.of(context).pop();
+                  try {
+                    await AnomalyReporter.sendReport(
+                      widget.ficheId,
+                      message,
+                      add: widget.add,
+                    );
+                    if (mounted) Navigator.of(context).pop();
+                  } catch (_) {
+                    if (mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Échec de l\'envoi du rapport'),
+                        ),
+                      );
+                      setState(() => _sending = false);
+                    }
+                  }
                 },
           child: const Text('Envoyer'),
         ),
