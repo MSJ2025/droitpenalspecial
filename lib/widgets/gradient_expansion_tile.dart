@@ -28,9 +28,11 @@ class _GradientExpansionTileState extends State<GradientExpansionTile> {
   @override
   Widget build(BuildContext context) {
     final decoration = _expanded
-        ? BoxDecoration(
+        ? const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.green.shade200, Colors.green.shade400],
+              colors: [Color(0xFF001F4D), Color(0xFF122046)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomRight,
             ),
           )
         : null;
