@@ -10,7 +10,8 @@ class AppTheme {
     scaffoldBackgroundColor: Color(0xFFFAF9F6),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF122046),
-      foregroundColor: Color(0xFFFAF9F6),
+      foregroundColor: Colors.white,
+      titleTextStyle: TextStyle(color: Colors.white),
       elevation: 2,
     ),
     cardTheme: CardThemeData(
@@ -32,6 +33,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF122046),
       foregroundColor: Colors.white,
+      titleTextStyle: TextStyle(color: Colors.white),
       elevation: 2,
     ),
     cardTheme: CardThemeData(
