@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade800),
+    colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF001F4D)),
     brightness: Brightness.light,
     fontFamily: 'Roboto',
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Color(0xFFFAF9F6),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF122046),
-      foregroundColor: Colors.white,
+      foregroundColor: Color(0xFFFAF9F6),
       elevation: 2,
     ),
     cardTheme: CardThemeData(
-      color: Colors.white,
+      color: Color(0xFFFAF9F6),
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     ),
@@ -23,7 +23,7 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.blue.shade800,
+      seedColor: Color(0xFF001F4D),
       brightness: Brightness.dark,
     ),
     fontFamily: 'Roboto',
