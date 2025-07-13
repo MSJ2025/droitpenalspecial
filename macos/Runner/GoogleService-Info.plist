@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.msj2025.pjplus</string>
+	<string>com.example.poljud</string>
 	<key>PROJECT_ID</key>
 	<string>pjplus-debe2</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1052086354495:ios:90847a4acf52ce474bee8a</string>
+	<string>1:1052086354495:ios:d73b68e45f19a2d74bee8a</string>
 </dict>
 </plist>
