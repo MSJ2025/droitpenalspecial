@@ -14,13 +14,64 @@ class CadreDetailScreen extends StatelessWidget {
           tag: 'cadreTitle-${cadre.cadre}',
           child: Material(
             color: Colors.transparent,
-            child: Text(cadre.cadre),
+            child: Text(
+              cadre.cadre,
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          Container(
+            margin: const EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+            decoration: BoxDecoration(
+              color: Color(0xFF122046),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.white, width: 1.3),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 10,
+                  offset: Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Text(
+                  '16 à 19 (OPJ),',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 4),
+                Text(
+                  '20 et 21-1 (APJ),',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 4),
+                Text(
+                  '20-1 (Réserviste ancien OPJ ou APJ),',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 4),
+                Text(
+                  '21 et 21-1 (APJA)',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
           Card(
             margin: const EdgeInsets.only(bottom: 12),
             child: GradientExpansionTile(
