@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.poljud"
+    namespace = "com.msj2025.pjplus"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
