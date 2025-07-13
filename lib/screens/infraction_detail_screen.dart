@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../models/infraction.dart';
 import '../widgets/gradient_expansion_tile.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../widgets/report_dialog.dart';
 
 class InfractionDetailScreen extends StatelessWidget {
   final Infraction infraction;
@@ -16,6 +17,17 @@ class InfractionDetailScreen extends StatelessWidget {
           infraction.type ?? 'Infraction',
           maxLines: 1,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.flag),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => ReportDialog(ficheId: infraction.id),
+              );
+            },
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
