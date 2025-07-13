@@ -12,7 +12,10 @@ class InfractionDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AdaptiveAppBarTitle(infraction.type ?? 'Infraction'),
+        title: AdaptiveAppBarTitle(
+          infraction.type ?? 'Infraction',
+          maxLines: 1,
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),

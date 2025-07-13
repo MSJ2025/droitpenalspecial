@@ -57,7 +57,10 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AdaptiveAppBarTitle('Recherche'),
+        title: const AdaptiveAppBarTitle(
+          'Recherche',
+          maxLines: 1,
+        ),
       ),
       body: Column(
         children: [

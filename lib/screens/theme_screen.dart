@@ -17,7 +17,10 @@ class ThemeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AdaptiveAppBarTitle('Th\u00e8mes'),
+        title: const AdaptiveAppBarTitle(
+          'Th\u00e8mes',
+          maxLines: 1,
+        ),
       ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),

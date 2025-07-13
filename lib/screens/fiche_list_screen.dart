@@ -48,7 +48,10 @@ class _FicheListScreenState extends State<FicheListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AdaptiveAppBarTitle(widget.famille.famille ?? 'Infractions'),
+        title: AdaptiveAppBarTitle(
+          widget.famille.famille ?? 'Infractions',
+          maxLines: 1,
+        ),
       ),
       body: Column(
         children: [

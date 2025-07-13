@@ -36,7 +36,10 @@ class _CadreListScreenState extends State<CadreListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AdaptiveAppBarTitle("Cadres d'enquête"),
+        title: const AdaptiveAppBarTitle(
+          "Cadres d'enquête",
+          maxLines: 1,
+        ),
       ),
       body: Column(
         children: [

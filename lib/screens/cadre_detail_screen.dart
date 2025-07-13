@@ -15,7 +15,10 @@ class CadreDetailScreen extends StatelessWidget {
           tag: 'cadreTitle-${cadre.cadre}',
           child: Material(
             color: Colors.transparent,
-            child: AdaptiveAppBarTitle(cadre.cadre),
+            child: AdaptiveAppBarTitle(
+              cadre.cadre,
+              maxLines: 1,
+            ),
           ),
         ),
       ),
