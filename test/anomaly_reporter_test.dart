@@ -7,24 +7,29 @@ class MockAdd extends Mock {
 }
 
 void main() {
+  setUpAll(() {
+    registerFallbackValue<Map<String, dynamic>>(<String, dynamic>{});
+  });
   test('sendReport retourne true lorsque l\'envoi réussit', () async {
     final mockAdd = MockAdd();
-    when(() => mockAdd(any())).thenAnswer((_) async {});
+    when(() => mockAdd(any<Map<String, dynamic>>()))
+        .thenAnswer((_) async {});
 
     final result = await AnomalyReporter.sendReport('1', 'msg', add: mockAdd);
 
     expect(result, isTrue);
-    verify(() => mockAdd(any())).called(1);
+    verify(() => mockAdd(any<Map<String, dynamic>>())).called(1);
   });
 
   test('sendReport lève une exception lorsque l\'envoi échoue', () async {
     final mockAdd = MockAdd();
-    when(() => mockAdd(any())).thenThrow(Exception('fail'));
+    when(() => mockAdd(any<Map<String, dynamic>>()))
+        .thenThrow(Exception('fail'));
 
     expect(
       () => AnomalyReporter.sendReport('1', 'msg', add: mockAdd),
       throwsA(isA<Exception>()),
     );
-    verify(() => mockAdd(any())).called(1);
+    verify(() => mockAdd(any<Map<String, dynamic>>())).called(1);
   });
 }
