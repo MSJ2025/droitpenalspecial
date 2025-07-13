@@ -17,12 +17,23 @@ class _ReportDialogState extends State<ReportDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Signaler une erreur'),
-      content: TextField(
-        controller: _controller,
-        maxLines: 3,
-        decoration: const InputDecoration(
-          hintText: 'Décrivez le problème...',
-        ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: _controller,
+            maxLines: 3,
+            enabled: !_sending,
+            decoration: const InputDecoration(
+              hintText: 'Décrivez le problème...',
+            ),
+          ),
+          if (_sending)
+            const Padding(
+              padding: EdgeInsets.only(top: 16.0),
+              child: CircularProgressIndicator(),
+            ),
+        ],
       ),
       actions: [
         TextButton(
@@ -33,7 +44,14 @@ class _ReportDialogState extends State<ReportDialog> {
                   if (message.isEmpty) return;
                   setState(() => _sending = true);
                   await AnomalyReporter.sendReport(widget.ficheId, message);
-                  if (mounted) Navigator.of(context).pop();
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Merci pour votre retour.'),
+                      ),
+                    );
+                    Navigator.of(context).pop();
+                  }
                 },
           child: const Text('Envoyer'),
         ),
