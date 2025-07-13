@@ -48,6 +48,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
             })
             .toList();
       }
+      families.sort(
+        (a, b) => (a.famille ?? '').toLowerCase().compareTo(
+          (b.famille ?? '').toLowerCase(),
+        ),
+      );
       return families;
     } catch (e, stack) {
       debugPrint('Erreur lors du chargement des familles: $e');
