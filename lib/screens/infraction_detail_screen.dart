@@ -160,7 +160,9 @@ class InfractionDetailScreen extends StatelessWidget {
                 title: const Text('Tentative'),
                 children: [
                   if (infraction.tentative!.punissable != null)
-                    Text('Punissable : ${infraction.tentative!.punissable}'),
+                    Text(
+                      'Punissable : ${_formatPunissable(infraction.tentative!.punissable!)}',
+                    ),
                   if (infraction.tentative!.precision != null)
                     Text(infraction.tentative!.precision!),
                   if (infraction.tentative!.article != null)
@@ -284,6 +286,13 @@ class InfractionDetailScreen extends StatelessWidget {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
+  }
+
+  String _formatPunissable(String value) {
+    final lower = value.toLowerCase();
+    if (lower == 'true') return 'Oui';
+    if (lower == 'false') return 'Non';
+    return value;
   }
 
   String _formatArticle(InfractionArticle article) {
