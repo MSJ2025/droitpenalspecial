@@ -57,6 +57,10 @@ class _ReportDialogState extends State<ReportDialog> {
       ),
       actions: [
         TextButton(
+          onPressed: _sending ? null : () => Navigator.of(context).pop(false),
+          child: const Text('Annuler'),
+        ),
+        TextButton(
           onPressed: _sending
               ? null
               : () async {
@@ -69,7 +73,7 @@ class _ReportDialogState extends State<ReportDialog> {
                     message,
                     ficheSummary: _buildSummary(),
                   );
-                  if (mounted) Navigator.of(context).pop();
+                  if (mounted) Navigator.of(context).pop(true);
 
                 },
           child: const Text('Envoyer'),

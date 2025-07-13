@@ -20,12 +20,19 @@ class InfractionDetailScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.flag),
-            onPressed: () {
-              showDialog(
+            onPressed: () async {
+              final ok = await showDialog<bool>(
                 context: context,
                 builder: (context) =>
                     ReportDialog(ficheId: infraction.id, fiche: infraction),
               );
+              if (ok == true && context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                      content:
+                          Text('Merci, votre signalement a été envoyé.')),
+                );
+              }
             },
           ),
         ],
