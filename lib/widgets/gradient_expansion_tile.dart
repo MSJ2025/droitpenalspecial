@@ -51,7 +51,14 @@ class _GradientExpansionTileState extends State<GradientExpansionTile> {
           ),
           childrenPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          children: widget.children,
+          children: _expanded
+              ? widget.children
+                  .map((child) => DefaultTextStyle.merge(
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        child: child,
+                      ))
+                  .toList()
+              : widget.children,
         ),
       ),
     );
