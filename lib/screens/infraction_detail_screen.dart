@@ -48,7 +48,7 @@ class InfractionDetailScreen extends StatelessWidget {
                     columnWidths: const {0: IntrinsicColumnWidth()},
                     defaultVerticalAlignment: TableCellVerticalAlignment.top,
                     children: [
-                      if (infraction.elementsConstitutifs!.elementLegal != null)
+                      if (infraction.elementsConstitutifs!.elementLegal != null) ...[
                         TableRow(
                           children: [
                             const Padding(
@@ -61,7 +61,12 @@ class InfractionDetailScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                      if (infraction.elementsConstitutifs!.elementMateriel != null)
+                        const TableRow(children: [
+                          TableCell(child: Divider()),
+                          TableCell(child: Divider()),
+                        ]),
+                      ],
+                      if (infraction.elementsConstitutifs!.elementMateriel != null) ...[
                         TableRow(
                           children: [
                             const Padding(
@@ -74,6 +79,11 @@ class InfractionDetailScreen extends StatelessWidget {
                             ),
                           ],
                         ),
+                        const TableRow(children: [
+                          TableCell(child: Divider()),
+                          TableCell(child: Divider()),
+                        ]),
+                      ],
                       if (infraction.elementsConstitutifs!.elementMoral != null)
                         TableRow(
                           children: [
