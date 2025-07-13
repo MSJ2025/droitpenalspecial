@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/cadre.dart';
 import '../widgets/gradient_expansion_tile.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../widgets/report_dialog.dart';
 
 class CadreDetailScreen extends StatelessWidget {
   final Cadre cadre;
@@ -21,6 +22,17 @@ class CadreDetailScreen extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.flag),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => ReportDialog(ficheId: cadre.cadre),
+              );
+            },
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
