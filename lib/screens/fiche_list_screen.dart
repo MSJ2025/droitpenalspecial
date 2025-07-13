@@ -21,7 +21,14 @@ class _FicheListScreenState extends State<FicheListScreen> {
   @override
   void initState() {
     super.initState();
-    infractions = widget.famille.infractions;
+    infractions = [
+      ...widget.famille.infractions
+    ]
+      ..sort(
+        (a, b) => (a.type ?? '').toLowerCase().compareTo(
+              (b.type ?? '').toLowerCase(),
+            ),
+      );
     filteredInfractions = infractions;
     isLoading = false;
   }
