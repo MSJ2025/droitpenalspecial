@@ -52,11 +52,8 @@ class _CadreListScreenState extends State<CadreListScreen> {
                   ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
                       key: const ValueKey('list'),
-                      itemCount: cadres.length + 1,
+                      itemCount: cadres.length,
                       itemBuilder: (context, index) {
-                        if (index == cadres.length) {
-                          return const AdBanner();
-                        }
                         final cadre = cadres[index];
                         return Card(
                           margin: const EdgeInsets.symmetric(
@@ -72,8 +69,7 @@ class _CadreListScreenState extends State<CadreListScreen> {
                                 ),
                               ),
                             ),
-                            trailing:
-                                const Icon(Icons.chevron_right_rounded),
+                            trailing: const Icon(Icons.chevron_right_rounded),
                             onTap: () {
                               AdEventManager.onCadreOpened();
                               Navigator.of(context).push(
@@ -92,6 +88,7 @@ class _CadreListScreenState extends State<CadreListScreen> {
                     ),
             ),
           ),
+          const AdBanner(),
         ],
       ),
     );
