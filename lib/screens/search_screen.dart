@@ -6,6 +6,7 @@ import '../widgets/infraction_card.dart';
 import '../widgets/search_bar.dart';
 import 'infraction_detail_screen.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../utils/ad_event_manager.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -81,6 +82,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         return InfractionCard(
                           infraction: infraction,
                           onTap: () {
+                            AdEventManager.onInfractionViewed();
                             Navigator.of(context).push(
                               PageRouteBuilder(
                                 pageBuilder: (_, animation, __) => FadeTransition(

@@ -16,10 +16,10 @@ Future<void> main() async {
   );
   // Initialisation AdMob pour activer la pub.
   MobileAds.instance.initialize();
-  // Préchargement d'un interstitiel.
-  InterstitialAdHelper.load();
   await FirebaseAnalytics.instance.logAppOpen();
   runApp(const OPJFichesApp());
+  // Interstitiel au démarrage.
+  InterstitialAdHelper.show(adUnitId: AdHelper.interstitialStart);
 }
 
 class OPJFichesApp extends StatelessWidget {

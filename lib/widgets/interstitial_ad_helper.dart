@@ -1,32 +1,24 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../utils/ad_helper.dart';
 
-/// Gestionnaire simple d'interstitiel.
+/// Utilitaire minimaliste pour afficher un interstitiel à la demande.
 class InterstitialAdHelper {
   InterstitialAdHelper._();
-  static InterstitialAd? _ad;
 
-  /// Charge l'interstitiel si nécessaire.
-  static void load() {
+  /// Charge et affiche immédiatement un interstitiel.
+  static void show({required String adUnitId}) {
     InterstitialAd.load(
-      adUnitId: AdHelper.interstitialDetail,
+      adUnitId: adUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) => _ad = ad,
-        onAdFailedToLoad: (_) => _ad = null,
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) => ad.dispose(),
+          );
+          ad.show();
+        },
+        onAdFailedToLoad: (_) {},
       ),
     );
-  }
-
-  /// Affiche l'interstitiel s'il est prêt.
-  static void show() {
-    _ad?.fullScreenContentCallback = FullScreenContentCallback(
-      onAdDismissedFullScreenContent: (ad) {
-        ad.dispose();
-        _ad = null;
-        load();
-      },
-    );
-    _ad?.show();
   }
 }

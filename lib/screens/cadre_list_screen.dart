@@ -4,6 +4,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../models/cadre.dart';
 import 'cadre_detail_screen.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../widgets/ad_banner.dart';
+import '../utils/ad_event_manager.dart';
 
 class CadreListScreen extends StatefulWidget {
   const CadreListScreen({super.key});
@@ -50,8 +52,11 @@ class _CadreListScreenState extends State<CadreListScreen> {
                   ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
                       key: const ValueKey('list'),
-                      itemCount: cadres.length,
+                      itemCount: cadres.length + 1,
                       itemBuilder: (context, index) {
+                        if (index == cadres.length) {
+                          return const AdBanner();
+                        }
                         final cadre = cadres[index];
                         return Card(
                           margin: const EdgeInsets.symmetric(
@@ -70,6 +75,7 @@ class _CadreListScreenState extends State<CadreListScreen> {
                             trailing:
                                 const Icon(Icons.chevron_right_rounded),
                             onTap: () {
+                              AdEventManager.onCadreOpened();
                               Navigator.of(context).push(
                                 PageRouteBuilder(
                                   pageBuilder: (_, animation, __) =>
