@@ -47,4 +47,22 @@ class AdHelper {
     }
     throw UnsupportedError('Platform not supported');
   }
+
+  /// Identifiant de l'interstitiel affiché au démarrage de l'application.
+  static String get interstitialStart => interstitialDetail;
+
+  /// Identifiant de l'interstitiel affiché après consultation de plusieurs
+  /// fiches ou ouverture d'un cadre d'enquête.
+  static String get interstitialEvent {
+    if (Platform.isAndroid) {
+      return kDebugMode
+          ? 'ca-app-pub-3940256099942544/1033173712'
+          : 'ca-app-pub-4176691748354941/6118843251';
+    } else if (Platform.isIOS) {
+      return kDebugMode
+          ? 'ca-app-pub-3940256099942544/4411468910'
+          : 'ca-app-pub-4176691748354941/6118843251';
+    }
+    throw UnsupportedError('Platform not supported');
+  }
 }

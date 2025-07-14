@@ -4,6 +4,7 @@ import '../models/infraction.dart';
 import '../widgets/gradient_expansion_tile.dart';
 import '../widgets/adaptive_appbar_title.dart';
 import '../widgets/report_dialog.dart';
+import '../widgets/ad_banner.dart';
 
 class InfractionDetailScreen extends StatelessWidget {
   final Infraction infraction;
@@ -311,6 +312,8 @@ class InfractionDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
+          const SizedBox(height: 16),
+          const AdBanner(),
         ],
       ),
     );

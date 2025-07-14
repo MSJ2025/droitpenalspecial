@@ -3,6 +3,7 @@ import '../models/cadre.dart';
 import '../widgets/gradient_expansion_tile.dart';
 import '../widgets/adaptive_appbar_title.dart';
 import '../widgets/report_dialog.dart';
+import '../widgets/ad_banner.dart';
 
 class CadreDetailScreen extends StatelessWidget {
   final Cadre cadre;
@@ -138,6 +139,8 @@ class CadreDetailScreen extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 16),
+          const AdBanner(),
         ],
       ),
     );

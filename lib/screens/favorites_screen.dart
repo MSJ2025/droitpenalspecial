@@ -6,6 +6,8 @@ import '../widgets/infraction_card.dart';
 import '../utils/favorites_manager.dart';
 import 'infraction_detail_screen.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../widgets/ad_banner.dart';
+import '../utils/ad_event_manager.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -54,12 +56,16 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             : favorites.isEmpty
                 ? const Center(child: Text('Aucun favori'))
                 : ListView.builder(
-                    itemCount: favorites.length,
+                    itemCount: favorites.length + 1,
                     itemBuilder: (context, index) {
+                      if (index == favorites.length) {
+                        return const AdBanner();
+                      }
                       final infraction = favorites[index];
                       return InfractionCard(
                         infraction: infraction,
                         onTap: () {
+                          AdEventManager.onInfractionViewed();
                           Navigator.of(context)
                               .push(
                                 PageRouteBuilder(

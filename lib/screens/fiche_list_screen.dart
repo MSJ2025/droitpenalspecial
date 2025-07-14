@@ -4,7 +4,7 @@ import '../widgets/infraction_card.dart';
 import '../widgets/search_bar.dart';
 import 'infraction_detail_screen.dart';
 import '../widgets/adaptive_appbar_title.dart';
-import '../widgets/interstitial_ad_helper.dart';
+import '../utils/ad_event_manager.dart';
 
 class FicheListScreen extends StatefulWidget {
   final FamilleInfractions famille;
@@ -73,7 +73,7 @@ class _FicheListScreenState extends State<FicheListScreen> {
                         return InfractionCard(
                           infraction: infraction,
                           onTap: () {
-                            InterstitialAdHelper.show();
+                            AdEventManager.onInfractionViewed();
                             Navigator.of(context).push(
                               PageRouteBuilder(
                                 pageBuilder: (_, animation, __) => FadeTransition(
