@@ -3,6 +3,10 @@
         android:label="PJ +"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <!-- Identifiant AdMob de l'application -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4176691748354941~1821840757" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

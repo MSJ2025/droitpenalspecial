@@ -3,6 +3,7 @@ import 'theme_screen.dart';
 import 'favorites_screen.dart';
 import 'cadre_list_screen.dart';
 import 'search_screen.dart';
+import '../widgets/ad_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -105,6 +106,8 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
+              const SizedBox(height: 32),
+              const AdBanner(),
             ],
           ),
         ),
