@@ -49,39 +49,43 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           maxLines: 1,
         ),
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : favorites.isEmpty
-                ? const Center(child: Text('Aucun favori'))
-                : ListView.builder(
-                    itemCount: favorites.length + 1,
-                    itemBuilder: (context, index) {
-                      if (index == favorites.length) {
-                        return const AdBanner();
-                      }
-                      final infraction = favorites[index];
-                      return InfractionCard(
-                        infraction: infraction,
-                        onTap: () {
-                          AdEventManager.onInfractionViewed();
-                          Navigator.of(context)
-                              .push(
-                                PageRouteBuilder(
-                                  pageBuilder: (_, animation, __) =>
-                                      FadeTransition(
-                                    opacity: animation,
-                                    child: InfractionDetailScreen(
-                                        infraction: infraction),
-                                  ),
-                                ),
-                              )
-                              .then((_) => loadFavorites());
-                        },
-                      );
-                    },
-                  ),
+      body: Column(
+        children: [
+          Expanded(
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : favorites.isEmpty
+                      ? const Center(child: Text('Aucun favori'))
+                      : ListView.builder(
+                          itemCount: favorites.length,
+                          itemBuilder: (context, index) {
+                            final infraction = favorites[index];
+                            return InfractionCard(
+                              infraction: infraction,
+                              onTap: () {
+                                AdEventManager.onInfractionViewed();
+                                Navigator.of(context)
+                                    .push(
+                                      PageRouteBuilder(
+                                        pageBuilder: (_, animation, __) =>
+                                            FadeTransition(
+                                          opacity: animation,
+                                          child: InfractionDetailScreen(
+                                              infraction: infraction),
+                                        ),
+                                      ),
+                                    )
+                                    .then((_) => loadFavorites());
+                              },
+                            );
+                          },
+                        ),
+            ),
+          ),
+          const AdBanner(),
+        ],
       ),
     );
   }
