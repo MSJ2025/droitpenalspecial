@@ -1,4 +1,4 @@
-import 'interstitial_ad_helper.dart';
+import '../widgets/interstitial_ad_helper.dart';
 import 'ad_helper.dart';
 
 /// Gère l'affichage conditionnel des interstitiels.
