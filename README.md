@@ -28,6 +28,12 @@ samples, guidance on mobile development, and a full API reference.
 
 L'application vérifie désormais automatiquement si une nouvelle version est disponible sur l'App Store ou sur Google Play grâce au plugin **upgrader**. Lorsque c'est le cas, une fenêtre s'affiche pour proposer à l'utilisateur de mettre à jour ou de continuer.
 
+## Publicité AdMob
+
+En mode *debug*, l'application utilise désormais les identifiants de test
+fournis par Google afin de pouvoir tester les bannières et interstitiels sans
+générer de clics réels.
+
 ## Licence
 
 Ce projet est distribué sous licence MIT. Voir [LICENSE](LICENSE) pour plus d'informations.
