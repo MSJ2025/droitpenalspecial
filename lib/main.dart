@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'screens/home_screen.dart';
 import 'utils/theme.dart';
 import 'utils/ad_helper.dart';
@@ -14,6 +15,8 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // Demande d'autorisation de suivi publicitaire (ATT).
+  await AppTrackingTransparency.requestTrackingAuthorization();
   // Initialisation AdMob pour activer la pub.
   MobileAds.instance.initialize();
   await FirebaseAnalytics.instance.logAppOpen();
