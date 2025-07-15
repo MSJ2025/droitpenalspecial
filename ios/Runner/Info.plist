@@ -21,8 +21,10 @@
   <!-- Identifiant AdMob de l'application -->
   <key>GADApplicationIdentifier</key>
   <string>ca-app-pub-4176691748354941~1821840757</string>
-	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+  <key>NSUserTrackingUsageDescription</key>
+  <string>Cette autorisation permet d\u2019afficher des publicités plus pertinentes.</string>
+        <key>CFBundleShortVersionString</key>
+        <string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
