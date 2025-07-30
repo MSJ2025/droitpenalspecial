@@ -79,9 +79,10 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     );
   }
 
-  void _next() {
+  Future<void> _next() async {
     if (_selectedIndices.isEmpty) return;
-    final correct = _questions[_current].isCorrectSet(_selectedIndices);
+    final question = _questions[_current];
+    final correct = question.isCorrectSet(_selectedIndices);
     if (correct) {
       _score++;
     }
@@ -90,17 +91,40 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
       _feedbackColor = correct ? Colors.green : Colors.red;
     });
 
-    Future.delayed(const Duration(milliseconds: 300)).then((_) {
+    await Future.delayed(const Duration(milliseconds: 300));
+    if (!mounted) return;
+
+    if (!correct) {
+      final correctOptions =
+          question.options.where((o) => o.isCorrect).map((o) => o.text).toList();
+      await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Bonne(s) réponse(s)'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [for (final t in correctOptions) Text('• ' + t)],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
       if (!mounted) return;
-      setState(() {
-        _feedbackColor = null;
-        if (_current < _questions.length - 1) {
-          _current++;
-          _selectedIndices = {};
-        } else {
-          _finished = true;
-        }
-      });
+    }
+
+    setState(() {
+      _feedbackColor = null;
+      if (_current < _questions.length - 1) {
+        _current++;
+        _selectedIndices = {};
+      } else {
+        _finished = true;
+      }
     });
   }
 
