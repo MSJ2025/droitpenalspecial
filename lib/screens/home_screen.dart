@@ -3,6 +3,7 @@ import 'theme_screen.dart';
 import 'favorites_screen.dart';
 import 'cadre_list_screen.dart';
 import 'search_screen.dart';
+import 'quiz_menu_screen.dart';
 import '../widgets/ad_banner.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -100,6 +101,24 @@ class HomeScreen extends StatelessWidget {
                         pageBuilder: (_, animation, __) => FadeTransition(
                           opacity: animation,
                           child: const FavoritesScreen(),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              FractionallySizedBox(
+                widthFactor: 0.85,
+                child: _ModernGradientButton(
+                  icon: Icons.quiz,
+                  label: 'Quiz',
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (_, animation, __) => FadeTransition(
+                          opacity: animation,
+                          child: const QuizMenuScreen(),
                         ),
                       ),
                     );
