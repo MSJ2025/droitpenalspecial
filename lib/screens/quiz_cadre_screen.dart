@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../models/quiz_question.dart';
 import '../utils/json_loader.dart';
+import '../utils/quiz_progress_manager.dart';
 import '../widgets/adaptive_appbar_title.dart';
 
 class QuizCadreScreen extends StatefulWidget {
@@ -83,6 +84,8 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     if (_selectedIndices.isEmpty) return;
     final question = _questions[_current];
     final correct = question.isCorrectSet(_selectedIndices);
+    await QuizProgressManager.recordQuestion(question.cadre, correct);
+    if (!mounted) return;
     if (correct) {
       _score++;
     }
@@ -126,6 +129,10 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
         _finished = true;
       }
     });
+    if (_finished) {
+      await QuizProgressManager.incrementQuizCount();
+      if (!mounted) return;
+    }
   }
 
   @override
