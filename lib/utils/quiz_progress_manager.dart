@@ -73,4 +73,11 @@ class QuizProgressManager {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getInt(_countKey) ?? 0;
   }
+
+  /// Réinitialise toutes les statistiques enregistrées.
+  static Future<void> reset() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_statsKey);
+    await prefs.remove(_countKey);
+  }
 }
