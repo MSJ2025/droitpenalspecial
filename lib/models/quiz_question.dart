@@ -36,6 +36,15 @@ class QuizQuestion {
             .toList(),
       );
 
-  bool isCorrect(int index) =>
-      index >= 0 && index < options.length && options[index].isCorrect;
+  /// Indices des options marquées comme correctes.
+  Set<int> get correctIndices => {
+        for (var i = 0; i < options.length; i++)
+          if (options[i].isCorrect) i
+      };
+
+  /// Vérifie si [selection] correspond exactement aux bonnes réponses.
+  bool isCorrectSet(Set<int> selection) {
+    final correct = correctIndices;
+    return selection.length == correct.length && selection.containsAll(correct);
+  }
 }

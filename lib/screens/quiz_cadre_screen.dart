@@ -15,7 +15,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
   List<QuizQuestion> _questions = [];
   int _current = 0;
   int _score = 0;
-  int _selected = -1;
+  Set<int> _selectedIndices = {};
   bool _loading = true;
   bool _finished = false;
 
@@ -57,12 +57,15 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
               final opt = question.options[index];
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 4),
-                child: RadioListTile<int>(
-                  value: index,
-                  groupValue: _selected,
+                child: CheckboxListTile(
+                  value: _selectedIndices.contains(index),
                   onChanged: (v) {
                     setState(() {
-                      _selected = v ?? -1;
+                      if (v == true) {
+                        _selectedIndices.add(index);
+                      } else {
+                        _selectedIndices.remove(index);
+                      }
                     });
                   },
                   title: Text(opt.text),
@@ -76,14 +79,14 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
   }
 
   void _next() {
-    if (_selected == -1) return;
-    if (_questions[_current].isCorrect(_selected)) {
+    if (_selectedIndices.isEmpty) return;
+    if (_questions[_current].isCorrectSet(_selectedIndices)) {
       _score++;
     }
     if (_current < _questions.length - 1) {
       setState(() {
         _current++;
-        _selected = -1;
+        _selectedIndices = {};
       });
     } else {
       setState(() {
@@ -150,7 +153,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
               ),
             ),
             ElevatedButton(
-              onPressed: _selected == -1 ? null : _next,
+              onPressed: _selectedIndices.isEmpty ? null : _next,
               child: Text(
                 _current < _questions.length - 1 ? 'Suivant' : 'Terminer',
               ),
