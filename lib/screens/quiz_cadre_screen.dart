@@ -18,6 +18,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
   Set<int> _selectedIndices = {};
   bool _loading = true;
   bool _finished = false;
+  Color? _feedbackColor;
 
   @override
   void initState() {
@@ -80,19 +81,27 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
 
   void _next() {
     if (_selectedIndices.isEmpty) return;
-    if (_questions[_current].isCorrectSet(_selectedIndices)) {
+    final correct = _questions[_current].isCorrectSet(_selectedIndices);
+    if (correct) {
       _score++;
     }
-    if (_current < _questions.length - 1) {
+
+    setState(() {
+      _feedbackColor = correct ? Colors.green : Colors.red;
+    });
+
+    Future.delayed(const Duration(milliseconds: 300)).then((_) {
+      if (!mounted) return;
       setState(() {
-        _current++;
-        _selectedIndices = {};
+        _feedbackColor = null;
+        if (_current < _questions.length - 1) {
+          _current++;
+          _selectedIndices = {};
+        } else {
+          _finished = true;
+        }
       });
-    } else {
-      setState(() {
-        _finished = true;
-      });
-    }
+    });
   }
 
   @override
@@ -135,7 +144,10 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
       appBar: AppBar(
         title: const AdaptiveAppBarTitle('Quiz cadres d\'enquête', maxLines: 1),
       ),
-      body: Padding(
+      body: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        color: _feedbackColor ?? Theme.of(context).scaffoldBackgroundColor,
+        child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -159,6 +171,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
               ),
             ),
           ],
+        ),
         ),
       ),
     );
