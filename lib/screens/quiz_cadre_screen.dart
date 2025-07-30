@@ -80,6 +80,50 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     );
   }
 
+  Future<void> _showWrongAnswerDialog(List<String> correctOptions) async {
+    await showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return Center(
+          child: Material(
+            type: MaterialType.transparency,
+            child: ScaleTransition(
+              scale:
+                  CurvedAnimation(parent: animation, curve: Curves.easeOutBack),
+              child: AlertDialog(
+                title: Row(
+                  children: const [
+                    Icon(Icons.close, color: Colors.red),
+                    SizedBox(width: 8),
+                    Expanded(child: Text('Bonne(s) réponse(s)')),
+                  ],
+                ),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 4),
+                    for (final t in correctOptions) Text('• $t'),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> _next() async {
     if (_selectedIndices.isEmpty) return;
     final question = _questions[_current];
@@ -99,23 +143,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     if (!correct) {
       final correctOptions =
           question.options.where((o) => o.isCorrect).map((o) => o.text).toList();
-      await showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Bonne(s) réponse(s)'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [for (final t in correctOptions) Text('• ' + t)],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
+      await _showWrongAnswerDialog(correctOptions);
       if (!mounted) return;
     }
 
