@@ -29,10 +29,13 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     final data = await loadJsonWithComments('assets/data/quiz_cadre_enquete.json');
     final List<dynamic> list = json.decode(data);
     setState(() {
-      _questions = list
+      final questions = list
           .whereType<Map>()
           .map((e) => QuizQuestion.fromJson(e.cast<String, dynamic>()))
-          .toList();
+          .toList()
+        ..shuffle();
+      _questions =
+          questions.length > 12 ? questions.take(12).toList() : questions;
       _loading = false;
     });
   }
