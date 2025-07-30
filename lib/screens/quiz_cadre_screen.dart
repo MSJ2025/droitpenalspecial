@@ -37,6 +37,41 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     });
   }
 
+  Widget _buildQuestion(QuizQuestion question) {
+    return Column(
+      key: ValueKey(_current),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          question.question,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 16),
+        Expanded(
+          child: ListView.builder(
+            itemCount: question.options.length,
+            itemBuilder: (context, index) {
+              final opt = question.options[index];
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 4),
+                child: RadioListTile<int>(
+                  value: index,
+                  groupValue: _selected,
+                  onChanged: (v) {
+                    setState(() {
+                      _selected = v ?? -1;
+                    });
+                  },
+                  title: Text(opt.text),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   void _next() {
     if (_selected == -1) return;
     if (_questions[_current].isCorrect(_selected)) {
@@ -99,27 +134,16 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              question.question,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            LinearProgressIndicator(
+              value: (_current + 1) / _questions.length,
             ),
             const SizedBox(height: 16),
             Expanded(
-              child: ListView.builder(
-                itemCount: question.options.length,
-                itemBuilder: (context, index) {
-                  final opt = question.options[index];
-                  return RadioListTile<int>(
-                    value: index,
-                    groupValue: _selected,
-                    onChanged: (v) {
-                      setState(() {
-                        _selected = v ?? -1;
-                      });
-                    },
-                    title: Text(opt.text),
-                  );
-                },
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (child, animation) =>
+                    FadeTransition(opacity: animation, child: child),
+                child: _buildQuestion(question),
               ),
             ),
             ElevatedButton(
