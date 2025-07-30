@@ -148,9 +148,16 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Score : \$_score / \${_questions.length}',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Builder(
+                builder: (context) {
+                  final percent =
+                      (_score / _questions.length * 100).toStringAsFixed(1);
+                  return Text(
+                    'Score : \$_score / \${_questions.length} ($percent\u202f%)',
+                    style:
+                        const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  );
+                },
               ),
               const SizedBox(height: 16),
               ElevatedButton(
