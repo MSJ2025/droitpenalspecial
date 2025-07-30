@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/quiz_question.dart';
 import '../utils/json_loader.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../utils/quiz_progress_manager.dart';
 
 class QuizCadreScreen extends StatefulWidget {
   const QuizCadreScreen({super.key});
@@ -86,6 +87,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     if (correct) {
       _score++;
     }
+    await QuizProgressManager.recordQuestion(question.cadre, correct);
 
     setState(() {
       _feedbackColor = correct ? Colors.green : Colors.red;
@@ -126,6 +128,9 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
         _finished = true;
       }
     });
+    if (_finished) {
+      await QuizProgressManager.incrementQuizCount();
+    }
   }
 
   @override
