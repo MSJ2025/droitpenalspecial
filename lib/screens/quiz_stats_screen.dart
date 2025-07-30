@@ -105,7 +105,14 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
-                LinearProgressIndicator(value: percent),
+                TweenAnimationBuilder<double>(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeOut,
+                  tween: Tween(begin: 0.0, end: percent),
+                  builder: (context, value, child) {
+                    return LinearProgressIndicator(value: value);
+                  },
+                ),
                 const SizedBox(height: 4),
                 Text(
                   '${e.value.correct} / ${e.value.answered} bonnes réponses ($percentText\u202f%)',
