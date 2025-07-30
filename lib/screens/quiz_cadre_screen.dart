@@ -157,8 +157,8 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
                 builder: (context) {
                   final percent =
                       (_score / _questions.length * 100).toStringAsFixed(1);
-                  return Text(
-                    'Score : \$_score / \${_questions.length} ($percent\u202f%)',
+                    return Text(
+                      'Score : $_score / ${_questions.length} ($percent\u202f%)',
                     style:
                         const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   );
