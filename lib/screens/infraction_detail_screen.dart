@@ -81,9 +81,12 @@ class _InfractionDetailScreenState extends State<InfractionDetailScreen> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
+      body: Column(
         children: [
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
           if (widget.infraction.definition != null)
             Card(
               margin: const EdgeInsets.only(bottom: 12),
@@ -356,10 +359,12 @@ class _InfractionDetailScreenState extends State<InfractionDetailScreen> {
               ),
             ),
           const SizedBox(height: 16),
-          const AdBanner(),
-        ],
+          ],
+        ),
       ),
-    );
+      const AdBanner(),
+    ],
+  );
   }
 
   Future<void> _openUrl(String? url) async {
