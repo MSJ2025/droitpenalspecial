@@ -34,6 +34,50 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     });
   }
 
+
+  Future<void> _showResultSummary({
+    required bool success,
+    required int correct,
+    required int incorrect,
+    required int manquantes,
+  }) async {
+    if (!mounted) return;
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(success ? 'Bravo !' : 'Raté…'),
+        content: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: success
+                    ? [Colors.greenAccent, Colors.green]
+                    : [Colors.redAccent, Colors.orange],
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Correctes : $correct'),
+                Text('Incorrectes : $incorrect'),
+                Text('Manquantes : $manquantes'),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
   Future<void> _validate() async {
     final expected = widget.caseData.infractions.map((e) => e.toLowerCase()).toSet();
     final provided = _controllers
@@ -41,19 +85,16 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
         .map((c) => c.text.trim().toLowerCase())
         .where((e) => e.isNotEmpty)
         .toSet();
-    final success = provided.length == expected.length && provided.containsAll(expected);
-    if (mounted) {
-      await showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(success ? 'Bravo !' : 'Raté…'),
-          content: Text(success
-              ? 'Toutes les infractions ont été trouvées.'
-              : 'Certaines infractions manquent ou sont incorrectes.'),
-          actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('OK'))],
-        ),
-      );
-    }
+    final correct = expected.intersection(provided);
+    final incorrect = provided.difference(expected);
+    final manquantes = expected.difference(provided);
+    final success = correct.length == expected.length && incorrect.isEmpty && manquantes.isEmpty;
+    await _showResultSummary(
+      success: success,
+      correct: correct.length,
+      incorrect: incorrect.length,
+      manquantes: manquantes.length,
+    );
   }
 
   Widget _buildField(int index, List<String> suggestions) {
