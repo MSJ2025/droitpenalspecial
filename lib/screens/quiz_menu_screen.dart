@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/adaptive_appbar_title.dart';
 import 'quiz_cadre_screen.dart';
 import 'quiz_stats_screen.dart';
+import 'recherche/recherche_infraction_list_screen.dart';
 
 class QuizMenuScreen extends StatelessWidget {
   const QuizMenuScreen({super.key});
@@ -39,6 +40,20 @@ class QuizMenuScreen extends StatelessWidget {
                   );
                 },
                 child: const Text('Quiz infractions'),
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: 220,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const RechercheInfractionListScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Recherche d\u2019infractions'),
               ),
             ),
             const SizedBox(height: 16),
