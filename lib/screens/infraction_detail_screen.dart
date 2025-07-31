@@ -364,7 +364,7 @@ class _InfractionDetailScreenState extends State<InfractionDetailScreen> {
       ),
       const AdBanner(),
     ],
-  );
+  ));
   }
 
   Future<void> _openUrl(String? url) async {
