@@ -11,7 +11,7 @@ class RechercheInfractionQuizScreen extends StatefulWidget {
 }
 
 class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizScreen> {
-  final List<TextEditingController> _controllers = [TextEditingController()];
+  final List<TextEditingController?> _controllers = [];
   late Future<List<String>> _suggestions;
 
   @override
@@ -23,20 +23,21 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
   @override
   void dispose() {
     for (final c in _controllers) {
-      c.dispose();
+      c?.dispose();
     }
     super.dispose();
   }
 
   void _addField() {
     setState(() {
-      _controllers.add(TextEditingController());
+      _controllers.add(null);
     });
   }
 
   Future<void> _validate() async {
     final expected = widget.caseData.infractions.map((e) => e.toLowerCase()).toSet();
     final provided = _controllers
+        .whereType<TextEditingController>()
         .map((c) => c.text.trim().toLowerCase())
         .where((e) => e.isNotEmpty)
         .toSet();
@@ -64,8 +65,15 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
           return suggestions.where((s) => s.toLowerCase().contains(text.text.toLowerCase()));
         },
         fieldViewBuilder: (_, controller, focusNode, onFieldSubmitted) {
-          _controllers[index] = controller;
-          return TextField(controller: controller, focusNode: focusNode, onSubmitted: (_) => onFieldSubmitted());
+          if (_controllers[index] == null) {
+            _controllers[index] = controller;
+          } else {
+            controller = _controllers[index]!;
+          }
+          return TextField(
+              controller: controller,
+              focusNode: focusNode,
+              onSubmitted: (_) => onFieldSubmitted());
         },
       ),
     );
