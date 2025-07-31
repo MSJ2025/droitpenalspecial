@@ -28,7 +28,7 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
     final data = await loadJsonWithComments('assets/data/recherche_infractions.json');
     final List<dynamic> raw = json.decode(data) as List<dynamic>;
     return raw
-        .whereType<Map>()
+        .whereType<Map<String, dynamic>>()
         .map((e) => RechercheInfraction.fromJson(e))
         .toList();
   }
