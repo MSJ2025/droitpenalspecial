@@ -113,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                 widthFactor: 0.85,
                 child: ModernGradientButton(
                   icon: Icons.quiz,
-                  label: 'Quiz',
+                  label: 'S’entrainer',
                   onPressed: () {
                     Navigator.of(context).push(
                       PageRouteBuilder(
