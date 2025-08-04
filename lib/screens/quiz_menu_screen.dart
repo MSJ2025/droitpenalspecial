@@ -13,7 +13,7 @@ class QuizMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AdaptiveAppBarTitle('Quiz', maxLines: 1),
+        title: const AdaptiveAppBarTitle("S'entrainer", maxLines: 1),
       ),
       body: Container(
         decoration: const BoxDecoration(
