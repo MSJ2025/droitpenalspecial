@@ -86,11 +86,10 @@ class HomeScreen extends StatelessWidget {
                         pageBuilder: (_, animation, __) => FadeTransition(
                           opacity: animation,
                           child: const QuizMenuScreen(),
-
                         ),
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 32),
