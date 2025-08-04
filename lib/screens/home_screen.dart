@@ -70,22 +70,23 @@ class HomeScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      FractionallySizedBox(
-                        widthFactor: 0.85,
-                        child: ModernGradientButton(
-                          icon: Icons.quiz,
-                          label: 'S’entrainer',
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              PageRouteBuilder(
-                                pageBuilder: (_, animation, __) => FadeTransition(
-                                  opacity: animation,
-                                  child: const QuizMenuScreen(),
-                                ),
-                              ),
-                            );
-                          },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              FractionallySizedBox(
+                widthFactor: 0.85,
+                child: ModernGradientButton(
+                  icon: Icons.quiz,
+                  label: 'S’entrainer',
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (_, animation, __) => FadeTransition(
+                          opacity: animation,
+                          child: const QuizMenuScreen(),
+
                         ),
                       ),
                     ],
