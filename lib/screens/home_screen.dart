@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'theme_screen.dart';
-import 'favorites_screen.dart';
-import 'cadre_list_screen.dart';
-import 'search_screen.dart';
+import 'droit_penal_special_menu_screen.dart';
+import 'procedure_penale_menu_screen.dart';
 import 'quiz_menu_screen.dart';
 import '../widgets/ad_banner.dart';
 import '../widgets/modern_gradient_button.dart';
@@ -40,68 +38,36 @@ class HomeScreen extends StatelessWidget {
                       FractionallySizedBox(
                         widthFactor: 0.85,
                         child: ModernGradientButton(
-                          icon: Icons.book,
-                          label: 'Infractions par thèmes',
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      PageRouteBuilder(
-                        pageBuilder: (_, animation, __) => FadeTransition(
-                          opacity: animation,
-                          child: const ThemeScreen(),
+                          icon: Icons.gavel,
+                          label: 'Droit Pénal Spécial',
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder: (_, animation, __) => FadeTransition(
+                                  opacity: animation,
+                                  child: const DroitPenalSpecialMenuScreen(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 16),
-              FractionallySizedBox(
-                widthFactor: 0.85,
-                child: ModernGradientButton(
-                  icon: Icons.gavel,
-                  label: "Cadres d'enquête",
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      PageRouteBuilder(
-                        pageBuilder: (_, animation, __) => FadeTransition(
-                          opacity: animation,
-                          child: const CadreListScreen(),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 16),
-              FractionallySizedBox(
-                widthFactor: 0.85,
-                child: ModernGradientButton(
-                  icon: Icons.search,
-                  label: "Rechercher une infraction",
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      PageRouteBuilder(
-                        pageBuilder: (_, animation, __) => FadeTransition(
-                          opacity: animation,
-                          child: const SearchScreen(),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 16),
-              FractionallySizedBox(
-                widthFactor: 0.85,
-                child: ModernGradientButton(
-                  icon: Icons.star,
-                  label: 'Mes favoris',
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      PageRouteBuilder(
-                        pageBuilder: (_, animation, __) => FadeTransition(
-                          opacity: animation,
-                          child: const FavoritesScreen(),
+                      const SizedBox(height: 16),
+                      FractionallySizedBox(
+                        widthFactor: 0.85,
+                        child: ModernGradientButton(
+                          icon: Icons.account_balance,
+                          label: 'Procédure Pénale',
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder: (_, animation, __) => FadeTransition(
+                                  opacity: animation,
+                                  child: const ProcedurePenaleMenuScreen(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     );
@@ -120,12 +86,9 @@ class HomeScreen extends StatelessWidget {
                         pageBuilder: (_, animation, __) => FadeTransition(
                           opacity: animation,
                           child: const QuizMenuScreen(),
+
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
                     ],
                   ),
                 ),
