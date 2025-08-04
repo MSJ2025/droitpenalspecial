@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/adaptive_appbar_title.dart';
 import '../widgets/modern_gradient_button.dart';
 import 'cadre_list_screen.dart';
 
@@ -9,6 +10,12 @@ class ProcedurePenaleMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const AdaptiveAppBarTitle(
+          'Procédure Pénale',
+          maxLines: 1,
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
