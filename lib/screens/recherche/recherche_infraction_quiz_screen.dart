@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/recherche_infraction.dart';
 import '../../utils/infraction_suggestions.dart';
+import 'recherche_infraction_correction_screen.dart';
 
 class RechercheInfractionQuizScreen extends StatefulWidget {
   final RechercheInfraction caseData;
@@ -138,11 +139,23 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
                     itemBuilder: (context, index) => _buildField(index, suggestions),
                   ),
                 ),
-                Row(
+                Wrap(
+                  spacing: 16,
+                  runSpacing: 8,
                   children: [
                     ElevatedButton(onPressed: _addField, child: const Text('Ajouter')),
-                    const SizedBox(width: 16),
                     ElevatedButton(onPressed: _validate, child: const Text('Valider')),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                RechercheInfractionCorrectionScreen(caseData: widget.caseData),
+                          ),
+                        );
+                      },
+                      child: const Text('Voir la correction'),
+                    ),
                   ],
                 ),
               ],
