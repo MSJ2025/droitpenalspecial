@@ -75,7 +75,6 @@ flutter:
     - assets/data/fiches.json
     - assets/data/cadres.json
     - assets/data/loader_test.json
-    - assets/data/quiz_cadre_enquete.json
     - assets/data/quiz_pp.json
     - assets/data/recherche_infractions.json
     - assets/images/
