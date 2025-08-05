@@ -1,11 +1,25 @@
-import 'quiz_question.dart';
+class QuizOption {
+  final String text;
+  final bool isCorrect;
+
+  QuizOption({required this.text, required this.isCorrect});
+
+  factory QuizOption.fromJson(Map<String, dynamic> json) => QuizOption(
+        text: json['text'] ?? '',
+        isCorrect: json['is_correct'] ?? false,
+      );
+}
 
 class QuizPPQuestion {
   final String cadre;
   final String acte;
   final List<QuizOption> propositions;
 
-  QuizPPQuestion({required this.cadre, required this.acte, required this.propositions});
+  QuizPPQuestion({
+    required this.cadre,
+    required this.acte,
+    required this.propositions,
+  });
 
   factory QuizPPQuestion.fromJson(Map<String, dynamic> json) => QuizPPQuestion(
         cadre: json['cadre'] ?? '',
