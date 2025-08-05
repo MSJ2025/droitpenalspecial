@@ -1,10 +1,258 @@
 [
   {
     "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Cadre légal",
+    "propositions": [
+      {
+        "text": "75 à 78 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "70 à 75 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "53 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE DE FLAGRANCE",
+    "acte": "Cadre légal",
+    "propositions": [
+      {
+        "text": "75 à 78 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "70 à 75 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "54 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "53 à 67 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "151 à 154-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "COMMISSION ROGATOIRE",
+    "acte": "Cadre légal",
+    "propositions": [
+      {
+        "text": "75 à 78 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "70 à 75 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "54 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "53 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-2 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "151 à 154-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "DÉCOUVERTE DE CADAVRE\nOU DE PERSONNE GRIÈVEMENT\nBLESSÉEE",
+    "acte": "Cadre légal",
+    "propositions": [
+      {
+        "text": "75 à 78 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "70 à 75 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "54 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "53 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74  CPP",
+        "is_correct": true
+      },
+      {
+        "text": "74-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "DISPARITION INQUIÉTANTE",
+    "acte": "Cadre légal",
+    "propositions": [
+      {
+        "text": "75 à 78 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "70 à 75 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "54 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "53 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1  CPP",
+        "is_correct": true
+      },
+      {
+        "text": "74-2  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "RECHERCHE\nDE PERSONNE EN FUITE",
+    "acte": "Cadre légal",
+    "propositions": [
+      {
+        "text": "75 à 78 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "70 à 75 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "54 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "53 à 67 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "151 à 154-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2  CPP",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
     "acte": "Transport, Constatations et Mesures Prises",
     "propositions": [
       {
-        "text": "14",
+        "text": "14 CPP",
         "is_correct": true
       },
       {
@@ -22,6 +270,14 @@
       {
         "text": "76 CPP",
         "is_correct": false
+      },
+      {
+        "text": "77 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "67 CPP (crime)",
+        "is_correct": false
       }
     ]
   },
@@ -38,15 +294,113 @@
         "is_correct": true
       },
       {
+        "text": "695-11 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
         "text": "706-58 CPP (anonymat)",
         "is_correct": true
+      },
+      {
+        "text": "706-35 CPP (anonymat)",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "77 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Cas particulier d’une audition de témoin d’un représentant légal (mineur auteur)",
+    "propositions": [
+      {
+        "text": "L412-1 et L412-2 CPP (audition libre)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-3, L413-5 CPP (retenue judiciaire)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-7, L413-8, L413-9 CJPM (GAV mineur)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-3, L413-7 CPP (retenue judiciaire)",
+        "is_correct": false
+      },
+      {
+        "text": "L413-5, L413-6, L413-9 CJPM (GAV mineur)",
+        "is_correct": false
+      },
+      {
+        "text": "L412-2 et L412-3 CPP (audition libre)",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE DE FLAGRANCE",
+    "acte": "Cas particulier d’une audition de témoin d’un représentant légal (mineur auteur)",
+    "propositions": [
+      {
+        "text": "L412-1 et L412-2 CPP (audition libre)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-3, L413-5 CPP (retenue judiciaire)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-7, L413-8, L413-9 CJPM (GAV mineur)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-3, L413-7 CPP (retenue judiciaire)",
+        "is_correct": false
+      },
+      {
+        "text": "L413-5, L413-6, L413-9 CJPM (GAV mineur)",
+        "is_correct": false
+      },
+      {
+        "text": "L412-2 et L412-3 CPP (audition libre)",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "COMMISSION ROGATOIRE",
+    "acte": "Cas particulier d’une audition de témoin d’un représentant légal (mineur auteur)",
+    "propositions": [
+      {
+        "text": "L412-1 et L412-2 CPP (audition libre)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-3, L413-5 CPP (retenue judiciaire)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-7, L413-8, L413-9 CJPM (GAV mineur)",
+        "is_correct": true
+      },
+      {
+        "text": "L413-3, L413-7 CPP (retenue judiciaire)",
+        "is_correct": false
+      },
+      {
+        "text": "L413-5, L413-6, L413-9 CJPM (GAV mineur)",
+        "is_correct": false
+      },
+      {
+        "text": "L412-2 et L412-3 CPP (audition libre)",
         "is_correct": false
       }
     ]
@@ -64,19 +418,57 @@
         "is_correct": true
       },
       {
-        "text": "706-52",
-        "is_correct": true
+        "text": "10-2 à 10-7 et 15-3 CPP (uniquement pour majeur)",
+        "is_correct": false
       },
       {
-        "text": "706-53 CPP (mineur victime infraction prévue par l’art. 706-47 CPP)",
-        "is_correct": true
+        "text": "706-51",
+        "is_correct": false
+      },
+      {
+        "text": "706-50 CPP (mineur victime infraction prévue par l’art. 706-47 CPP)",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-47-3 CPP ( mineur ou majeur)",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Cas particulier audition de victime et son représentant légal relative infraction art. 706-47 CPP",
+    "propositions": [
+      {
+        "text": "706-53 (mineur)",
+        "is_correct": true
+      },
+      {
+        "text": "706-47-2 (mineur ou majeur)",
+        "is_correct": true
+      },
+      {
+        "text": "10-2 à 10-7 et 15-3 CPP (uniquement pour majeur)",
+        "is_correct": false
+      },
+      {
+        "text": "706-52 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-50 CPP (mineur victime infraction prévue par l’art. 706-47 CPP)",
+        "is_correct": false
+      },
+      {
+        "text": "706-54 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-47-3 CPP ( mineur ou majeur)",
         "is_correct": false
       }
     ]
@@ -90,11 +482,11 @@
         "is_correct": true
       },
       {
-        "text": "L412-1 et L412-2 du CJPM (mineur)",
+        "text": "L412-1 et L412-2 CJPM (mineur)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "L412-2 et L412-3 CJPM (mineur)",
         "is_correct": false
       },
       {
@@ -112,11 +504,11 @@
         "is_correct": true
       },
       {
-        "text": "L413-6 à L413-11 du CJPM (mineur)",
+        "text": "L413-6 à L413-11 CJPM (mineur)",
         "is_correct": true
       },
       {
-        "text": "L413-1 à L413-5 du CJPM (retenue)",
+        "text": "L413-1 à L413-5 CJPM (retenue)",
         "is_correct": true
       },
       {
@@ -124,11 +516,41 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "L413-5 à L413-11 CJPM (mineur)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "L413-3 à L413-6 CJPM (retenue)",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Réquisition à prestataire de service",
+    "propositions": [
+      {
+        "text": "R. 642-1 CP",
+        "is_correct": true
+      },
+      {
+        "text": "57, al. 2 CPP (réquisition témoins perquisition)",
+        "is_correct": true
+      },
+      {
+        "text": "R. 642-3 CP",
+        "is_correct": false
+      },
+      {
+        "text": "57, al. 4 CPP (réquisition témoins perquisition)",
+        "is_correct": false
+      },
+      {
+        "text": "77-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "L413-3 à L413-6 CJPM (retenue)",
         "is_correct": false
       }
     ]
@@ -142,12 +564,16 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "77-1-3 CPP (ouverture de scellé 'données informatiques')",
+        "is_correct": true
+      },
+      {
+        "text": "77-1-5 CPP (ouverture de scellé 'données informatiques')",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
-        "is_correct": false
+        "text": "77-3 CPP",
+        "is_correct": true
       }
     ]
   },
@@ -156,7 +582,7 @@
     "acte": "Réquisition aux fins de remise d'informations",
     "propositions": [
       {
-        "text": "77-1-1",
+        "text": "77-1-1 CPP",
         "is_correct": true
       },
       {
@@ -164,11 +590,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "77-1-3 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "77-1 CPP",
         "is_correct": false
       }
     ]
@@ -193,6 +619,72 @@
   },
   {
     "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Réquisition géolocalisation",
+    "propositions": [
+      {
+        "text": "230-32 à 230-44  CPP",
+        "is_correct": true
+      },
+      {
+        "text": "230-34 à 230-44  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "77-1-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "77-1-2  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Réquisition autorité militaire",
+    "propositions": [
+      {
+        "text": "698-3 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "698-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "678-3 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "678-7  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
+    "acte": "Réquisition d’interception (com. électroniques)",
+    "propositions": [
+      {
+        "text": "706-95 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "698-4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "698-3 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "678-7  CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE PRÉLIMINAIRE",
     "acte": "Perquisition",
     "propositions": [
       {
@@ -204,11 +696,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "77 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "76-1 CPP (données informatique)",
         "is_correct": false
       }
     ]
@@ -222,31 +714,23 @@
         "is_correct": true
       },
       {
-        "text": "706-28 CPP (Trafic de produits stupéfiants",
-        "is_correct": true
-      },
-      {
-        "text": "participation à une association de malfaiteurs)",
-        "is_correct": true
-      },
-      {
-        "text": "706-35 CPP (Traite des êtres humains",
-        "is_correct": true
-      },
-      {
-        "text": "Proxénétisme ou recours à la prostitution des mineurs",
-        "is_correct": true
-      },
-      {
-        "text": "participation à une association de malfaiteurs)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "706-40  CPP (criminalité et délinquance organisées)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-28 CPP (Trafic de produits stupéfiants, association de malfaiteurs",
+        "is_correct": true
+      },
+      {
+        "text": "706-70 CPP (Trafic de produits stupéfiants, association de malfaiteurs",
+        "is_correct": false
+      },
+      {
+        "text": "706-35 CPP (Traite des êtres humains, Proxénétisme, prostitution des mineurs",
+        "is_correct": true
+      },
+      {
+        "text": "706-38 CPP (Traite des êtres humains, Proxénétisme, prostitution des mineurs",
         "is_correct": false
       }
     ]
@@ -256,23 +740,27 @@
     "acte": "Saisie",
     "propositions": [
       {
-        "text": "76",
+        "text": "76 CPP",
         "is_correct": true
       },
       {
-        "text": "CPP",
-        "is_correct": true
-      },
-      {
-        "text": "76-3 CPP (accès à des données dans un système\ninformatique)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "77 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "76-3 CPP (accès à des données dans un système informatique)",
+        "is_correct": true
+      },
+      {
+        "text": "76-7 CPP (accès à des données dans un système informatique)",
+        "is_correct": false
+      },
+      {
+        "text": "76-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "77-3 CPP (accès à des données dans un système informatique)",
         "is_correct": false
       }
     ]
@@ -290,11 +778,19 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "41-3 CPP (restitution)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "41-7 CPP (destruction)",
+        "is_correct": false
+      },
+      {
+        "text": "76-2 CPP (destruction)",
+        "is_correct": false
+      },
+      {
+        "text": "76-3 CPP (restitution)",
         "is_correct": false
       }
     ]
@@ -308,11 +804,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "230-20 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "230-13 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "230-17 CPP",
         "is_correct": false
       }
     ]
@@ -332,6 +832,14 @@
       {
         "text": "76 CPP",
         "is_correct": false
+      },
+      {
+        "text": "76 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "55 CPP",
+        "is_correct": false
       }
     ]
   },
@@ -344,25 +852,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "122 à 136 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
-        "is_correct": false
-      }
-    ]
-  },
-  {
-    "cadre": "ENQUÊTE PRÉLIMINAIRE",
-    "acte": "Procès-verbal d’interpellation ",
-    "propositions": [
-      {
-        "text": "73 CPP",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "76-3 CPP",
         "is_correct": false
       },
       {
@@ -376,39 +870,39 @@
     "acte": "Transport, Constatations et Mesures Prises",
     "propositions": [
       {
-        "text": "14",
+        "text": "14 CPP",
         "is_correct": true
       },
       {
-        "text": "54",
+        "text": "54 CPP",
         "is_correct": true
       },
       {
-        "text": "CPP",
-        "is_correct": true
+        "text": "53 CPP (crime)",
+        "is_correct": false
       },
       {
         "text": "55 CPP (crime)",
         "is_correct": true
       },
       {
-        "text": "67 (délit)",
+        "text": "67 CPP (délit)",
         "is_correct": true
       },
       {
-        "text": "61",
+        "text": "61 al. 1 CPP (défendre de s'éloigner)",
         "is_correct": true
       },
       {
-        "text": "al. 1 (défendre de s'éloigner)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "61 al. 3 CPP (défendre de s'éloigner)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "62 CPP (délit) CPP",
+        "is_correct": false
+      },
+      {
+        "text": "60 CPP CPP",
         "is_correct": false
       }
     ]
@@ -418,7 +912,7 @@
     "acte": "Audition de témoin",
     "propositions": [
       {
-        "text": "61",
+        "text": "61 CPP",
         "is_correct": true
       },
       {
@@ -434,11 +928,19 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "706-52 CPP (mineur)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-52 CPP (anonymat)",
+        "is_correct": false
+      },
+      {
+        "text": "63 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "60 CPP",
         "is_correct": false
       }
     ]
@@ -452,38 +954,38 @@
         "is_correct": true
       },
       {
-        "text": "L413-3",
+        "text": "L413-3 CPP",
         "is_correct": true
       },
       {
-        "text": "L413-5 CPP (retenue)",
+        "text": "L413-5 CPP (retenue judiciaire)",
         "is_correct": true
       },
       {
-        "text": "L413-7",
+        "text": "L413-7 CJPM",
         "is_correct": true
       },
       {
-        "text": "L413-8",
+        "text": "L413-8 CJPM",
         "is_correct": true
       },
       {
-        "text": "L413-9 CJPM (GAV mineur)",
+        "text": "L413-9 CJPM",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "63 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "61-1 CPP",
         "is_correct": false
       }
     ]
   },
   {
     "cadre": "ENQUÊTE DE FLAGRANCE",
-    "acte": "Audition victime (ou représentant légal mineur",
+    "acte": "Audition victime (ou représentant légal mineur)",
     "propositions": [
       {
         "text": "61",
@@ -498,19 +1000,49 @@
         "is_correct": true
       },
       {
-        "text": "706-52",
-        "is_correct": true
+        "text": "10-3 à 10-6 et 15-4 CPP (majeur)",
+        "is_correct": false
       },
       {
-        "text": "706-53 CPP (mineur victime infraction prévue par l’art. 706-47 CPP)",
-        "is_correct": true
+        "text": "706-54 CPP",
+        "is_correct": false
       },
       {
-        "text": "74 CPP",
+        "text": "706-55 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "61-1 (mineur) CPP",
         "is_correct": false
       },
       {
         "text": "76 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE DE FLAGRANCE",
+    "acte": "audition de victime\n(et de son représentant légal)\ninfraction prévue à l’art. 706-47 CPP",
+    "propositions": [
+      {
+        "text": "706-52 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-53 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-47-2 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-47-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-47-3 CPP",
         "is_correct": false
       }
     ]
@@ -524,15 +1056,15 @@
         "is_correct": true
       },
       {
-        "text": "L412-1 et L412-2 CJPM (mineur GAV)",
+        "text": "L412-1 et L412-2 CJPM (mineur)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "L412-3 et L412-7 CJPM (mineur)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "61-3 CPP",
         "is_correct": false
       }
     ]
@@ -554,15 +1086,45 @@
         "is_correct": true
       },
       {
-        "text": "prolongation (infraction prévue art.706-73) : 706-88 CPP",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "706-80 (prolongation)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "L413-7 à L413-13 CJPM (mineur GAV)",
+        "is_correct": false
+      },
+      {
+        "text": "61 à 64 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "ENQUÊTE DE FLAGRANCE",
+    "acte": "Cas particulier d’une prolongation de GAV\ninfraction prévue art. 706-73 CPP",
+    "propositions": [
+      {
+        "text": "706-88 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-88-1 (terrorisme) CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-89 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-28 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-88-3 CPP(terrorisme)",
+        "is_correct": false
+      },
+      {
+        "text": "706-87 CPP (terrorisme)",
         "is_correct": false
       }
     ]
@@ -576,19 +1138,19 @@
         "is_correct": true
       },
       {
-        "text": "57",
+        "text": "57 al.2 CPP (réquisition témoins perquisition)",
         "is_correct": true
       },
       {
-        "text": "al. 2 du CPP (réquisition témoins perquisition)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "63 al.2 CPP (réquisition témoins perquisition)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "60 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "60-1 CPP",
         "is_correct": false
       }
     ]
@@ -602,15 +1164,15 @@
         "is_correct": true
       },
       {
-        "text": "60-3 CPP (ouverture de scellé d'un objet qui est le support de données informatiques)",
+        "text": "60-3 CPP (ouverture de scellé -> support de données informatiques)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "60-1 CPP CPP (ouverture de scellé -> support de données informatiques)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "62 CPP",
         "is_correct": false
       }
     ]
@@ -620,15 +1182,23 @@
     "acte": "Réquisition aux fins de remise d'informations + gel données",
     "propositions": [
       {
-        "text": "60-1 / 60-2 CPP",
+        "text": "60-1 CPP",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "60-2 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "61-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "59-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "57-3 CPP",
         "is_correct": false
       }
     ]
@@ -642,11 +1212,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "62-2 à 64 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "56 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "59-1 CPP",
         "is_correct": false
       }
     ]
@@ -660,11 +1234,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "60-1 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "58-5 CPP",
         "is_correct": false
       }
     ]
@@ -678,11 +1252,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "698-3 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-89 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-28 CPP",
         "is_correct": false
       }
     ]
@@ -692,11 +1270,11 @@
     "acte": "Perquisition ",
     "propositions": [
       {
-        "text": "56",
+        "text": "56 CPP",
         "is_correct": true
       },
       {
-        "text": "57",
+        "text": "57 CPP",
         "is_correct": true
       },
       {
@@ -712,18 +1290,30 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "57-3 CPP (accès à des données dans un système\ninformatique)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "60-1 CPP (accès à des données dans un système\ninformatique)",
+        "is_correct": false
+      },
+      {
+        "text": "60-3 CPP (accès à des données dans un système\ninformatique)",
+        "is_correct": false
+      },
+      {
+        "text": "54 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "60 CPP",
         "is_correct": false
       }
     ]
   },
   {
     "cadre": "ENQUÊTE DE FLAGRANCE",
-    "acte": "Perquisition hros heure légale",
+    "acte": "Perquisition hors heure légale",
     "propositions": [
       {
         "text": "59-1  CPP",
@@ -734,33 +1324,30 @@
         "is_correct": true
       },
       {
-        "text": "706-28 (Trafic de produits stupéfiants",
-        "is_correct": true
-      },
-      {
-        "text": "participation à une association de malfaiteurs)",
-        "is_correct": true
-      },
-      {
-        "text": "706-35 (Traite des êtres humains",
-        "is_correct": true
-      },
-      {
-        "text": "Proxénétisme ou recours à la prostitution des mineurs",
-        "is_correct": true
-      },
-      {
-        "text": "participation à une association de malfaiteurs)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "706-28 CPP (Trafic stupéfiants - association de malfaiteurs)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-35 CPP (Traite des êtres humains, Proxénétisme / prostitution mineurs, association de malfaiteurs)",
+        "is_correct": false
+      },
+      {
+        "text": "706-90 CPP (criminalité et délinquance organisées)",
+        "is_correct": false
+      },
+      {
+        "text": "706-32 CPP (Traite des êtres humains, Proxénétisme / prostitution mineurs, association de malfaiteurs)",
+        "is_correct": false
+      },
+      {
+        "text": "60-1  CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-29 CPP (Trafic stupéfiants - association de malfaiteurs)",
         "is_correct": false
       }
+
     ]
   },
   {
@@ -768,20 +1355,28 @@
     "acte": "Saisie,",
     "propositions": [
       {
-        "text": "76 CPP",
+        "text": "56 CPP",
         "is_correct": true
       },
       {
-        "text": "76-3 CPP (accès à des données dans un système\ninformatique)",
+        "text": "57-1 CPP (accès données\nsystème informatique)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
-        "is_correct": false
+        "text": "59 CPP (domicile)",
+        "is_correct": true
       },
       {
-        "text": "76 CPP",
-        "is_correct": false
+        "text": "57 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "58 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "60 CPP (domicile)",
+        "is_correct": true
       }
     ]
   },
@@ -798,11 +1393,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "41-2 CPP (restitution)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "41-3 CPP (destruction)",
+        "is_correct": false
+      },
+      {
+        "text": "56-3 CPP",
         "is_correct": false
       }
     ]
@@ -817,14 +1416,14 @@
       },
       {
         "text": "41-5 CPP (destruction)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "100-8 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "122-11 CPP",
         "is_correct": false
       }
     ]
@@ -838,37 +1437,37 @@
         "is_correct": true
       },
       {
-        "text": "41-5 CPP (destruction)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "51 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "15 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "62 CPP",
         "is_correct": false
       }
     ]
   },
   {
     "cadre": "ENQUÊTE DE FLAGRANCE",
-    "acte": "Transcription d’une interception (correspondances émises par la voie des communications électroniques) ",
+    "acte": "Transcription d’une interception (correspondances -> com. électroniques) ",
     "propositions": [
       {
         "text": "100 à 100-8 CPP",
         "is_correct": true
       },
       {
-        "text": "41-5 CPP (destruction)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "122 à 136 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "695-11 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "73 CPP",
         "is_correct": false
       }
     ]
@@ -882,15 +1481,15 @@
         "is_correct": true
       },
       {
-        "text": "41-5 CPP (destruction)",
+        "text": "58 CPP (destruction)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "78 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "59-1 CPP",
         "is_correct": false
       }
     ]
@@ -900,7 +1499,7 @@
     "acte": "Transport, Constatations et Mesures Prises",
     "propositions": [
       {
-        "text": "14",
+        "text": "14 CPP",
         "is_correct": true
       },
       {
@@ -908,11 +1507,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "153 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "103 CPP",
         "is_correct": false
       }
     ]
@@ -922,11 +1521,15 @@
     "acte": "Audition de témoin",
     "propositions": [
       {
-        "text": "103",
+        "text": "103 CPP",
         "is_correct": true
       },
       {
         "text": "153 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "113-7 CPP (témoin assisté)",
         "is_correct": true
       },
       {
@@ -938,29 +1541,37 @@
         "is_correct": true
       },
       {
-        "text": "108 (mineur de 16 ans)",
+        "text": "108 CPP (mineur de 16 ans)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "106 CPP (mineur de 18 ans)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "152 al.2 CPP (anonymat)",
+        "is_correct": false
+      },
+      {
+        "text": "151 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
+        "text": "151-3 CPP (témoin assisté)",
         "is_correct": false
       }
     ]
   },
   {
     "cadre": "COMMISSION ROGATOIRE",
-    "acte": "audition de témoin\nd’un représentant légal d’un mineur auteur",
+    "acte": "audition de témoin\n représentant légal d’un mineur auteur",
     "propositions": [
       {
         "text": "L412-1 et L412-2 CPP (libre)",
         "is_correct": true
       },
       {
-        "text": "L413-3",
+        "text": "L413-3 CPP",
         "is_correct": true
       },
       {
@@ -968,11 +1579,11 @@
         "is_correct": true
       },
       {
-        "text": "L413-7",
+        "text": "L413-7 CJPM",
         "is_correct": true
       },
       {
-        "text": "L413-8",
+        "text": "L413-8 CJPM",
         "is_correct": true
       },
       {
@@ -980,11 +1591,19 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "706-88 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-88-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-47-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "61-1 CPP",
         "is_correct": false
       }
     ]
@@ -994,7 +1613,7 @@
     "acte": "Audition victime ",
     "propositions": [
       {
-        "text": "103",
+        "text": "103 CPP",
         "is_correct": true
       },
       {
@@ -1006,23 +1625,53 @@
         "is_correct": true
       },
       {
-        "text": "152",
+        "text": "152 al.2 CPP (partie civile)",
         "is_correct": true
       },
       {
-        "text": "al. 2 (partie civile)",
-        "is_correct": true
-      },
-      {
-        "text": "108 (mineur de 16 ans)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "L412-1 et L412-2 du CJPM (mineur)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "108 CPP (mineur de 16 ans)",
+        "is_correct": true
+      },
+      {
+        "text": "107 CPP (mineur de 18 ans)",
+        "is_correct": false
+      },
+      {
+        "text": "103 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "153 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "COMMISSION ROGATOIRE",
+    "acte": "audition de victime\n(et de son représentant légal)\ninfraction prévue à l’art. 706-47 CPP",
+    "propositions": [
+      {
+        "text": "706-52 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-53 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-47-2 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-47-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-47-3 CPP",
         "is_correct": false
       }
     ]
@@ -1040,11 +1689,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "153 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "10-2 à 10-6 CJPM (mineur),",
         "is_correct": false
       }
     ]
@@ -1054,12 +1703,12 @@
     "acte": "Garde à vue, Retenue judiciaire",
     "propositions": [
       {
-        "text": "153",
+        "text": "153 al.3 CPP",
         "is_correct": true
       },
       {
-        "text": "al.3",
-        "is_correct": true
+        "text": "153 CPP",
+        "is_correct": false
       },
       {
         "text": "154 CPP",
@@ -1078,11 +1727,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "706-57 CPP (retenue)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "L412-1 et L412-2 du CJPM (mineur)",
+        "is_correct": false
+      },
+      {
+        "text": "103 CPP (indices graves et concordants)",
         "is_correct": false
       }
     ]
@@ -1096,19 +1749,19 @@
         "is_correct": true
       },
       {
-        "text": "57",
+        "text": "57 al.2 CPP (réquisition témoins perquisition)",
         "is_correct": true
       },
       {
-        "text": "al. 2 du CPP (réquisition témoins perquisition)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "81 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "153 al.3 CPP (accès données système informatique) ",
+        "is_correct": false
+      },
+      {
+        "text": "108 CPP",
         "is_correct": false
       }
     ]
@@ -1122,15 +1775,15 @@
         "is_correct": true
       },
       {
-        "text": "99-5 CP (ouverture de scellé d'un objet qui est le\nsupport\nde données informatiques)",
+        "text": "99-5 CP (ouverture de scellé ->support\n données informatiques)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "99-3 CP (ouverture de scellé ->support\n données informatiques)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "100 CPP",
         "is_correct": false
       }
     ]
@@ -1140,33 +1793,41 @@
     "acte": "Réquisition aux fins de remise d'informations + gel données",
     "propositions": [
       {
-        "text": "99-3 / 99-4 CPP",
+        "text": "99-3 CPP",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "99-4 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "100 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "81 CPP",
         "is_correct": false
       }
     ]
   },
   {
     "cadre": "COMMISSION ROGATOIRE",
-    "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+    "acte": "Réquisition géolocalisation (hors cas exclus -> art. 230-44)",
     "propositions": [
       {
         "text": "230-32 à 230-44 CPP",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "706-91 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "L413-1 à L413-5 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "94 CPP",
         "is_correct": false
       }
     ]
@@ -1180,11 +1841,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "81 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "230-32 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "706-91 CPP",
         "is_correct": false
       }
     ]
@@ -1198,15 +1863,15 @@
         "is_correct": true
       },
       {
-        "text": "80-4 CPP (pour recherche des causes de la mort\nou des causes d’une disparition)",
+        "text": "80-4 CPP (recherche causes de la mort\nou causes d’une disparition)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "99-3 CPP (recherche causes de la mort\nou causes d’une disparition)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "94 CPP",
         "is_correct": false
       }
     ]
@@ -1216,11 +1881,11 @@
     "acte": "Perquisition ",
     "propositions": [
       {
-        "text": "94",
+        "text": "94 CPP",
         "is_correct": true
       },
       {
-        "text": "97",
+        "text": "97 CPP",
         "is_correct": true
       },
       {
@@ -1236,12 +1901,16 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "97-1 CPP (accès données syst. informatique)",
+        "is_correct": true
+      },
+      {
+        "text": "97-2 CPP (accès données syst. informatique)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
-        "is_correct": false
+        "text": "93 CPP",
+        "is_correct": true
       }
     ]
   },
@@ -1258,31 +1927,31 @@
         "is_correct": true
       },
       {
-        "text": "706-28 (Trafic de produits stupéfiants",
+        "text": "706-28 (Trafic de produits stupéfiants, association de malfaiteurs",
         "is_correct": true
       },
       {
-        "text": "participation à une association de malfaiteurs)",
-        "is_correct": true
-      },
-      {
-        "text": "706-35 (Traite des êtres humains",
-        "is_correct": true
-      },
-      {
-        "text": "Proxénétisme ou recours à la prostitution des mineurs",
-        "is_correct": true
-      },
-      {
-        "text": "participation à une association de malfaiteurs)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "706-89 CPP (criminalité et délinquance organisées)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "706-35 (Traite des êtres humains, Proxénétisme, prostitution mineur)",
+        "is_correct": true
+      },
+      {
+        "text": "706-90 (Traite des êtres humains, Proxénétisme, prostitution mineur)",
+        "is_correct": false
+      },
+      {
+        "text": "706-83 CPP (criminalité et délinquance organisées)",
+        "is_correct": false
+      },
+      {
+        "text": "97-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "97 CPP",
         "is_correct": false
       }
     ]
@@ -1292,11 +1961,11 @@
     "acte": "Saisie,",
     "propositions": [
       {
-        "text": "94",
+        "text": "94 CPP",
         "is_correct": true
       },
       {
-        "text": "97",
+        "text": "97 CPP",
         "is_correct": true
       },
       {
@@ -1312,15 +1981,15 @@
         "is_correct": true
       },
       {
-        "text": "97-1 CPP (accès à des données dans un système\ninformatique)",
+        "text": "97-1 CPP (accès à des données\nsystème informatique)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "97-3 CPP (accès à des données\nsystème informatique)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "99 (hors domicile MEE)",
         "is_correct": false
       }
     ]
@@ -1338,11 +2007,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "97 CPP (restitution)",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "98 CPP (destruction)",
         "is_correct": false
       }
     ]
@@ -1356,11 +2025,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "706-91 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "230-32 CPP",
         "is_correct": false
       }
     ]
@@ -1374,11 +2043,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "81 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "97-2 CPP",
         "is_correct": false
       }
     ]
@@ -1392,29 +2061,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "230-32 à 230-44 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
-        "is_correct": false
-      }
-    ]
-  },
-  {
-    "cadre": "COMMISSION ROGATOIRE",
-    "acte": "Procès-verbal d’interpellation",
-    "propositions": [
-      {
-        "text": "73 CPP",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "97-1 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "98 CPP",
         "is_correct": false
       }
     ]
@@ -1428,31 +2083,31 @@
         "is_correct": true
       },
       {
-        "text": "74",
+        "text": "74 al.1 CPP (DC)",
         "is_correct": true
       },
       {
-        "text": "al. 1 (DC)",
-        "is_correct": true
-      },
-      {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 6 (DPGB)",
-        "is_correct": true
-      },
-      {
-        "text": "706-57 CPP (changement domiciliation)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "152 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.6 CPP (DPGB)",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.7 CPP (DPGB),",
+        "is_correct": false
+      },
+      {
+        "text": "706-57 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
+        "text": "706-54 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
+        "text": "706-32 CPP (changement domiciliation)",
         "is_correct": false
       }
     ]
@@ -1462,11 +2117,11 @@
     "acte": "Audition de témoin",
     "propositions": [
       {
-        "text": "103",
+        "text": "74 al.4 CPP (DC),",
         "is_correct": true
       },
       {
-        "text": "153 CPP",
+        "text": "74 al.6 CPP (DPGB)",
         "is_correct": true
       },
       {
@@ -1474,12 +2129,20 @@
         "is_correct": true
       },
       {
+        "text": "706-54 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
+        "text": "706-32 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
         "text": "706-58 CPP (anonymat)",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "text": "108 (mineur de 16 ans)",
-        "is_correct": true
+        "is_correct": false
       },
       {
         "text": "74 CPP",
@@ -1496,20 +2159,20 @@
     "acte": "Audition victime ",
     "propositions": [
       {
-        "text": "74",
+        "text": "74 al.6 CPP (seulement DPGB)",
         "is_correct": true
       },
       {
-        "text": "al. 6 CPP (Uniquement DPGB)",
+        "text": "74 al.2 CPP (seulement DPGB)",
+        "is_correct": false
+      },
+      {
+        "text": "10-2 à 10-6 et 15-3 CPP (seulement majeur\n(DPGB)",
         "is_correct": true
       },
       {
-        "text": "10-2 à 10-6 et 15-3 CPP (uniquement pour\nmajeur",
-        "is_correct": true
-      },
-      {
-        "text": "DPGB)",
-        "is_correct": true
+        "text": "74 al.1 CPP (seulement DPGB)",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
@@ -1526,23 +2189,23 @@
     "acte": "Réquisition à prestataire de service",
     "propositions": [
       {
-        "text": "R. 642-1 du CP",
+        "text": "R. 642-1 CP",
         "is_correct": true
       },
       {
-        "text": "57",
+        "text": "57 al.2 CPP (réquisition témoins perquisition)",
         "is_correct": true
       },
       {
-        "text": "al. 2 du CPP (réquisition témoins perquisition)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "74 al.4 CPP,",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.6 CPP ",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1552,27 +2215,23 @@
     "acte": "Réquisition personne qualifiée",
     "propositions": [
       {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 4 CPP (DC)",
-        "is_correct": true
-      },
-      {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 6 CPP (DPGB)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "74 al.2 CPP (DC),",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP (DC),",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.6 CPP (DPBG) ",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.3 CPP (DPBG) ",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1582,27 +2241,23 @@
     "acte": "Réquisition aux fins de remise d'informations + gel données",
     "propositions": [
       {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 4 CPP (DC)",
-        "is_correct": true
-      },
-      {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 6 CPP (DPGB)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "74 al.2 CPP (DC),",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP (DC),",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.6 CPP (DPBG) ",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.3 CPP (DPBG) ",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1620,7 +2275,7 @@
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
@@ -1648,27 +2303,23 @@
     "acte": "Perquisition ",
     "propositions": [
       {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 4 CPP (DC)",
-        "is_correct": true
-      },
-      {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 6 CPP (DPGB)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "74 al.2 CPP (DC),",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP (DC),",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.6 CPP (DPBG) ",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.3 CPP (DPBG) ",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1678,27 +2329,23 @@
     "acte": "Saisie,",
     "propositions": [
       {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 4 CPP (DC)",
-        "is_correct": true
-      },
-      {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 6 CPP (DPGB)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "74 al.2 CPP (DC),",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP (DC),",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.6 CPP (DPBG) ",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.3 CPP (DPBG) ",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1708,27 +2355,23 @@
     "acte": "Bris de scellé ,",
     "propositions": [
       {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 4 CPP (DC)",
-        "is_correct": true
-      },
-      {
-        "text": "74",
-        "is_correct": true
-      },
-      {
-        "text": "al. 6 CPP (DPGB)",
-        "is_correct": true
-      },
-      {
-        "text": "74 CPP",
+        "text": "74 al.2 CPP (DC),",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP (DC),",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.6 CPP (DPBG) ",
+        "is_correct": true
+      },
+      {
+        "text": "74 al.3 CPP (DPBG) ",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1738,15 +2381,15 @@
     "acte": "Assistance autopsie ",
     "propositions": [
       {
-        "text": "230-28 CPP",
+        "text": "230-28 CPP (DC)",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74 al.4 CPP (DC),",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 CPP",
         "is_correct": false
       }
     ]
@@ -1778,7 +2421,33 @@
         "is_correct": true
       },
       {
-        "text": "74-1  CPP",
+        "text": "74-1 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-57 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "DISPARITION INQUIÉTANTE",
+    "acte": "Audition de témoin",
+    "propositions": [
+      {
+        "text": "14",
+        "is_correct": false
+      },
+      {
+        "text": "74-1 CPP",
         "is_correct": true
       },
       {
@@ -1790,7 +2459,7 @@
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74-2 CPP",
         "is_correct": false
       }
     ]
@@ -1800,16 +2469,16 @@
     "acte": "Réquisition à prestataire de service",
     "propositions": [
       {
-        "text": "R. 642-1 du CP",
+        "text": "R. 642-1 CP",
         "is_correct": true
       },
       {
-        "text": "57",
+        "text": "57 al.2 CPP (réquisition témoins perquisition)",
         "is_correct": true
       },
       {
-        "text": "al. 2 du CPP (réquisition témoins perquisition)",
-        "is_correct": true
+        "text": "74-1 CPP",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
@@ -1826,15 +2495,15 @@
     "acte": "Réquisition personne qualifiée",
     "propositions": [
       {
-        "text": "74-1 CPP (DC)",
+        "text": "74-1 CPP",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74-2 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
         "is_correct": false
       }
     ]
@@ -1844,15 +2513,15 @@
     "acte": "Réquisition aux fins de remise d'informations + gel données",
     "propositions": [
       {
-        "text": "74-1",
+        "text": "74-1 CPP",
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74-2 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
         "is_correct": false
       }
     ]
@@ -1872,6 +2541,18 @@
       {
         "text": "76 CPP",
         "is_correct": false
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.4 CPP",
+        "is_correct": false
       }
     ]
   },
@@ -1884,11 +2565,15 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74-1 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.4 CPP",
         "is_correct": false
       }
     ]
@@ -1902,11 +2587,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74-2 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
         "is_correct": false
       }
     ]
@@ -1920,11 +2605,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74-2 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
         "is_correct": false
       }
     ]
@@ -1938,11 +2623,11 @@
         "is_correct": true
       },
       {
-        "text": "74 CPP",
+        "text": "74-1 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74-2 CPP",
         "is_correct": false
       }
     ]
@@ -1952,11 +2637,37 @@
     "acte": "Transport, Constatations et Mesures Prises",
     "propositions": [
       {
-        "text": "14",
+        "text": "14 CPP",
         "is_correct": true
       },
       {
-        "text": "74-2  CPP",
+        "text": "74-2 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "706-57 CPP (changement domiciliation)",
+        "is_correct": false
+      },
+      {
+        "text": "74 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "76 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "RECHERCHEDE PERSONNE EN FUITE",
+    "acte": "Audition de témoin",
+    "propositions": [
+      {
+        "text": "14 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-2 CPP",
         "is_correct": true
       },
       {
@@ -1982,19 +2693,19 @@
         "is_correct": true
       },
       {
-        "text": "57",
+        "text": "57 al.2 du CPP (réquisition témoins perquisition)",
         "is_correct": true
       },
       {
-        "text": "al. 2 du CPP (réquisition témoins perquisition)",
-        "is_correct": true
+        "text": "74-2 CPP",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "57 al.3 du CPP (réquisition témoins perquisition)",
         "is_correct": false
       }
     ]
@@ -2004,15 +2715,23 @@
     "acte": "Réquisition personne qualifiée",
     "propositions": [
       {
-        "text": "74-1 CPP (DC)",
+        "text": "74-2 CPP",
         "is_correct": true
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
@@ -2022,33 +2741,53 @@
     "acte": "Réquisition aux fins de remise d'informations + gel données",
     "propositions": [
       {
-        "text": "74-1",
+        "text": "74-2 CPP",
         "is_correct": true
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
   },
   {
     "cadre": "RECHERCHEDE PERSONNE EN FUITE",
-    "acte": "Réquisition géolocalisation (hors cas exclus par l’art. 230-44)",
+    "acte": "Réquisition géolocalisation (hors cas exclus art. 230-44)",
     "propositions": [
       {
         "text": "230-32 à 230-44 CPP",
         "is_correct": true
       },
       {
+        "text": "74-2 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
+      },
+      {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
@@ -2062,7 +2801,23 @@
         "is_correct": true
       },
       {
+        "text": "230-32 à 230-44 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
+      },
+      {
         "text": "74 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       },
       {
@@ -2076,15 +2831,23 @@
     "acte": "Perquisition ",
     "propositions": [
       {
-        "text": "74-1 CPP",
+        "text": "74-2 CPP",
         "is_correct": true
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
@@ -2094,15 +2857,23 @@
     "acte": "Saisie et bris de scellé,",
     "propositions": [
       {
-        "text": "74-1 CPP",
+        "text": "74-2 CPP",
         "is_correct": true
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
       },
       {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
@@ -2116,11 +2887,45 @@
         "is_correct": true
       },
       {
+        "text": "74-1 CPP",
+        "is_correct": false
+      },
+      {
         "text": "74 CPP",
         "is_correct": false
       },
       {
-        "text": "76 CPP",
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "cadre": "RECHERCHEDE PERSONNE EN FUITE",
+    "acte": "Transcription d’une interception (com. électroniques) ",
+    "propositions": [
+      {
+        "text": "100 à 100-8 CPP",
+        "is_correct": true
+      },
+      {
+        "text": "74-1 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "230-28 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.4 CPP",
+        "is_correct": false
+      },
+      {
+        "text": "74 al.6 CPP",
         "is_correct": false
       }
     ]
