@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../models/recherche_infraction.dart';
+import '../../models/exercice_infraction.dart';
 import '../../utils/infraction_suggestions.dart';
 
 class RechercheInfractionQuizScreen extends StatefulWidget {
-  final RechercheInfraction caseData;
+  final ExerciceInfraction caseData;
   const RechercheInfractionQuizScreen({super.key, required this.caseData});
 
   @override
@@ -79,7 +79,8 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     );
   }
   Future<void> _validate() async {
-    final expected = widget.caseData.infractions.map((e) => e.toLowerCase()).toSet();
+    final expected =
+        widget.caseData.infractionsCiblees.map((e) => e.intitule.toLowerCase()).toSet();
     final provided = _controllers
         .whereType<TextEditingController>()
         .map((c) => c.text.trim().toLowerCase())

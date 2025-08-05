@@ -23,11 +23,24 @@ Future<List<String>> loadInfractionSuggestions() async {
     }
   }
 
+
   // Suggestions provenant des scénarios d'exercice d'infractions
   final exerciceData =
       await loadJsonWithComments('assets/data/exercice_infractions.json');
   final List<dynamic> exerciceRaw = json.decode(exerciceData) as List<dynamic>;
   for (final item in exerciceRaw) {
+    final corrections = (item as Map)['correction'] as List? ?? [];
+    for (final corr in corrections) {
+      final qual = (corr as Map)['qualification'];
+      if (qual is String && qual.trim().isNotEmpty) {
+        set.add(qual);
+    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
+    for (final inf in infractions) {
+      final intitule = (inf as Map)['intitule'];
+      if (intitule is String && intitule.trim().isNotEmpty) {
+        set.add(intitule);
+      }
+    }
     final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
     for (final inf in infractions) {
       final intitule = (inf as Map)['intitule'];
