@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'json_loader.dart';
 
 /// Charge et renvoie la liste des intitulés d'infractions disponibles dans
@@ -24,7 +23,8 @@ Future<List<String>> loadInfractionSuggestions() async {
     }
   }
 
-  // Suggestions provenant des scénarios d'exercices d'infractions
+
+  // Suggestions provenant des scénarios d'exercice d'infractions
   final exerciceData =
       await loadJsonWithComments('assets/data/exercice_infractions.json');
   final List<dynamic> exerciceRaw = json.decode(exerciceData) as List<dynamic>;
@@ -34,6 +34,11 @@ Future<List<String>> loadInfractionSuggestions() async {
       final qual = (corr as Map)['qualification'];
       if (qual is String && qual.trim().isNotEmpty) {
         set.add(qual);
+    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
+    for (final inf in infractions) {
+      final intitule = (inf as Map)['intitule'];
+      if (intitule is String && intitule.trim().isNotEmpty) {
+        set.add(intitule);
       }
     }
     final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];

@@ -12,3 +12,4 @@ void main() {
     expect(() => list.map((e) => ExerciceInfraction.fromJson(e)).toList(), returnsNormally);
   });
 }
+
