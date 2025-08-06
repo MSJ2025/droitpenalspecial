@@ -13,43 +13,38 @@ Future<List<String>> loadInfractionSuggestions() async {
   // Suggestions provenant de fiches.json
   final fichesData = await loadJsonWithComments('assets/data/fiches.json');
   final List<dynamic> fichesRaw = json.decode(fichesData) as List<dynamic>;
-  for (final fam in fichesRaw) {
-    final infractions = fam['infractions'] as List? ?? [];
-    for (final inf in infractions) {
-      final type = (inf as Map)['type'];
-      if (type is String && type.trim().isNotEmpty) {
-        set.add(type);
-      }
+  for (final inf in fichesRaw
+      .map((fam) => (fam as Map)['infractions'] as List? ?? [])
+      .expand((list) => list)) {
+    final type = (inf as Map)['type'];
+    if (type is String && type.trim().isNotEmpty) {
+      set.add(type.trim());
     }
   }
-
 
   // Suggestions provenant des scénarios d'exercice d'infractions
   final exerciceData =
       await loadJsonWithComments('assets/data/exercice_infractions.json');
   final List<dynamic> exerciceRaw = json.decode(exerciceData) as List<dynamic>;
-  for (final item in exerciceRaw) {
-    final corrections = (item as Map)['correction'] as List? ?? [];
-    for (final corr in corrections) {
-      final qual = (corr as Map)['qualification'];
-      if (qual is String && qual.trim().isNotEmpty) {
-        set.add(qual);
-    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
-    for (final inf in infractions) {
-      final intitule = (inf as Map)['intitule'];
-      if (intitule is String && intitule.trim().isNotEmpty) {
-        set.add(intitule);
-      }
-    }
-    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
-    for (final inf in infractions) {
-      final intitule = (inf as Map)['intitule'];
-      if (intitule is String && intitule.trim().isNotEmpty) {
-        set.add(intitule);
-      }
+  for (final value in exerciceRaw.expand((item) {
+    final map = item as Map;
+    final corrections = map['correction'] as List? ?? [];
+    final infractions = map['infractions_ciblees'] as List? ?? [];
+    final quals = corrections
+        .map((corr) => (corr as Map)['qualification'])
+        .whereType<String>();
+    final intitules = infractions
+        .map((inf) => (inf as Map)['intitule'])
+        .whereType<String>();
+    return [...quals, ...intitules];
+  })) {
+    final trimmed = value.trim();
+    if (trimmed.isNotEmpty) {
+      set.add(trimmed);
     }
   }
 
   final list = set.toList()..sort();
   return list;
 }
+
