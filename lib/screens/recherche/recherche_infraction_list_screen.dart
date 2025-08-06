@@ -25,7 +25,7 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
   }
 
   Future<List<RechercheInfraction>> _loadCases() async {
-    final data = await loadJsonWithComments('assets/data/recherche_infractions.json');
+    final data = await loadJsonWithComments('assets/data/exercice_infractions.json');
     final List<dynamic> raw = json.decode(data) as List<dynamic>;
     return raw
         .whereType<Map<String, dynamic>>()

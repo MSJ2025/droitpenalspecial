@@ -6,8 +6,8 @@ import 'package:droitpenalspecial/models/recherche_infraction.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  test('chargement des cas depuis recherche_infractions.json', () async {
-    final data = await rootBundle.loadString('assets/data/recherche_infractions.json');
+  test('chargement des cas depuis exercice_infractions.json', () async {
+    final data = await rootBundle.loadString('assets/data/exercice_infractions.json');
     final List<dynamic> list = json.decode(data) as List<dynamic>;
     expect(() => list.map((e) => RechercheInfraction.fromJson(e)).toList(), returnsNormally);
   });
