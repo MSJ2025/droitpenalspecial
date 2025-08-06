@@ -16,9 +16,4 @@ class AdEventManager {
     }
   }
 
-  /// À appeler lorsqu'un cadre d'enquête est ouvert.
-  static void onCadreOpened() {
-    _infractionViews = 0;
-    InterstitialAdHelper.show(adUnitId: AdHelper.interstitialEvent);
-  }
 }

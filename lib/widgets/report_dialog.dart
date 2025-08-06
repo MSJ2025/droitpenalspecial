@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/infraction.dart';
-import '../models/cadre.dart';
 import '../utils/anomaly_reporter.dart';
 
 class ReportDialog extends StatefulWidget {
@@ -24,11 +23,6 @@ class _ReportDialogState extends State<ReportDialog> {
         'type': fiche.type,
         'definition': fiche.definition,
       }..removeWhere((key, value) => value == null);
-    } else if (fiche is Cadre) {
-      return {
-        'cadre': fiche.cadre,
-        'actesCount': fiche.actes.length,
-      };
     }
     return {};
   }
