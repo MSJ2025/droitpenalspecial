@@ -15,11 +15,19 @@ class _RechercheInfractionQuizScreenState
     extends State<RechercheInfractionQuizScreen> {
   final Set<String> _selected = <String>{};
   late Future<List<String>> _intitules;
+  late TextEditingController _textController;
 
   @override
   void initState() {
     super.initState();
     _intitules = loadInfractionIntitules();
+    _textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
   }
 
   Future<void> _validate() async {
@@ -55,31 +63,63 @@ class _RechercheInfractionQuizScreenState
         future: _intitules,
         builder: (context, snapshot) {
           final intitules = snapshot.data ?? const <String>[];
-          return Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  children: intitules
-                      .map(
-                        (i) => CheckboxListTile(
-                          title: Text(i),
-                          value: _selected.contains(i),
-                          onChanged: (v) {
-                            setState(() {
-                              if (v ?? false) {
-                                _selected.add(i);
-                              } else {
-                                _selected.remove(i);
-                              }
-                            });
-                          },
-                        ),
-                      )
-                      .toList(),
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Autocomplete<String>(
+                  optionsBuilder: (TextEditingValue textEditingValue) {
+                    if (textEditingValue.text.isEmpty) {
+                      return const Iterable<String>.empty();
+                    }
+                    final query = textEditingValue.text.toLowerCase();
+                    return intitules.where((i) =>
+                        i.toLowerCase().contains(query) && !_selected.contains(i));
+                  },
+                  fieldViewBuilder: (context, controller, focusNode, onFieldSubmitted) {
+                    _textController = controller;
+                    return TextField(
+                      controller: controller,
+                      focusNode: focusNode,
+                      onSubmitted: (_) => onFieldSubmitted(),
+                      decoration: const InputDecoration(
+                        labelText: 'Ajouter une infraction',
+                        border: OutlineInputBorder(),
+                      ),
+                    );
+                  },
+                  onSelected: (selection) {
+                    setState(() {
+                      _selected.add(selection);
+                    });
+                    _textController.clear();
+                  },
                 ),
-              ),
-              ElevatedButton(onPressed: _validate, child: const Text('Valider')),
-            ],
+                const SizedBox(height: 16),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: _selected
+                          .map(
+                            (s) => Chip(
+                              label: Text(s),
+                              onDeleted: () {
+                                setState(() {
+                                  _selected.remove(s);
+                                });
+                              },
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: _validate, child: const Text('Valider')),
+              ],
+            ),
           );
         },
       ),
