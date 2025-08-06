@@ -9,7 +9,12 @@ void main() {
   test('chargement des cas depuis exercice_infractions.json', () async {
     final data = await rootBundle.loadString('assets/data/exercice_infractions.json');
     final List<dynamic> list = json.decode(data) as List<dynamic>;
-    expect(() => list.map((e) => ExerciceInfraction.fromJson(e)).toList(), returnsNormally);
+    final cases = list.map((e) => ExerciceInfraction.fromJson(e)).toList();
+    expect(cases, isNotEmpty);
+    final first = cases.first;
+    expect(first.titre, isNotEmpty);
+    expect(first.infractionsCiblees, isNotEmpty);
+    expect(first.correction, isNotEmpty);
   });
 }
 

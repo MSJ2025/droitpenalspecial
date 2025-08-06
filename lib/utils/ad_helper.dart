@@ -51,8 +51,7 @@ class AdHelper {
   /// Identifiant de l'interstitiel affiché au démarrage de l'application.
   static String get interstitialStart => interstitialDetail;
 
-  /// Identifiant de l'interstitiel affiché après consultation de plusieurs
-  /// fiches ou ouverture d'un cadre d'enquête.
+  /// Identifiant de l'interstitiel affiché après consultation de plusieurs fiches.
   static String get interstitialEvent {
     if (Platform.isAndroid) {
       return kDebugMode
