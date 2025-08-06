@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../utils/ad_event_manager.dart';
+import 'cadre_detail_screen.dart';
+
 class CadreEnqueteListScreen extends StatelessWidget {
   const CadreEnqueteListScreen({super.key});
 
@@ -19,6 +22,14 @@ class CadreEnqueteListScreen extends StatelessWidget {
         itemCount: cadres.length,
         itemBuilder: (context, index) => ListTile(
           title: Text(cadres[index]),
+          onTap: () {
+            AdEventManager.onCadreOpened();
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => CadreDetailScreen(cadre: cadres[index]),
+              ),
+            );
+          },
         ),
       ),
     );
