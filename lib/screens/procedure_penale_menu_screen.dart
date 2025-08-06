@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widgets/adaptive_appbar_title.dart';
 import '../widgets/ad_banner.dart';
+import '../widgets/modern_gradient_button.dart';
+
+import 'cadre_enquete_list_screen.dart';
 
 
 class ProcedurePenaleMenuScreen extends StatelessWidget {
@@ -36,6 +39,23 @@ class ProcedurePenaleMenuScreen extends StatelessWidget {
                         child: Image.asset(
                           'assets/images/logocreme.png',
                           width: 260,
+                        ),
+                      ),
+                      FractionallySizedBox(
+                        widthFactor: 0.85,
+                        child: ModernGradientButton(
+                          icon: Icons.search,
+                          label: 'Cadres d\'enquête',
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder: (_, animation, __) => FadeTransition(
+                                  opacity: animation,
+                                  child: const CadreEnqueteListScreen(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
