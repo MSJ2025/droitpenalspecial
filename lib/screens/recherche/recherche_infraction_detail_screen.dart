@@ -43,7 +43,8 @@ class RechercheInfractionDetailScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text('Trouve la qualification pour tous les infractions'),
+                child:
+                    const Text('Trouve la qualification pour toutes les infractions'),
               ),
             ),
           ],
