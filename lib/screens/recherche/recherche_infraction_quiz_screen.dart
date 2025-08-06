@@ -19,6 +19,7 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
   void initState() {
     super.initState();
     _suggestions = loadInfractionSuggestions();
+    _addField();
   }
 
   @override
