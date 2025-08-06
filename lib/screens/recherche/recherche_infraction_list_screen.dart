@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../models/recherche_infraction.dart';
+import '../../models/exercice_infraction.dart';
 import '../../utils/json_loader.dart';
 import 'recherche_infraction_detail_screen.dart';
 
@@ -15,7 +15,7 @@ class RechercheInfractionListScreen extends StatefulWidget {
 }
 
 class _RechercheInfractionListScreenState extends State<RechercheInfractionListScreen> {
-  late Future<List<RechercheInfraction>> _cases;
+  late Future<List<ExerciceInfraction>> _cases;
   final _random = Random();
 
   @override
@@ -24,12 +24,12 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
     _cases = _loadCases();
   }
 
-  Future<List<RechercheInfraction>> _loadCases() async {
+  Future<List<ExerciceInfraction>> _loadCases() async {
     final data = await loadJsonWithComments('assets/data/exercice_infractions.json');
     final List<dynamic> raw = json.decode(data) as List<dynamic>;
     return raw
         .whereType<Map<String, dynamic>>()
-        .map((e) => RechercheInfraction.fromJson(e))
+        .map((e) => ExerciceInfraction.fromJson(e))
         .toList();
   }
 
@@ -58,7 +58,7 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Recherche d\'infractions')),
-      body: FutureBuilder<List<RechercheInfraction>>(
+      body: FutureBuilder<List<ExerciceInfraction>>(
         future: _cases,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
