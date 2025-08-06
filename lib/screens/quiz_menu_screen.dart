@@ -49,19 +49,6 @@ class QuizMenuScreen extends StatelessWidget {
                       FractionallySizedBox(
                         widthFactor: 0.85,
                         child: ModernGradientButton(
-                          icon: Icons.help_outline,
-                          label: 'Quiz infractions',
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('À venir')),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      FractionallySizedBox(
-                        widthFactor: 0.85,
-                        child: ModernGradientButton(
                           icon: Icons.search,
                           label: 'Recherche d’infractions',
                           onPressed: () {

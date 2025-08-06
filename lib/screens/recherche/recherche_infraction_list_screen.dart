@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import '../../models/exercice_infraction.dart';
@@ -14,9 +12,9 @@ class RechercheInfractionListScreen extends StatefulWidget {
   State<RechercheInfractionListScreen> createState() => _RechercheInfractionListScreenState();
 }
 
-class _RechercheInfractionListScreenState extends State<RechercheInfractionListScreen> {
+class _RechercheInfractionListScreenState
+    extends State<RechercheInfractionListScreen> {
   late Future<List<ExerciceInfraction>> _cases;
-  final _random = Random();
 
   @override
   void initState() {
@@ -34,27 +32,6 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
         .toList();
   }
 
-  TextStyle _randomStyle() {
-    const fonts = [null, 'serif', 'monospace'];
-    return TextStyle(
-      fontFamily: fonts[_random.nextInt(fonts.length)],
-      fontStyle: _random.nextBool() ? FontStyle.italic : FontStyle.normal,
-      fontWeight: _random.nextBool() ? FontWeight.bold : FontWeight.normal,
-      color: Colors.black87,
-    );
-  }
-
-  Color _randomCardColor() {
-    const colors = [
-      Color(0xFFFFF3E0),
-      Color(0xFFE3F2FD),
-      Color(0xFFE8F5E9),
-      Color(0xFFFCE4EC),
-      Color(0xFFFFF8E1),
-    ];
-    return colors[_random.nextInt(colors.length)];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,16 +47,16 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
             itemCount: list.length,
             itemBuilder: (context, index) {
               final item = list[index];
-              final style = _randomStyle();
               return Card(
-                color: _randomCardColor(),
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
-                  title: Text(item.titre, style: style),
+                  title: Text(item.titre),
+                  trailing: const Icon(Icons.chevron_right),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => RechercheInfractionDetailScreen(caseData: item),
+                        builder: (_) =>
+                            RechercheInfractionDetailScreen(caseData: item),
                       ),
                     );
                   },
