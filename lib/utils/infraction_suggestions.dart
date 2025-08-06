@@ -6,7 +6,7 @@ import 'json_loader.dart';
 /// l'application.
 ///
 /// Les suggestions sont extraites des fichiers `fiches.json` et
-/// `recherche_infractions.json` afin de couvrir intégralement les infractions
+/// `exercice_infractions.json` afin de couvrir intégralement les infractions
 /// présentes dans les histoires.
 Future<List<String>> loadInfractionSuggestions() async {
   final set = <String>{};
@@ -26,7 +26,7 @@ Future<List<String>> loadInfractionSuggestions() async {
 
   // Suggestions provenant des scénarios de recherche d'infractions
   final rechercheData =
-      await loadJsonWithComments('assets/data/recherche_infractions.json');
+      await loadJsonWithComments('assets/data/exercice_infractions.json');
   final List<dynamic> rechercheRaw = json.decode(rechercheData) as List<dynamic>;
   for (final item in rechercheRaw) {
     final corrections = (item as Map)['correction'] as List? ?? [];
