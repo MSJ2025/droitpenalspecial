@@ -10,30 +10,16 @@ class RechercheInfractionQuizScreen extends StatefulWidget {
   State<RechercheInfractionQuizScreen> createState() => _RechercheInfractionQuizScreenState();
 }
 
-class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizScreen> {
-  final List<TextEditingController?> _controllers = [];
-  late Future<List<String>> _suggestions;
+class _RechercheInfractionQuizScreenState
+    extends State<RechercheInfractionQuizScreen> {
+  final Set<String> _selected = <String>{};
+  late Future<List<String>> _intitules;
 
   @override
   void initState() {
     super.initState();
-    _suggestions = loadInfractionSuggestions();
+    _intitules = loadInfractionIntitules();
   }
-
-  @override
-  void dispose() {
-    for (final c in _controllers) {
-      c?.dispose();
-    }
-    super.dispose();
-  }
-
-  void _addField() {
-    setState(() {
-      _controllers.add(null);
-    });
-  }
-
 
   Future<void> _showResultSummary({
     required bool success,
@@ -78,18 +64,17 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
       ),
     );
   }
+
   Future<void> _validate() async {
-    final expected =
-        widget.caseData.infractionsCiblees.map((e) => e.intitule.toLowerCase()).toSet();
-    final provided = _controllers
-        .whereType<TextEditingController>()
-        .map((c) => c.text.trim().toLowerCase())
-        .where((e) => e.isNotEmpty)
+    final expected = widget.caseData.infractionsCiblees
+        .map((e) => e.intitule.toLowerCase())
         .toSet();
+    final provided = _selected.map((e) => e.toLowerCase()).toSet();
     final correct = expected.intersection(provided);
     final incorrect = provided.difference(expected);
     final manquantes = expected.difference(provided);
-    final success = correct.length == expected.length && incorrect.isEmpty && manquantes.isEmpty;
+    final success =
+        correct.length == expected.length && incorrect.isEmpty && manquantes.isEmpty;
     await _showResultSummary(
       success: success,
       correct: correct.length,
@@ -98,56 +83,39 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     );
   }
 
-  Widget _buildField(int index, List<String> suggestions) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Autocomplete<String>(
-        optionsBuilder: (text) {
-          if (text.text.isEmpty) return const Iterable<String>.empty();
-          return suggestions.where((s) => s.toLowerCase().contains(text.text.toLowerCase()));
-        },
-        fieldViewBuilder: (_, controller, focusNode, onFieldSubmitted) {
-          if (_controllers[index] == null) {
-            _controllers[index] = controller;
-          } else {
-            controller = _controllers[index]!;
-          }
-          return TextField(
-              controller: controller,
-              focusNode: focusNode,
-              onSubmitted: (_) => onFieldSubmitted());
-        },
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Trouver les infractions')),
       body: FutureBuilder<List<String>>(
-        future: _suggestions,
+        future: _intitules,
         builder: (context, snapshot) {
-          final suggestions = snapshot.data ?? const <String>[];
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: _controllers.length,
-                    itemBuilder: (context, index) => _buildField(index, suggestions),
-                  ),
+          final intitules = snapshot.data ?? const <String>[];
+          return Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  children: intitules
+                      .map(
+                        (i) => CheckboxListTile(
+                          title: Text(i),
+                          value: _selected.contains(i),
+                          onChanged: (v) {
+                            setState(() {
+                              if (v ?? false) {
+                                _selected.add(i);
+                              } else {
+                                _selected.remove(i);
+                              }
+                            });
+                          },
+                        ),
+                      )
+                      .toList(),
                 ),
-                Row(
-                  children: [
-                    ElevatedButton(onPressed: _addField, child: const Text('Ajouter')),
-                    const SizedBox(width: 16),
-                    ElevatedButton(onPressed: _validate, child: const Text('Valider')),
-                  ],
-                ),
-              ],
-            ),
+              ),
+              ElevatedButton(onPressed: _validate, child: const Text('Valider')),
+            ],
           );
         },
       ),
