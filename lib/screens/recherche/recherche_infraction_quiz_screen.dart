@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/exercice_infraction.dart';
 import '../../utils/infraction_suggestions.dart';
+import 'recherche_infraction_result_screen.dart';
 
 class RechercheInfractionQuizScreen extends StatefulWidget {
   final ExerciceInfraction caseData;
@@ -34,67 +35,31 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     });
   }
 
-
-  Future<void> _showResultSummary({
-    required bool success,
-    required int correct,
-    required int incorrect,
-    required int manquantes,
-  }) async {
-    if (!mounted) return;
-    await showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(success ? 'Bravo !' : 'Raté…'),
-        content: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: success
-                    ? [Colors.greenAccent, Colors.green]
-                    : [Colors.redAccent, Colors.orange],
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Correctes : $correct'),
-                Text('Incorrectes : $incorrect'),
-                Text('Manquantes : $manquantes'),
-              ],
-            ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
   Future<void> _validate() async {
-    final expected =
-        widget.caseData.infractionsCiblees.map((e) => e.intitule.toLowerCase()).toSet();
-    final provided = _controllers
-        .whereType<TextEditingController>()
-        .map((c) => c.text.trim().toLowerCase())
-        .where((e) => e.isNotEmpty)
-        .toSet();
-    final correct = expected.intersection(provided);
-    final incorrect = provided.difference(expected);
-    final manquantes = expected.difference(provided);
-    final success = correct.length == expected.length && incorrect.isEmpty && manquantes.isEmpty;
-    await _showResultSummary(
-      success: success,
-      correct: correct.length,
-      incorrect: incorrect.length,
-      manquantes: manquantes.length,
+    final expectedMap = {
+      for (final inf in widget.caseData.infractionsCiblees)
+        inf.intitule.toLowerCase(): inf.intitule
+    };
+    final providedMap = {
+      for (final c in _controllers.whereType<TextEditingController>())
+        c.text.trim().toLowerCase(): c.text.trim()
+    };
+    providedMap.removeWhere((key, value) => key.isEmpty);
+
+    final correctKeys = expectedMap.keys.toSet().intersection(providedMap.keys.toSet());
+    final correct = [for (final k in correctKeys) expectedMap[k]!];
+    final incorrectKeys = providedMap.keys.toSet().difference(expectedMap.keys.toSet());
+    final incorrect = [for (final k in incorrectKeys) providedMap[k]!];
+
+    if (!mounted) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => RechercheInfractionResultScreen(
+          caseData: widget.caseData,
+          correct: correct,
+          incorrect: incorrect,
+        ),
+      ),
     );
   }
 
