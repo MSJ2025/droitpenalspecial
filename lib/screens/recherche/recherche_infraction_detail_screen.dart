@@ -20,6 +20,11 @@ class RechercheInfractionDetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      caseData.titre,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16),
                     Text(caseData.contextualisation),
                     const SizedBox(height: 16),
                     Text(caseData.histoireDetaillee),
