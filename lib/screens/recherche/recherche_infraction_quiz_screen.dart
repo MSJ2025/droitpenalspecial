@@ -69,10 +69,10 @@ class _RechercheInfractionQuizScreenState
               children: [
                 Autocomplete<String>(
                   optionsBuilder: (TextEditingValue textEditingValue) {
-                    if (textEditingValue.text.isEmpty) {
+                    final query = textEditingValue.text.trim().toLowerCase();
+                    if (query.isEmpty) {
                       return const Iterable<String>.empty();
                     }
-                    final query = textEditingValue.text.toLowerCase();
                     return intitules.where((i) =>
                         i.toLowerCase().contains(query) && !_selected.contains(i));
                   },
