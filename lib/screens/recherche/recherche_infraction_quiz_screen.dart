@@ -38,36 +38,23 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
 
   Future<void> _showResultSummary({
     required bool success,
-    required int correct,
-    required int incorrect,
-    required int manquantes,
+    required Set<String> correct,
+    required Set<String> incorrect,
+    required Set<String> manquantes,
   }) async {
     if (!mounted) return;
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(success ? 'Bravo !' : 'Raté…'),
-        content: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: success
-                    ? [Colors.greenAccent, Colors.green]
-                    : [Colors.redAccent, Colors.orange],
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Correctes : $correct'),
-                Text('Incorrectes : $incorrect'),
-                Text('Manquantes : $manquantes'),
-              ],
-            ),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildResultCard('Infractions correctes', correct, Colors.green),
+              _buildResultCard('Infractions incorrectes', incorrect, Colors.red),
+              _buildResultCard('Infractions manquantes', manquantes, Colors.orange),
+            ],
           ),
         ),
         actions: [
@@ -80,22 +67,71 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     );
   }
 
+  Widget _buildResultCard(
+    String title,
+    Set<String> items,
+    Color color,
+  ) {
+    if (items.isEmpty) return const SizedBox.shrink();
+    return Card(
+      color: color.withOpacity(0.1),
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$title (${items.length})',
+              style: TextStyle(
+                color: color,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 4),
+            for (final item in items)
+              Text(
+                item,
+                style: TextStyle(color: color),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Future<void> _validate() async {
-    final expected = widget.caseData.infractionsCiblees.map((e) => e.toLowerCase()).toSet();
-    final provided = _controllers
-        .whereType<TextEditingController>()
-        .map((c) => c.text.trim().toLowerCase())
+    final expectedLower =
+        widget.caseData.infractionsCiblees.map((e) => e.toLowerCase()).toSet();
+    final providedControllers = _controllers.whereType<TextEditingController>();
+    final providedOriginal = providedControllers
+        .map((c) => c.text.trim())
         .where((e) => e.isNotEmpty)
         .toSet();
-    final correct = expected.intersection(provided);
-    final incorrect = provided.difference(expected);
-    final manquantes = expected.difference(provided);
-    final success = correct.length == expected.length && incorrect.isEmpty && manquantes.isEmpty;
+    final providedLower =
+        providedOriginal.map((e) => e.toLowerCase()).toSet();
+
+    final correctLower = expectedLower.intersection(providedLower);
+    final incorrectLower = providedLower.difference(expectedLower);
+    final manquantesLower = expectedLower.difference(providedLower);
+
+    final correct = widget.caseData.infractionsCiblees
+        .where((e) => correctLower.contains(e.toLowerCase()))
+        .toSet();
+    final manquantes = widget.caseData.infractionsCiblees
+        .where((e) => manquantesLower.contains(e.toLowerCase()))
+        .toSet();
+    final incorrect = providedOriginal
+        .where((e) => incorrectLower.contains(e.toLowerCase()))
+        .toSet();
+
+    final success =
+        correct.length == expectedLower.length && incorrect.isEmpty && manquantes.isEmpty;
     await _showResultSummary(
       success: success,
-      correct: correct.length,
-      incorrect: incorrect.length,
-      manquantes: manquantes.length,
+      correct: correct,
+      incorrect: incorrect,
+      manquantes: manquantes,
     );
     if (!mounted) return;
     Navigator.of(context).push(
