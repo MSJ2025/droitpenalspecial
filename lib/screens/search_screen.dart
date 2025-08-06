@@ -45,12 +45,17 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _onSearch(String query) {
-    final lower = query.toLowerCase();
+    final lower = query.trim().toLowerCase();
     setState(() {
-      _filteredInfractions = _allInfractions
-          .where((inf) => (inf.type ?? '').toLowerCase().contains(lower) ||
-              (inf.definition ?? '').toLowerCase().contains(lower))
-          .toList();
+      if (lower.isEmpty) {
+        _filteredInfractions = _allInfractions;
+      } else {
+        _filteredInfractions = _allInfractions
+            .where((inf) =>
+                (inf.type ?? '').toLowerCase().contains(lower) ||
+                (inf.definition ?? '').toLowerCase().contains(lower))
+            .toList();
+      }
     });
   }
 
