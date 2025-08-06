@@ -23,25 +23,20 @@ Future<List<String>> loadInfractionSuggestions() async {
     }
   }
 
-
   // Suggestions provenant des scénarios d'exercice d'infractions
   final exerciceData =
       await loadJsonWithComments('assets/data/exercice_infractions.json');
   final List<dynamic> exerciceRaw = json.decode(exerciceData) as List<dynamic>;
   for (final item in exerciceRaw) {
-    final corrections = (item as Map)['correction'] as List? ?? [];
+    final map = item as Map;
+    final corrections = map['correction'] as List? ?? [];
     for (final corr in corrections) {
       final qual = (corr as Map)['qualification'];
       if (qual is String && qual.trim().isNotEmpty) {
         set.add(qual);
-    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
-    for (final inf in infractions) {
-      final intitule = (inf as Map)['intitule'];
-      if (intitule is String && intitule.trim().isNotEmpty) {
-        set.add(intitule);
       }
     }
-    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
+    final infractions = map['infractions_ciblees'] as List? ?? [];
     for (final inf in infractions) {
       final intitule = (inf as Map)['intitule'];
       if (intitule is String && intitule.trim().isNotEmpty) {
@@ -50,6 +45,25 @@ Future<List<String>> loadInfractionSuggestions() async {
     }
   }
 
+  final list = set.toList()..sort();
+  return list;
+}
+
+/// Renvoie la liste des intitulés d'infractions présents dans
+/// `assets/data/exercice_infractions.json`.
+Future<List<String>> loadInfractionIntitules() async {
+  final data = await loadJsonWithComments('assets/data/exercice_infractions.json');
+  final List<dynamic> raw = json.decode(data) as List<dynamic>;
+  final set = <String>{};
+  for (final item in raw) {
+    final infractions = (item as Map)['infractions_ciblees'] as List? ?? [];
+    for (final inf in infractions) {
+      final intitule = (inf as Map)['intitule'];
+      if (intitule is String && intitule.trim().isNotEmpty) {
+        set.add(intitule);
+      }
+    }
+  }
   final list = set.toList()..sort();
   return list;
 }
