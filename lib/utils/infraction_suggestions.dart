@@ -5,9 +5,10 @@ import 'json_loader.dart';
 /// Charge et renvoie la liste des intitulés d'infractions disponibles dans
 /// l'application.
 ///
-/// Les suggestions sont extraites des fichiers `fiches.json` et
-/// `recherche_infractions.json` afin de couvrir intégralement les infractions
-/// présentes dans les histoires.
+/// Les suggestions sont extraites des fichiers `fiches.json`,
+/// `recherche_infractions.json` et `exercice_infractions.json` afin de couvrir
+/// intégralement les infractions présentes dans les histoires et les
+/// exercices.
 Future<List<String>> loadInfractionSuggestions() async {
   final set = <String>{};
 
@@ -35,6 +36,21 @@ Future<List<String>> loadInfractionSuggestions() async {
       final qual = inf['qualification'];
       if (qual is String && qual.trim().isNotEmpty) {
         set.add(qual);
+      }
+    }
+  }
+
+  // Suggestions provenant des exercices d'infractions
+  final exercicesData =
+      await loadJsonWithComments('assets/data/exercice_infractions.json');
+  final List<dynamic> exercicesRaw =
+      json.decode(exercicesData) as List<dynamic>;
+  for (final item in exercicesRaw) {
+    final ciblees = (item as Map)['infractions_ciblees'] as List? ?? [];
+    for (final ciblee in ciblees) {
+      final intitule = (ciblee as Map)['intitule'];
+      if (intitule is String && intitule.trim().isNotEmpty) {
+        set.add(intitule);
       }
     }
   }

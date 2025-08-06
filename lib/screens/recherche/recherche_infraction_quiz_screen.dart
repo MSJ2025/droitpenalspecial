@@ -79,7 +79,8 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     );
   }
   Future<void> _validate() async {
-    final expected = widget.caseData.infractions.map((e) => e.toLowerCase()).toSet();
+    final expected =
+        widget.caseData.intitulesAttendus.map((e) => e.toLowerCase()).toSet();
     final provided = _controllers
         .whereType<TextEditingController>()
         .map((c) => c.text.trim().toLowerCase())
