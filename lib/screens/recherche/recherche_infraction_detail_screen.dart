@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../models/recherche_infraction.dart';
+import '../../models/exercice_infraction.dart';
 import 'recherche_infraction_quiz_screen.dart';
 
 class RechercheInfractionDetailScreen extends StatelessWidget {
-  final RechercheInfraction caseData;
+  final ExerciceInfraction caseData;
   const RechercheInfractionDetailScreen({super.key, required this.caseData});
 
   @override
@@ -14,9 +14,14 @@ class RechercheInfractionDetailScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(caseData.contextualisation),
+            const SizedBox(height: 16),
             Expanded(
-              child: SingleChildScrollView(child: Text(caseData.histoire)),
+              child: SingleChildScrollView(
+                child: Text(caseData.histoireDetaillee),
+              ),
             ),
             const SizedBox(height: 16),
             SizedBox(
