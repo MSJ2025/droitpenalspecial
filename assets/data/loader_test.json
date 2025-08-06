@@ -1,0 +1,6 @@
+{
+  // Comment en début de fichier
+  "message": "Bonjour // ceci n'est pas un commentaire",
+  /* Commentaire multi-lignes */
+  "description": "Un texte avec /* des caractères */ dans la valeur"
+}
