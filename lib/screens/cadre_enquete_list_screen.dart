@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import '../models/cadre.dart';
+import 'cadre_detail_screen.dart';
 
 class CadreEnqueteListScreen extends StatefulWidget {
   const CadreEnqueteListScreen({super.key});
@@ -56,6 +57,16 @@ class _CadreEnqueteListScreenState extends State<CadreEnqueteListScreen> {
                       return ListTile(
                         title: Text(cadre.title),
                         subtitle: Text(cadre.description),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            PageRouteBuilder(
+                              pageBuilder: (_, animation, __) => FadeTransition(
+                                opacity: animation,
+                                child: CadreDetailScreen(cadre: cadre),
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
