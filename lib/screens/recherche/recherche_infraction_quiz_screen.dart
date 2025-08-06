@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/exercice_infraction.dart';
 import '../../utils/infraction_suggestions.dart';
+import 'recherche_infraction_correction_screen.dart';
 
 class RechercheInfractionQuizScreen extends StatefulWidget {
   final ExerciceInfraction caseData;
@@ -94,6 +95,12 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
       correct: correct.length,
       incorrect: incorrect.length,
       manquantes: manquantes.length,
+    );
+    if (!mounted) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => RechercheInfractionCorrectionScreen(caseData: widget.caseData),
+      ),
     );
   }
 
