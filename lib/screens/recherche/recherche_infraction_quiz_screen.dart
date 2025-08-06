@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/recherche_infraction.dart';
 import '../../utils/infraction_suggestions.dart';
+import 'recherche_infraction_correction_screen.dart';
 
 class RechercheInfractionQuizScreen extends StatefulWidget {
   final RechercheInfraction caseData;
@@ -42,7 +43,7 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
     required int manquantes,
   }) async {
     if (!mounted) return;
-    await showDialog(
+    final goToCorrection = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(success ? 'Bravo !' : 'Raté…'),
@@ -71,12 +72,25 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(context, false),
             child: const Text('OK'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Voir la correction'),
           ),
         ],
       ),
     );
+    if (goToCorrection == true && mounted) {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => CorrectionScreen(
+            corrections: widget.caseData.corrections,
+          ),
+        ),
+      );
+    }
   }
   Future<void> _validate() async {
     final expected = widget.caseData.infractions.map((e) => e.toLowerCase()).toSet();
