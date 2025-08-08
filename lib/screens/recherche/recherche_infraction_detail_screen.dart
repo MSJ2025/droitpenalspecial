@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import '../../models/exercice_infraction.dart';
 import '../../widgets/ad_banner.dart';
+import '../../widgets/report_dialog.dart';
 import 'recherche_infraction_quiz_screen.dart';
 
 class RechercheInfractionDetailScreen extends StatefulWidget {
@@ -30,28 +31,63 @@ class _RechercheInfractionDetailScreenState extends State<RechercheInfractionDet
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: ElevatedButton.icon(
-                onPressed: () => setState(() => _showContext = !_showContext),
-                icon: Icon(
-                  _showContext ? Icons.expand_less : Icons.expand_more,
-                  size: 0,
-                ),
-                label: Text(
-                  _showContext ? 'Masquer contexte' : 'Afficher contexte',
-                  style: Theme.of(context).textTheme.labelLarge,
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () => setState(() => _showContext = !_showContext),
+                  icon: Icon(
+                    _showContext ? Icons.expand_less : Icons.expand_more,
+                    size: 0,
                   ),
-                  elevation: 4,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Colors.white,
+                  label: Text(
+                    _showContext ? 'Masquer contexte' : 'Afficher contexte',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 4,
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
+                  ),
                 ),
-              ),
+                const SizedBox(width: 8),
+                ElevatedButton.icon(
+                  onPressed: () async {
+                    final result = await showDialog<bool>(
+                      context: context,
+                      builder: (context) => ReportDialog(
+                        ficheId: widget.caseData.titre,
+                        fiche: widget.caseData,
+                      ),
+                    );
+                    if (result == true && mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Merci pour votre signalement !'),
+                        ),
+                      );
+                    }
+                  },
+                  icon: const Icon(Icons.flag),
+                  label: Text(
+                    'Signaler un problème',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 4,
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+              ],
             ),
             AnimatedCrossFade(
               firstChild: SizedBox.shrink(),
