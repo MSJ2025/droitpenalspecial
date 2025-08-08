@@ -190,7 +190,7 @@ class _RechercheInfractionDetailScreenState extends State<RechercheInfractionDet
               ),
             ),
             const SizedBox(height: 8),
-            const AdBanner(),
+            const Center(child: AdBanner()),
           ],
         ),
       ),
