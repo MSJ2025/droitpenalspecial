@@ -37,6 +37,9 @@ class _QuizPPScreenState extends State<QuizPPScreen> {
           .map((e) => QuizPPQuestion.fromJson(e.cast<String, dynamic>()))
           .toList()
         ..shuffle();
+      for (final question in questions) {
+        question.propositions.shuffle();
+      }
       _questions = questions.length > 12 ? questions.take(12).toList() : questions;
       _loading = false;
     });
