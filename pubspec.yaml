@@ -77,6 +77,7 @@ flutter:
     - assets/data/loader_test.json
     - assets/data/quiz_cadre_enquete.json
     - assets/data/quiz_pp.json
+    - assets/data/dps_questions.json
     - assets/data/exercice_infractions.json
     - assets/images/
   #   - images/a_dot_ham.jpeg
