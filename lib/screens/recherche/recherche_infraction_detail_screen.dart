@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 import '../../models/exercice_infraction.dart';
+import '../../widgets/ad_banner.dart';
 import 'recherche_infraction_quiz_screen.dart';
 
 class RechercheInfractionDetailScreen extends StatefulWidget {
@@ -152,6 +153,8 @@ class _RechercheInfractionDetailScreenState extends State<RechercheInfractionDet
                 child: const Text('Trouve  les infractions'),
               ),
             ),
+            const SizedBox(height: 8),
+            const AdBanner(),
           ],
         ),
       ),
