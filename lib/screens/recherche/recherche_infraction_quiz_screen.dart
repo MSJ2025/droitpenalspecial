@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/exercice_infraction.dart';
 import '../../utils/infraction_suggestions.dart';
+import '../../widgets/ad_banner.dart';
 import 'recherche_infraction_correction_screen.dart';
 
 class RechercheInfractionQuizScreen extends StatefulWidget {
@@ -364,6 +365,7 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
                         ),
                       ],
                     ),
+                    const AdBanner(),
                   ],
                 ),
               ),
