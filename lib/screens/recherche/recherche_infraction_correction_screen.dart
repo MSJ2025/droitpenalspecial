@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/exercice_infraction.dart';
 import '../theme_screen.dart';
+import '../../widgets/ad_banner.dart';
 
 class RechercheInfractionCorrectionScreen extends StatelessWidget {
   final ExerciceInfraction caseData;
@@ -11,21 +12,31 @@ class RechercheInfractionCorrectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Correction')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
+      body: Column(
         children: [
-          for (final corr in caseData.correction) _buildCard(context, corr),
-          const SizedBox(height: 16),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const ThemeScreen()),
-                );
-              },
-              child: const Text('Retour aux thèmes'),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                for (final corr in caseData.correction) _buildCard(context, corr),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ThemeScreen()),
+                      );
+                    },
+                    child: const Text('Retour aux thèmes'),
+                  ),
+                ),
+              ],
             ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: AdBanner(),
           ),
         ],
       ),
