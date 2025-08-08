@@ -3,6 +3,7 @@ import '../widgets/adaptive_appbar_title.dart';
 import '../widgets/ad_banner.dart';
 import '../widgets/modern_gradient_button.dart';
 import 'quiz_cadre_screen.dart';
+import 'quiz_dps_screen.dart';
 import 'quiz_pp_screen.dart';
 import 'quiz_stats_screen.dart';
 import 'recherche/recherche_infraction_list_screen.dart';
@@ -53,10 +54,12 @@ class QuizMenuScreen extends StatelessWidget {
                           widthFactor: 0.85,
                           child: ModernGradientButton(
                             icon: Icons.help_outline,
-                            label: 'Quiz infractions',
+                            label: 'Quiz Droit pénal spécial',
                             onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('À venir')),
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => const QuizDPSScreen(),
+                                ),
                               );
                             },
                           ),
