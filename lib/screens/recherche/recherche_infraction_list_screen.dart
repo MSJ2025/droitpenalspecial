@@ -69,19 +69,37 @@ class _RechercheInfractionListScreenState extends State<RechercheInfractionListS
             itemCount: list.length,
             itemBuilder: (context, index) {
               final item = list[index];
-              final style = _randomStyle();
               return Card(
-                color: _randomCardColor(),
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: ListTile(
-                  title: Text(item.titre, style: style),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => RechercheInfractionDetailScreen(caseData: item),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Theme.of(context).primaryColor.withOpacity(0.9),
+                        Theme.of(context).primaryColor.withOpacity(0.7),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      item.titre,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
-                    );
-                  },
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => RechercheInfractionDetailScreen(caseData: item),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               );
             },

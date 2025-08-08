@@ -32,20 +32,7 @@ class QuizMenuScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                        FractionallySizedBox(
-                          widthFactor: 0.85,
-                          child: ModernGradientButton(
-                            icon: Icons.gavel,
-                            label: "Quiz cadres d'enquête",
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => const QuizCadreScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+
                         const SizedBox(height: 16),
                         FractionallySizedBox(
                           widthFactor: 0.85,
@@ -90,7 +77,7 @@ class QuizMenuScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 96),
                       FractionallySizedBox(
                         widthFactor: 0.85,
                         child: ModernGradientButton(

@@ -4,7 +4,7 @@
   "date_faits": "2025-05-12 23:42",
   "contextualisation": "Lyon 2e, quai Saint-Antoine, soirée pluvieuse de semaine.\nTrafic léger, éclairage public partiellement occulté par des travaux.\nAlexandre Moreau (28 ans) conduit sa citadine grise, Marie Petit (27 ans) passagère.\nPaul Girard (34 ans), livreur à vélo, termine sa tournée vers Presqu’île.",
   "infractions_ciblees": [
-    { "intitule": "Conduite en état alcoolique ou d'ivresse", "articles": "L.234-1 CR" },
+    { "intitule": "Conduite sous l'empire d'un état alcoolique", "articles": "L.234-1 CR" },
     { "intitule": "Blessures involontaires avec ITT supérieure à trois mois", "articles": "222-19 CP" },
     { "intitule": "Délit de fuite", "articles": "434-10 CP, L.231-1 CR" },
     { "intitule": "Non-assistance à personne en danger", "articles": "223-6 al.2 CP" },
