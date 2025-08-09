@@ -46,11 +46,16 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
                   isCorrect: i == correctIndex,
                 ),
             ];
+            final sourceCategorie =
+                item['_source_categorie'] as String? ?? '';
+            final itemTheme = item['theme'] as String? ?? '';
             questions.add(
               QuizPPQuestion(
                 theme: theme,
                 cadre: theme,
                 acte: item['question'] as String? ?? '',
+                sourceCategorie: sourceCategorie,
+                theme: itemTheme,
                 propositions: propositions,
               ),
             );
@@ -96,7 +101,7 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                question.cadre,
+                question.sourceCategorie,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 18,
@@ -105,25 +110,15 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              // Card(
-              //   elevation: 4,
-              //   shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(8),
-              //   ),
-              //   color: Colors.white24,
-              //   child: Padding(
-              //     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-              //     child: Text(
-              //       question.acte,
-              //       textAlign: TextAlign.center,
-              //       style: const TextStyle(
-              //         fontSize: 16,
-              //         color: Colors.white,
-              //         fontWeight: FontWeight.w600,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              Text(
+                question.acte,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ],
           ),
         ),
