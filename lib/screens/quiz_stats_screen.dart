@@ -11,7 +11,7 @@ class QuizStatsScreen extends StatefulWidget {
 }
 
 class _QuizStatsScreenState extends State<QuizStatsScreen> {
-  Map<String, QuizStats> _stats = {};
+  Map<String, Map<String, QuizStats>> _stats = {};
   int _quizCount = 0;
   bool _loading = true;
 
@@ -63,7 +63,11 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
         title: const AdaptiveAppBarTitle('Statistiques', maxLines: 1),
         actions: [
           IconButton(
-            onPressed: (_stats.isEmpty && _quizCount == 0) ? null : _reset,
+            onPressed:
+                (_stats.isEmpty || _stats.values.every((m) => m.isEmpty)) &&
+                        _quizCount == 0
+                    ? null
+                    : _reset,
             icon: const Icon(Icons.delete),
             tooltip: 'Réinitialiser',
           ),
@@ -76,14 +80,14 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
   }
 
   Widget _buildContent() {
-    if (_stats.isEmpty) {
+    if (_stats.isEmpty || _stats.values.every((m) => m.isEmpty)) {
       return const Center(child: Text('Aucune statistique'));
     }
 
-    final totalAnswered =
-        _stats.values.fold<int>(0, (sum, s) => sum + s.answered);
-    final totalCorrect =
-        _stats.values.fold<int>(0, (sum, s) => sum + s.correct);
+    final totalAnswered = _stats.values.fold<int>(
+        0, (sum, m) => sum + m.values.fold<int>(0, (s, st) => s + st.answered));
+    final totalCorrect = _stats.values.fold<int>(
+        0, (sum, m) => sum + m.values.fold<int>(0, (s, st) => s + st.correct));
     final percent =
         totalAnswered == 0 ? 0.0 : totalCorrect / totalAnswered;
     final percentText = (percent * 100).toStringAsFixed(1);
