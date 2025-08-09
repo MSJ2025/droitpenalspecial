@@ -48,10 +48,10 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
             ];
             final sourceCategorie =
                 item['_source_categorie'] as String? ?? '';
-            final itemTheme = item['theme'] as String? ?? '';
+            final rawTheme = item['theme'] as String? ?? '';
+            final itemTheme = rawTheme.isNotEmpty ? rawTheme : theme;
             questions.add(
               QuizPPQuestion(
-                theme: theme,
                 cadre: theme,
                 acte: item['question'] as String? ?? '',
                 sourceCategorie: sourceCategorie,
