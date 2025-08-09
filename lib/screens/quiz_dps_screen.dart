@@ -373,7 +373,11 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
     if (correct) {
       _score++;
     }
-    await QuizProgressManager.recordQuestion(question.theme, correct);
+    await QuizProgressManager.recordQuestion(
+      question.theme,
+      correct,
+      quiz: QuizType.dps,
+    );
 
     // Build correctOptions and selectedOptions lists
     final correctOptions = question.propositions

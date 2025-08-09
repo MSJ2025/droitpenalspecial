@@ -21,31 +21,39 @@ class QuizStats {
 
 /// Gère la progression des quiz en stockant les statistiques via
 /// [SharedPreferences].
+enum QuizType { pp, dps }
+
 class QuizProgressManager {
   QuizProgressManager._();
 
   static const _statsKey = 'quiz_stats';
   static const _countKey = 'quiz_count';
 
-  /// Enregistre la réponse à une question pour le [cadre] donné.
+  /// Enregistre la réponse à une question pour le [quiz] et la [categorie] donnés.
   ///
   /// [isCorrect] doit être `true` si la réponse est correcte.
-  static Future<void> recordQuestion(String cadre, bool isCorrect) async {
+  static Future<void> recordQuestion(String categorie, bool isCorrect,
+      {required QuizType quiz}) async {
     final prefs = await SharedPreferences.getInstance();
     final jsonStr = prefs.getString(_statsKey);
     final Map<String, dynamic> data =
         jsonStr != null ? json.decode(jsonStr) as Map<String, dynamic> : {};
 
-    final Map<String, dynamic> cadreData =
-        (data[cadre] as Map<String, dynamic>?) ?? {'answered': 0, 'correct': 0};
+    final quizKey = quiz.name;
+    final Map<String, dynamic> quizData =
+        (data[quizKey] as Map<String, dynamic>?) ?? <String, dynamic>{};
+    final Map<String, dynamic> categorieData =
+        (quizData[categorie] as Map<String, dynamic>?) ??
+            {'answered': 0, 'correct': 0};
 
-    final stats = QuizStats.fromJson(cadreData);
+    final stats = QuizStats.fromJson(categorieData);
     final updated = QuizStats(
       answered: stats.answered + 1,
       correct: stats.correct + (isCorrect ? 1 : 0),
     );
 
-    data[cadre] = updated.toJson();
+    quizData[categorie] = updated.toJson();
+    data[quizKey] = quizData;
     await prefs.setString(_statsKey, json.encode(data));
   }
 
@@ -56,16 +64,22 @@ class QuizProgressManager {
     await prefs.setInt(_countKey, count + 1);
   }
 
-  /// Retourne les statistiques pour chaque cadre.
-  static Future<Map<String, QuizStats>> getStats() async {
+  /// Retourne les statistiques pour chaque quiz et catégorie.
+  static Future<Map<QuizType, Map<String, QuizStats>>> getStats() async {
     final prefs = await SharedPreferences.getInstance();
     final jsonStr = prefs.getString(_statsKey);
     if (jsonStr == null) return {};
-    final Map<String, dynamic> data = json.decode(jsonStr) as Map<String, dynamic>;
-    return data.map((key, value) => MapEntry(
-          key,
-          QuizStats.fromJson(value as Map<String, dynamic>),
-        ));
+    final Map<String, dynamic> data =
+        json.decode(jsonStr) as Map<String, dynamic>;
+    return data.map((key, value) {
+      final type = QuizType.values.firstWhere((e) => e.name == key);
+      final Map<String, QuizStats> stats =
+          (value as Map<String, dynamic>).map((k, v) => MapEntry(
+                k,
+                QuizStats.fromJson(v as Map<String, dynamic>),
+              ));
+      return MapEntry(type, stats);
+    });
   }
 
   /// Retourne le nombre total de quiz réalisés.

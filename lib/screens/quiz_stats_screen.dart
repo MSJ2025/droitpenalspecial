@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../utils/quiz_progress_manager.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import '../widgets/gradient_expansion_tile.dart';
 
 class QuizStatsScreen extends StatefulWidget {
   const QuizStatsScreen({super.key});
@@ -11,7 +12,8 @@ class QuizStatsScreen extends StatefulWidget {
 }
 
 class _QuizStatsScreenState extends State<QuizStatsScreen> {
-  Map<String, QuizStats> _stats = {};
+  Map<String, QuizStats> _ppStats = {};
+  Map<String, QuizStats> _dpsStats = {};
   int _quizCount = 0;
   bool _loading = true;
 
@@ -25,7 +27,8 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
     final stats = await QuizProgressManager.getStats();
     final count = await QuizProgressManager.getQuizCount();
     setState(() {
-      _stats = stats;
+      _ppStats = stats[QuizType.pp] ?? {};
+      _dpsStats = stats[QuizType.dps] ?? {};
       _quizCount = count;
       _loading = false;
     });
@@ -63,7 +66,10 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
         title: const AdaptiveAppBarTitle('Statistiques', maxLines: 1),
         actions: [
           IconButton(
-            onPressed: (_stats.isEmpty && _quizCount == 0) ? null : _reset,
+            onPressed:
+                (_ppStats.isEmpty && _dpsStats.isEmpty && _quizCount == 0)
+                    ? null
+                    : _reset,
             icon: const Icon(Icons.delete),
             tooltip: 'Réinitialiser',
           ),
@@ -76,14 +82,14 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
   }
 
   Widget _buildContent() {
-    if (_stats.isEmpty) {
+    if (_ppStats.isEmpty && _dpsStats.isEmpty) {
       return const Center(child: Text('Aucune statistique'));
     }
 
-    final totalAnswered =
-        _stats.values.fold<int>(0, (sum, s) => sum + s.answered);
-    final totalCorrect =
-        _stats.values.fold<int>(0, (sum, s) => sum + s.correct);
+    final totalAnswered = [..._ppStats.values, ..._dpsStats.values]
+        .fold<int>(0, (sum, s) => sum + s.answered);
+    final totalCorrect = [..._ppStats.values, ..._dpsStats.values]
+        .fold<int>(0, (sum, s) => sum + s.correct);
     final percent =
         totalAnswered == 0 ? 0.0 : totalCorrect / totalAnswered;
     final percentText = (percent * 100).toStringAsFixed(1);
@@ -216,8 +222,34 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
               ),
             ),
           ),
+          const SizedBox(height: 6),
+          GradientExpansionTile(
+            title: const Text("Statistiques Quiz PP (cadres d'enquêtes)"),
+            children: _buildStatList(_ppStats),
+          ),
+          const SizedBox(height: 6),
+          GradientExpansionTile(
+            title: const Text('Statistiques Quiz DPS (thèmes)'),
+            children: _buildStatList(_dpsStats),
+          ),
         ],
       ),
     );
+  }
+
+  List<Widget> _buildStatList(Map<String, QuizStats> stats) {
+    if (stats.isEmpty) {
+      return const [ListTile(title: Text('Aucune statistique'))];
+    }
+    return stats.entries.map((e) {
+      final answered = e.value.answered;
+      final correct = e.value.correct;
+      final percent = answered == 0 ? 0.0 : correct / answered;
+      final percentText = (percent * 100).toStringAsFixed(1);
+      return ListTile(
+        title: Text(e.key),
+        trailing: Text('$correct/$answered ($percentText%)'),
+      );
+    }).toList();
   }
 }

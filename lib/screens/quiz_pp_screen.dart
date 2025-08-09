@@ -355,7 +355,11 @@ class _QuizPPScreenState extends State<QuizPPScreen> {
     if (correct) {
       _score++;
     }
-    await QuizProgressManager.recordQuestion(question.theme, correct);
+    await QuizProgressManager.recordQuestion(
+      question.cadre,
+      correct,
+      quiz: QuizType.pp,
+    );
 
     // Build correctOptions and selectedOptions lists
     final correctOptions = question.propositions

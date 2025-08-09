@@ -131,7 +131,11 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     if (correct) {
       _score++;
     }
-    await QuizProgressManager.recordQuestion(question.cadre, correct);
+    await QuizProgressManager.recordQuestion(
+      question.cadre,
+      correct,
+      quiz: QuizType.pp,
+    );
 
     setState(() {
       _feedbackColor = correct ? Colors.green : Colors.red;
