@@ -373,7 +373,7 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
     if (correct) {
       _score++;
     }
-    await QuizProgressManager.recordQuestion(question.theme, correct);
+    await QuizProgressManager.recordQuestion('DPS', question.theme, correct);
 
     // Build correctOptions and selectedOptions lists
     final correctOptions = question.propositions
@@ -396,7 +396,7 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
       }
     });
     if (_finished) {
-      await QuizProgressManager.incrementQuizCount();
+      await QuizProgressManager.incrementQuizCount('DPS');
     }
   }
 

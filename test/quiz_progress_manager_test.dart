@@ -12,26 +12,29 @@ void main() {
   });
 
   test('enregistrement de reponses et recuperation des stats', () async {
-    await QuizProgressManager.recordQuestion('cadre1', true);
-    await QuizProgressManager.recordQuestion('cadre1', false);
-    await QuizProgressManager.recordQuestion('cadre2', true);
+    await QuizProgressManager.recordQuestion('PP', 'cadre1', true);
+    await QuizProgressManager.recordQuestion('PP', 'cadre1', false);
+    await QuizProgressManager.recordQuestion('DPS', 'theme1', true);
 
     final stats = await QuizProgressManager.getStats();
-    final cadre1 = stats['cadre1'];
-    final cadre2 = stats['cadre2'];
+    final cadre1 = stats['PP']?['cadre1'];
+    final theme1 = stats['DPS']?['theme1'];
 
     expect(cadre1?.answered, 2);
     expect(cadre1?.correct, 1);
-    expect(cadre2?.answered, 1);
-    expect(cadre2?.correct, 1);
+    expect(theme1?.answered, 1);
+    expect(theme1?.correct, 1);
   });
 
-  test('increment du compteur global de quiz', () async {
+  test('increment du compteur de quiz par type', () async {
     expect(await QuizProgressManager.getQuizCount(), 0);
 
-    await QuizProgressManager.incrementQuizCount();
-    await QuizProgressManager.incrementQuizCount();
+    await QuizProgressManager.incrementQuizCount('PP');
+    await QuizProgressManager.incrementQuizCount('PP');
+    await QuizProgressManager.incrementQuizCount('DPS');
 
-    expect(await QuizProgressManager.getQuizCount(), 2);
+    expect(await QuizProgressManager.getQuizCount(quizType: 'PP'), 2);
+    expect(await QuizProgressManager.getQuizCount(quizType: 'DPS'), 1);
+    expect(await QuizProgressManager.getQuizCount(), 3);
   });
 }

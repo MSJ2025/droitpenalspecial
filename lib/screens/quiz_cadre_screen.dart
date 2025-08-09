@@ -131,7 +131,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
     if (correct) {
       _score++;
     }
-    await QuizProgressManager.recordQuestion(question.cadre, correct);
+    await QuizProgressManager.recordQuestion('ENQ', question.cadre, correct);
 
     setState(() {
       _feedbackColor = correct ? Colors.green : Colors.red;
@@ -157,7 +157,7 @@ class _QuizCadreScreenState extends State<QuizCadreScreen> {
       }
     });
     if (_finished) {
-      await QuizProgressManager.incrementQuizCount();
+      await QuizProgressManager.incrementQuizCount('ENQ');
     }
   }
 
