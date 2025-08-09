@@ -79,8 +79,24 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
     if (_stats.isEmpty) {
       return const Center(child: Text('Aucune statistique'));
     }
-    final entries = _stats.entries.toList()
-      ..sort((a, b) => a.key.compareTo(b.key));
+
+    final totalAnswered =
+        _stats.values.fold<int>(0, (sum, s) => sum + s.answered);
+    final totalCorrect =
+        _stats.values.fold<int>(0, (sum, s) => sum + s.correct);
+    final percent =
+        totalAnswered == 0 ? 0.0 : totalCorrect / totalAnswered;
+    final percentText = (percent * 100).toStringAsFixed(1);
+    final Color valueColor = percent >= 0.8
+        ? Colors.green
+        : percent >= 0.5
+            ? Colors.amber
+            : Colors.red;
+    final List<Color> gradientColors = percent >= 0.8
+        ? [Colors.green.shade400, Colors.green.shade200]
+        : percent >= 0.5
+            ? [Colors.amber.shade400, Colors.amber.shade200]
+            : [Colors.red.shade400, Colors.red.shade200];
 
     return Container(
       decoration: BoxDecoration(
@@ -134,88 +150,72 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
             ),
           ),
           const SizedBox(height: 6),
-          ...entries.map((e) {
-            final percent = e.value.answered == 0
-                ? 0.0
-                : e.value.correct / e.value.answered;
-            final percentText = (percent * 100).toStringAsFixed(1);
-            final Color valueColor = percent >= 0.8
-              ? Colors.green
-              : percent >= 0.5
-                ? Colors.amber
-                : Colors.red;
-            final List<Color> gradientColors = percent >= 0.8
-              ? [Colors.green.shade400, Colors.green.shade200]
-              : percent >= 0.5
-                ? [Colors.amber.shade400, Colors.amber.shade200]
-                : [Colors.red.shade400, Colors.red.shade200];
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      e.key,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+          Card(
+            margin: const EdgeInsets.symmetric(vertical: 6),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            elevation: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'TOTAL',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 6),
-                    LayoutBuilder(
-                      builder: (context, constraints) {
-                        return Container(
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: TweenAnimationBuilder<double>(
-                              tween: Tween(begin: 0.0, end: percent),
-                              duration: const Duration(milliseconds: 600),
-                              curve: Curves.easeOut,
-                              builder: (context, value, child) {
-                                return Container(
-                                  width: constraints.maxWidth * value,
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: gradientColors,
-                                      begin: Alignment.centerLeft,
-                                      end: Alignment.centerRight,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  const SizedBox(height: 6),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Container(
+                        height: 6,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: TweenAnimationBuilder<double>(
+                            tween: Tween(begin: 0.0, end: percent),
+                            duration: const Duration(milliseconds: 600),
+                            curve: Curves.easeOut,
+                            builder: (context, value, child) {
+                              return Container(
+                                width: constraints.maxWidth * value,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: gradientColors,
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
                                   ),
-                                );
-                              },
-                            ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              );
+                            },
                           ),
-                        );
-                      },
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    '$totalCorrect / $totalAnswered bonnes réponses ($percentText%)',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: valueColor,
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      '${e.value.correct} / ${e.value.answered} bonnes réponses ($percentText%)',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: valueColor,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          }).toList(),
+            ),
+          ),
         ],
       ),
     );
