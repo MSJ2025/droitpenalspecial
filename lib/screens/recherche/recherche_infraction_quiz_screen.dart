@@ -365,6 +365,7 @@ class _RechercheInfractionQuizScreenState extends State<RechercheInfractionQuizS
                         ),
                       ],
                     ),
+                    const SizedBox(height: 2),
                     const AdBanner(),
                   ],
                 ),

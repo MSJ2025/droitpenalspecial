@@ -74,7 +74,7 @@ class _RechercheInfractionDetailScreenState extends State<RechercheInfractionDet
                   },
                   icon: const Icon(Icons.flag),
                   label: Text(
-                    'Signaler un problème',
+                    '',
                     style: Theme.of(context).textTheme.labelLarge,
                   ),
                   style: ElevatedButton.styleFrom(
@@ -186,7 +186,7 @@ class _RechercheInfractionDetailScreenState extends State<RechercheInfractionDet
                     ),
                   );
                 },
-                child: const Text('Trouve  les infractions'),
+                child: const Text('Trouver les infractions'),
               ),
             ),
             const SizedBox(height: 8),
