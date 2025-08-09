@@ -1,13 +1,20 @@
 import 'quiz_question.dart';
 
 class QuizPPQuestion {
+  final String theme;
   final String cadre;
   final String acte;
   final List<QuizOption> propositions;
 
-  QuizPPQuestion({required this.cadre, required this.acte, required this.propositions});
+  QuizPPQuestion({
+    required this.theme,
+    required this.cadre,
+    required this.acte,
+    required this.propositions,
+  });
 
   factory QuizPPQuestion.fromJson(Map<String, dynamic> json) => QuizPPQuestion(
+        theme: json['theme'] ?? json['cadre'] ?? '',
         cadre: json['cadre'] ?? '',
         acte: json['acte'] ?? '',
         propositions: (json['propositions'] as List? ?? [])
