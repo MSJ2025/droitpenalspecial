@@ -51,6 +51,7 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
             final itemTheme = item['theme'] as String? ?? '';
             questions.add(
               QuizPPQuestion(
+                theme: theme,
                 cadre: theme,
                 acte: item['question'] as String? ?? '',
                 sourceCategorie: sourceCategorie,
@@ -372,7 +373,7 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
     if (correct) {
       _score++;
     }
-    await QuizProgressManager.recordQuestion('global', correct);
+    await QuizProgressManager.recordQuestion(question.theme, correct);
 
     // Build correctOptions and selectedOptions lists
     final correctOptions = question.propositions
