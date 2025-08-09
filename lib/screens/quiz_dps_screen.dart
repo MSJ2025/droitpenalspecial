@@ -104,25 +104,25 @@ class _QuizDPSScreenState extends State<QuizDPSScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-              Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                color: Colors.white24,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  child: Text(
-                    question.acte,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
+              // Card(
+              //   elevation: 4,
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(8),
+              //   ),
+              //   color: Colors.white24,
+              //   child: Padding(
+              //     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              //     child: Text(
+              //       question.acte,
+              //       textAlign: TextAlign.center,
+              //       style: const TextStyle(
+              //         fontSize: 16,
+              //         color: Colors.white,
+              //         fontWeight: FontWeight.w600,
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
