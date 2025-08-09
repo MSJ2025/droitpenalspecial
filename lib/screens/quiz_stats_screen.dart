@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../utils/quiz_progress_manager.dart';
 import '../widgets/adaptive_appbar_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuizStatsScreen extends StatefulWidget {
   const QuizStatsScreen({super.key});
@@ -14,11 +15,14 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
   Map<String, Map<String, QuizStats>> _stats = {};
   int _quizCount = 0;
   bool _loading = true;
+  bool _ppExpanded = true;
+  bool _dpsExpanded = true;
 
   @override
   void initState() {
     super.initState();
     _load();
+    _loadExpansionState();
   }
 
   Future<void> _load() async {
@@ -54,6 +58,19 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
       await QuizProgressManager.reset();
       await _load();
     }
+  }
+
+  Future<void> _loadExpansionState() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _ppExpanded = prefs.getBool('stats_pp_expanded') ?? true;
+      _dpsExpanded = prefs.getBool('stats_dps_expanded') ?? true;
+    });
+  }
+
+  Future<void> _saveExpansionState(String key, bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(key, value);
   }
 
   @override
@@ -101,6 +118,15 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
         : percent >= 0.5
             ? [Colors.amber.shade400, Colors.amber.shade200]
             : [Colors.red.shade400, Colors.red.shade200];
+
+    final ppEntries = _stats.entries
+        .where((e) => _isPP(e.key))
+        .toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
+    final dpsEntries = _stats.entries
+        .where((e) => !_isPP(e.key))
+        .toList()
+      ..sort((a, b) => a.key.compareTo(b.key));
 
     return Container(
       decoration: BoxDecoration(
@@ -220,6 +246,54 @@ class _QuizStatsScreenState extends State<QuizStatsScreen> {
               ),
             ),
           ),
+          if (ppEntries.isNotEmpty)
+            _buildExpansion(
+              'Procédure pénale',
+              ppEntries,
+              _ppExpanded,
+              (v) {
+                setState(() => _ppExpanded = v);
+                _saveExpansionState('stats_pp_expanded', v);
+              },
+            ),
+          if (dpsEntries.isNotEmpty)
+            _buildExpansion(
+              'Droit pénal spécial',
+              dpsEntries,
+              _dpsExpanded,
+              (v) {
+                setState(() => _dpsExpanded = v);
+                _saveExpansionState('stats_dps_expanded', v);
+              },
+            ),
+        ],
+      ),
+    );
+  }
+
+  bool _isPP(String key) => key.toUpperCase() == key;
+
+  Widget _buildExpansion(
+    String title,
+    List<MapEntry<String, QuizStats>> entries,
+    bool expanded,
+    ValueChanged<bool> onExpansionChanged,
+  ) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      child: ExpansionTile(
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        initiallyExpanded: expanded,
+        onExpansionChanged: onExpansionChanged,
+        children: [
+          for (final e in entries)
+            ListTile(
+              title: Text(e.key),
+              trailing: Text('${e.value.correct} / ${e.value.answered}'),
+            ),
         ],
       ),
     );
